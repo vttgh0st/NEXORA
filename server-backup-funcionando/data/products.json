@@ -1,0 +1,41 @@
+[
+  {
+    "id": "creator-pack",
+    "nome": "NEXORA Creator Pack",
+    "preco": 19.90,
+    "categoria": "Creators",
+    "descricao": "Templates, recursos visuais e arquivos para criadores de conteúdo.",
+    "imagem": "/assets/products/creator-pack.png",
+    "tipo": "download"
+  },
+
+  {
+    "id": "linux-pro",
+    "nome": "Linux Pro Masterclass",
+    "preco": 49.90,
+    "categoria": "Curso",
+    "descricao": "Aprenda Linux, terminal, servidores e otimização.",
+    "imagem": "/assets/products/linux-pro.png",
+    "tipo": "curso"
+  },
+
+  {
+    "id": "social-kit",
+    "nome": "Social Media Kit",
+    "preco": 29.90,
+    "categoria": "Design",
+    "descricao": "Pacote de artes para Instagram, Shorts e redes sociais.",
+    "imagem": "/assets/products/social-kit.png",
+    "tipo": "download"
+  },
+
+  {
+    "id": "youtube-pack",
+    "nome": "YouTube Creator Pack",
+    "preco": 39.90,
+    "categoria": "YouTube",
+    "descricao": "Recursos para thumbnails, vídeos e identidade visual.",
+    "imagem": "/assets/products/youtube-pack.png",
+    "tipo": "download"
+  }
+]

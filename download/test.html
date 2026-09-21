@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>NEXORA — Teste de Download</title>
+
+<style>
+
+body{
+    margin:0;
+    min-height:100vh;
+    background:#080808;
+    color:white;
+    font-family:Arial,sans-serif;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.box{
+    width:min(600px,90%);
+    padding:35px;
+    border:1px solid #292929;
+    border-radius:20px;
+    background:#111;
+}
+
+h1{
+    margin-top:0;
+}
+
+p{
+    color:#888;
+    line-height:1.7;
+}
+
+a{
+    display:inline-block;
+    margin-top:15px;
+    padding:14px 20px;
+    border-radius:10px;
+    background:#fff;
+    color:#000;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+.status{
+    padding:15px;
+    border:1px solid #242424;
+    border-radius:10px;
+    margin-top:20px;
+    color:#aaa;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="box">
+
+<h1>NEXORA / Download Test</h1>
+
+<p>
+Esta página verifica se o arquivo digital do Creator Pack
+está presente e disponível para download.
+</p>
+
+<div class="status">
+
+Arquivo:
+<strong>Creator-Pack-v1.zip</strong>
+
+<br><br>
+
+Status:
+<strong id="status">verificando...</strong>
+
+</div>
+
+<a href="Creator-Pack-v1.zip" download>
+BAIXAR ARQUIVO
+</a>
+
+</div>
+
+<script>
+
+fetch("Creator-Pack-v1.zip", {
+    method:"HEAD"
+})
+.then(response => {
+
+    const status = document.getElementById("status");
+
+    if(response.ok){
+
+        status.textContent = "OK — arquivo encontrado";
+
+    }else{
+
+        status.textContent = "ERRO — arquivo não encontrado";
+
+    }
+
+})
+.catch(() => {
+
+    document.getElementById("status").textContent =
+        "ERRO — não foi possível verificar";
+
+});
+
+</script>
+
+</body>
+</html>

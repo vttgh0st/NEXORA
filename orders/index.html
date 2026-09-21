@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+name="viewport"
+content="width=device-width,initial-scale=1"
+>
+
+<title>Pedido — NEXORA</title>
+
+<style>
+
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    min-height:100vh;
+
+    background:#060606;
+
+    color:#fff;
+
+    font-family:Arial,Helvetica,sans-serif;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:25px;
+}
+
+.card{
+
+    width:min(600px,100%);
+
+    background:#111;
+
+    border:1px solid #252525;
+
+    border-radius:22px;
+
+    padding:35px;
+
+}
+
+.logo{
+
+    font-weight:900;
+
+    letter-spacing:5px;
+
+    margin-bottom:30px;
+
+}
+
+h1{
+
+    margin:0 0 10px;
+
+    font-size:38px;
+
+}
+
+p{
+
+    color:#777;
+
+    line-height:1.7;
+
+}
+
+.order{
+
+    margin-top:25px;
+
+    padding:20px;
+
+    border:1px solid #252525;
+
+    border-radius:13px;
+
+    background:#090909;
+
+}
+
+.row{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    gap:20px;
+
+    padding:12px 0;
+
+    border-bottom:1px solid #191919;
+
+}
+
+.row:last-child{
+
+    border-bottom:0;
+
+}
+
+.label{
+
+    color:#666;
+
+}
+
+.value{
+
+    text-align:right;
+
+}
+
+.status{
+
+    margin-top:25px;
+
+    padding:15px;
+
+    border:1px solid #292929;
+
+    border-radius:11px;
+
+    color:#aaa;
+
+}
+
+a{
+
+    display:inline-block;
+
+    margin-top:25px;
+
+    padding:13px 18px;
+
+    background:#fff;
+
+    color:#000;
+
+    text-decoration:none;
+
+    border-radius:10px;
+
+    font-weight:bold;
+
+    font-size:13px;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="card">
+
+<div class="logo">
+NEXORA
+</div>
+
+<h1>
+Meu pedido
+</h1>
+
+<p>
+Informações do pedido armazenado neste navegador.
+</p>
+
+<div
+class="order"
+id="order"
+>
+Carregando...
+</div>
+
+<a href="../">
+Voltar para NEXORA
+</a>
+
+</div>
+
+
+<script>
+
+const container =
+document.getElementById("order");
+
+
+const saved =
+localStorage.getItem("nexoraOrder");
+
+
+if(!saved){
+
+    container.innerHTML = `
+        <p>
+        Nenhum pedido encontrado neste navegador.
+        </p>
+    `;
+
+}else{
+
+    try{
+
+        const order =
+            JSON.parse(saved);
+
+
+        container.innerHTML = `
+
+            <div class="row">
+                <span class="label">
+                    Pedido
+                </span>
+
+                <strong class="value">
+                    ${escapeHtml(order.id)}
+                </strong>
+            </div>
+
+
+            <div class="row">
+                <span class="label">
+                    Produto
+                </span>
+
+                <strong class="value">
+                    ${escapeHtml(order.product)}
+                </strong>
+            </div>
+
+
+            <div class="row">
+                <span class="label">
+                    Cliente
+                </span>
+
+                <strong class="value">
+                    ${escapeHtml(order.customer.name)}
+                </strong>
+            </div>
+
+
+            <div class="row">
+                <span class="label">
+                    E-mail
+                </span>
+
+                <strong class="value">
+                    ${escapeHtml(order.customer.email)}
+                </strong>
+            </div>
+
+
+            <div class="row">
+                <span class="label">
+                    Valor
+                </span>
+
+                <strong class="value">
+                    R$ ${Number(order.price).toFixed(2).replace(".",",")}
+                </strong>
+            </div>
+
+
+            <div class="status">
+                Status atual:
+                <strong>
+                    ${escapeHtml(order.status)}
+                </strong>
+            </div>
+
+        `;
+
+    }catch(error){
+
+        container.innerHTML = `
+            <p>
+            Não foi possível ler o pedido.
+            </p>
+        `;
+
+    }
+
+}
+
+
+function escapeHtml(value){
+
+    return String(value)
+        .replace(/&/g,"&amp;")
+        .replace(/</g,"&lt;")
+        .replace(/>/g,"&gt;")
+        .replace(/"/g,"&quot;")
+        .replace(/'/g,"&#039;");
+
+}
+
+</script>
+
+</body>
+
+</html>

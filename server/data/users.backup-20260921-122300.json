@@ -1,0 +1,65 @@
+[
+  {
+    "id": "10b0272e-9c0b-4e8f-9fee-d85679d0d20a",
+    "nome": "Teste",
+    "email": "teste@nexora.com",
+    "senha": "123",
+    "criado": "2026-09-21T05:31:18.666Z"
+  },
+  {
+    "id": "014de58e-2a11-4d84-944f-4594a7975b49",
+    "nome": "Ighost",
+    "email": "joaovictormarques00091@gmail.com",
+    "senha": "jvitin8686@",
+    "criado": "2026-09-21T15:10:09.712Z"
+  },
+  {
+    "id": "3c91c006-88e3-4d0c-a5d6-fbd32b3e4cbf",
+    "nome": "Ighost",
+    "email": "joaovictormarques00091@gmail.com",
+    "senha": "jvitin8686@",
+    "criado": "2026-09-21T15:10:42.002Z"
+  },
+  {
+    "id": "a9105a10-a606-46af-a156-215cbcdb9513",
+    "nome": "Teste Final",
+    "email": "final@nexora.com",
+    "senha": "teste123",
+    "criado": "2026-09-21T15:12:27.120Z"
+  },
+  {
+    "id": "91b2adb6-f807-4769-aa11-fd53502dbdbe",
+    "nome": "Ighost",
+    "email": "joaovictormarques00091@gmail.com",
+    "senha": "jvitin8686@",
+    "criado": "2026-09-21T15:12:57.677Z"
+  },
+  {
+    "id": "ea30783b-f2fd-4ee3-a172-1031e70dc999",
+    "nome": "Ighost",
+    "email": "joaovictormarques00091@gmail.com",
+    "senha": "jvitin8686@",
+    "criado": "2026-09-21T15:14:14.224Z"
+  },
+  {
+    "id": "dd8067d1-e4ef-4a48-a6bd-26d293cc2296",
+    "nome": "Teste Navegacao",
+    "email": "navegacao@teste.com",
+    "senha": "teste123",
+    "criado": "2026-09-21T15:14:42.763Z"
+  },
+  {
+    "id": "e1f90537-6d20-4490-877a-cfc982dd790d",
+    "nome": "Teste Curso",
+    "email": "teste-curso@teste.com",
+    "senha": "temporaria",
+    "criado": "2026-09-21T15:17:12.030Z"
+  },
+  {
+    "id": "00ce21b8-af61-464b-94a9-851f8e1a0441",
+    "nome": "Ighost",
+    "email": "joaovictormarques00091@gmail.com",
+    "senha": "jvitin8686@",
+    "criado": "2026-09-21T15:17:46.650Z"
+  }
+]

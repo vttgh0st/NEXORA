@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1080" viewBox="0 0 1080 1080">
+<defs>
+<linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0" stop-color="#171717"/>
+<stop offset="1" stop-color="#050505"/>
+</linearGradient>
+</defs>
+<rect width="1080" height="1080" fill="url(#g)"/>
+<path d="M0 850 L1080 350" stroke="#fff" stroke-opacity=".06" stroke-width="160"/>
+<text x="90" y="150" fill="#777" font-family="Arial,sans-serif" font-size="22" letter-spacing="8">MODE / ON</text>
+<text x="90" y="500" fill="white" font-family="Arial,sans-serif" font-size="110" font-weight="900">CREATOR</text>
+<text x="90" y="610" fill="#888" font-family="Arial,sans-serif" font-size="110" font-weight="900">MODE.</text>
+<rect x="90" y="690" width="190" height="8" fill="#fff"/>
+<text x="90" y="755" fill="#aaa" font-family="Arial,sans-serif" font-size="25">FOCUS. CREATE. PUBLISH.</text>
+<text x="90" y="950" fill="#555" font-family="Arial,sans-serif" font-size="18">NEXORA CREATOR PACK / 04</text>
+</svg>

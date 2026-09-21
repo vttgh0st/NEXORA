@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Checkout — NEXORA</title>
+
+<style>
+*{
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    margin:0;
+    min-height:100vh;
+    background:#060606;
+    color:#fff;
+    font-family:Arial,Helvetica,sans-serif;
+}
+
+body:before{
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    background:
+        radial-gradient(circle at 15% 15%,rgba(255,255,255,.035),transparent 28%),
+        radial-gradient(circle at 85% 80%,rgba(255,255,255,.025),transparent 30%);
+}
+
+header{
+    height:76px;
+    border-bottom:1px solid #202020;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 6%;
+    position:relative;
+    z-index:2;
+    background:rgba(6,6,6,.92);
+}
+
+.logo{
+    font-size:22px;
+    font-weight:900;
+    letter-spacing:4px;
+}
+
+.back{
+    color:#999;
+    text-decoration:none;
+    font-size:14px;
+}
+
+.back:hover{
+    color:#fff;
+}
+
+main{
+    width:min(1050px,92%);
+    margin:55px auto;
+    position:relative;
+    z-index:1;
+}
+
+.title{
+    margin-bottom:35px;
+}
+
+.eyebrow{
+    color:#777;
+    font-size:12px;
+    letter-spacing:4px;
+    text-transform:uppercase;
+    margin-bottom:12px;
+}
+
+h1{
+    margin:0;
+    font-size:clamp(34px,6vw,64px);
+    line-height:.95;
+    letter-spacing:-2px;
+}
+
+.layout{
+    display:grid;
+    grid-template-columns:1fr 380px;
+    gap:24px;
+}
+
+.card{
+    background:rgba(17,17,17,.92);
+    border:1px solid #242424;
+    border-radius:22px;
+    padding:28px;
+    box-shadow:0 20px 70px rgba(0,0,0,.25);
+}
+
+.card h2{
+    margin:0 0 24px;
+    font-size:21px;
+}
+
+.product{
+    display:flex;
+    gap:18px;
+    align-items:center;
+    padding-bottom:24px;
+    margin-bottom:24px;
+    border-bottom:1px solid #242424;
+}
+
+.product img{
+    width:105px;
+    height:105px;
+    object-fit:cover;
+    border-radius:15px;
+    border:1px solid #292929;
+}
+
+.product-name{
+    font-size:20px;
+    font-weight:800;
+    margin-bottom:7px;
+}
+
+.product-desc{
+    color:#777;
+    font-size:13px;
+    line-height:1.6;
+}
+
+.price{
+    margin-left:auto;
+    font-size:20px;
+    font-weight:800;
+    white-space:nowrap;
+}
+
+label{
+    display:block;
+    color:#aaa;
+    font-size:13px;
+    margin:18px 0 8px;
+}
+
+input{
+    width:100%;
+    background:#090909;
+    border:1px solid #303030;
+    color:#fff;
+    padding:15px 14px;
+    border-radius:11px;
+    outline:none;
+    font-size:14px;
+}
+
+input:focus{
+    border-color:#777;
+}
+
+.small{
+    color:#666;
+    font-size:12px;
+    line-height:1.6;
+    margin-top:15px;
+}
+
+.summary-row{
+    display:flex;
+    justify-content:space-between;
+    gap:20px;
+    padding:13px 0;
+    color:#999;
+    font-size:14px;
+}
+
+.total{
+    border-top:1px solid #292929;
+    margin-top:10px;
+    padding-top:20px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.total span:first-child{
+    color:#aaa;
+}
+
+.total strong{
+    font-size:28px;
+}
+
+.buy{
+    width:100%;
+    margin-top:25px;
+    border:0;
+    background:#fff;
+    color:#050505;
+    padding:17px;
+    border-radius:12px;
+    font-size:15px;
+    font-weight:900;
+    cursor:pointer;
+    transition:.2s;
+}
+
+.buy:hover{
+    transform:translateY(-2px);
+    background:#ddd;
+}
+
+.secure{
+    margin-top:18px;
+    padding:15px;
+    border:1px solid #222;
+    border-radius:12px;
+    color:#777;
+    font-size:12px;
+    line-height:1.6;
+}
+
+#success{
+    display:none;
+    text-align:center;
+}
+
+.success-icon{
+    width:72px;
+    height:72px;
+    border:1px solid #444;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin:0 auto 25px;
+    font-size:28px;
+}
+
+.success-title{
+    font-size:32px;
+    font-weight:900;
+    margin-bottom:12px;
+}
+
+.success-text{
+    color:#888;
+    line-height:1.7;
+    max-width:520px;
+    margin:0 auto 25px;
+}
+
+.back-store{
+    display:inline-block;
+    color:#050505;
+    background:#fff;
+    text-decoration:none;
+    padding:14px 22px;
+    border-radius:11px;
+    font-weight:800;
+}
+
+@media(max-width:800px){
+    .layout{
+        grid-template-columns:1fr;
+    }
+
+    .price{
+        margin-left:0;
+    }
+}
+
+@media(max-width:500px){
+    header{
+        padding:0 20px;
+    }
+
+    main{
+        margin:35px auto;
+    }
+
+    .card{
+        padding:20px;
+    }
+
+    .product{
+        align-items:flex-start;
+    }
+
+    .product img{
+        width:80px;
+        height:80px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">NEXORA</div>
+    <a class="back" href="../products/creator-pack/">← Voltar ao produto</a>
+</header>
+
+<main>
+
+<section id="checkout">
+
+    <div class="title">
+        <div class="eyebrow">NEXORA / CHECKOUT</div>
+        <h1>Finalize seu pedido.</h1>
+    </div>
+
+    <div class="layout">
+
+        <div class="card">
+
+            <h2>Informações do comprador</h2>
+
+            <form id="checkoutForm">
+
+                <label for="name">Nome</label>
+                <input
+                    id="name"
+                    type="text"
+                    placeholder="Seu nome"
+                    autocomplete="name"
+                    required
+                >
+
+                <label for="email">E-mail</label>
+                <input
+                    id="email"
+                    type="email"
+                    placeholder="voce@email.com"
+                    autocomplete="email"
+                    required
+                >
+
+                <p class="small">
+                    Seu e-mail será usado futuramente para a entrega do produto
+                    digital após a confirmação do pagamento.
+                </p>
+
+                <button class="buy" type="submit">
+                    CONTINUAR
+                </button>
+
+            </form>
+
+        </div>
+
+        <div class="card">
+
+            <h2>Seu pedido</h2>
+
+            <div class="product">
+
+                <img
+                    src="../products/creator-pack/previews/preview-01.svg"
+                    alt="Creator Pack"
+                >
+
+                <div>
+                    <div class="product-name">Creator Pack</div>
+                    <div class="product-desc">
+                        5 templates SVG editáveis + licença + guia rápido.
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="summary-row">
+                <span>Produto</span>
+                <strong>R$ 19,90</strong>
+            </div>
+
+            <div class="summary-row">
+                <span>Entrega</span>
+                <strong>Digital</strong>
+            </div>
+
+            <div class="total">
+                <span>Total</span>
+                <strong>R$ 19,90</strong>
+            </div>
+
+            <div class="secure">
+                🔒 Checkout preparado para receber um sistema de
+                pagamento seguro na próxima etapa.
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<section id="success">
+
+    <div class="card">
+
+        <div class="success-icon">✓</div>
+
+        <div class="success-title">
+            Pedido preparado.
+        </div>
+
+        <p class="success-text">
+            Esta é uma confirmação de teste da NEXORA.
+            Nenhum pagamento foi realizado.
+            O sistema de pagamento e a entrega automática serão
+            conectados em uma próxima etapa.
+        </p>
+
+        <a class="back-store" href="../products/creator-pack/">
+            VOLTAR AO CREATOR PACK
+        </a>
+
+    </div>
+
+</section>
+
+</main>
+
+<script>
+
+const form = document.getElementById("checkoutForm");
+const checkout = document.getElementById("checkout");
+const success = document.getElementById("success");
+
+form.addEventListener("submit", function(event){
+
+    event.preventDefault();
+
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+
+    if(!name || !email){
+        return;
+    }
+
+    localStorage.setItem(
+        "nexoraCheckoutTest",
+        JSON.stringify({
+            product:"Creator Pack",
+            price:19.90,
+            name:name,
+            email:email,
+            date:new Date().toISOString()
+        })
+    );
+
+    checkout.style.display = "none";
+    success.style.display = "block";
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+});
+
+</script>
+
+</body>
+</html>

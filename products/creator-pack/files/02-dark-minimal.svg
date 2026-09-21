@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1080" viewBox="0 0 1080 1080">
+<rect width="1080" height="1080" fill="#090909"/>
+<rect x="90" y="90" width="900" height="900" fill="#101010" stroke="#292929"/>
+<text x="140" y="210" fill="#777" font-family="Arial,sans-serif" font-size="24" letter-spacing="7">NEXORA</text>
+<text x="140" y="500" fill="#fff" font-family="Arial,sans-serif" font-size="92" font-weight="700">DARK</text>
+<text x="140" y="595" fill="#aaa" font-family="Arial,sans-serif" font-size="92" font-weight="700">IDEAS.</text>
+<rect x="140" y="660" width="130" height="6" fill="#fff"/>
+<text x="140" y="725" fill="#777" font-family="Arial,sans-serif" font-size="23">MINIMAL / MODERN / DIGITAL</text>
+<text x="140" y="910" fill="#555" font-family="Arial,sans-serif" font-size="19">CREATOR PACK — 02</text>
+</svg>

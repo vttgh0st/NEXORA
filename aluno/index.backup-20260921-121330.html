@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>NEXORA | Área do Aluno</title>
+
+<style>
+*{box-sizing:border-box}
+
+body{
+    margin:0;
+    min-height:100vh;
+    background:#050505;
+    color:white;
+    font-family:Arial,sans-serif;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.box{
+    width:min(500px,92%);
+    background:#111;
+    padding:40px;
+    border-radius:22px;
+    border:1px solid #252525;
+    box-shadow:0 20px 60px rgba(0,0,0,.5);
+}
+
+.logo{
+    font-size:42px;
+    font-weight:bold;
+    letter-spacing:5px;
+    text-align:center;
+}
+
+h2{
+    text-align:center;
+    margin-bottom:30px;
+}
+
+input{
+    width:100%;
+    padding:15px;
+    margin:8px 0;
+    background:#050505;
+    border:1px solid #333;
+    color:white;
+    border-radius:10px;
+    outline:none;
+}
+
+input:focus{
+    border-color:#777;
+}
+
+button{
+    width:100%;
+    padding:15px;
+    margin-top:15px;
+    border:0;
+    border-radius:10px;
+    cursor:pointer;
+    font-weight:bold;
+    font-size:16px;
+}
+
+button:disabled{
+    opacity:.6;
+    cursor:wait;
+}
+
+#status{
+    margin-top:18px;
+    text-align:center;
+    min-height:22px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="box">
+
+<div class="logo">NEXORA</div>
+
+<h2>Criar conta</h2>
+
+<form id="registerForm">
+
+<input
+    id="nome"
+    type="text"
+    placeholder="Nome"
+    required
+>
+
+<input
+    id="email"
+    type="email"
+    placeholder="Email"
+    required
+>
+
+<input
+    id="senha"
+    type="password"
+    placeholder="Senha"
+    minlength="3"
+    required
+>
+
+<button id="registerButton" type="submit">
+    Criar conta
+</button>
+
+</form>
+
+<div id="status"></div>
+
+</div>
+
+<script>
+
+const form = document.getElementById("registerForm");
+const button = document.getElementById("registerButton");
+const status = document.getElementById("status");
+
+form.addEventListener("submit", async function(event){
+
+    event.preventDefault();
+
+    const nome =
+        document.getElementById("nome").value.trim();
+
+    const email =
+        document.getElementById("email").value.trim();
+
+    const senha =
+        document.getElementById("senha").value;
+
+    status.textContent = "Criando conta...";
+    button.disabled = true;
+
+    try {
+
+        const response = await fetch(
+            "/api/register",
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    nome,
+                    email,
+                    senha
+                })
+            }
+        );
+
+        const data = await response.json();
+
+        if (!response.ok || !data.ok) {
+            throw new Error(
+                data.error || "Não foi possível criar a conta."
+            );
+        }
+
+        status.textContent =
+            "✅ Conta criada com sucesso!";
+
+        form.reset();
+
+    } catch(error) {
+
+        console.error(error);
+
+        status.textContent =
+            "❌ " + error.message;
+
+    } finally {
+
+        button.disabled = false;
+
+    }
+
+});
+
+</script>
+
+
+<script>
+const btn = document.getElementById("registerBtn");
+const status = document.getElementById("status");
+
+btn.addEventListener("click", async () => {
+
+    const inputs = document.querySelectorAll("input");
+
+    const nome = inputs[0].value.trim();
+    const email = inputs[1].value.trim();
+    const senha = inputs[2].value;
+
+    if (!nome || !email || !senha) {
+        status.textContent = "Preencha todos os campos.";
+        return;
+    }
+
+    btn.disabled = true;
+    btn.textContent = "Criando conta...";
+
+    try {
+
+        const response = await fetch("/api/register", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                nome,
+                email,
+                senha
+            })
+        });
+
+        const data = await response.json();
+
+        if (!response.ok || !data.ok) {
+            throw new Error(data.error || "Não foi possível criar a conta.");
+        }
+
+        status.textContent = "✅ Conta criada! Entrando...";
+
+        setTimeout(() => {
+            window.location.href = "/cursos/";
+        }, 700);
+
+    } catch (error) {
+
+        status.textContent = "❌ " + error.message;
+
+        btn.disabled = false;
+        btn.textContent = "Criar conta";
+    }
+});
+</script>
+
+</body>
+</html>

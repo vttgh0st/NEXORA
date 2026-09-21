@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>NEXORA | Área do Aluno</title>
+
+<style>
+body{
+    margin:0;
+    background:#050505;
+    color:white;
+    font-family:Arial, sans-serif;
+}
+
+.container{
+    max-width:600px;
+    margin:100px auto;
+    text-align:center;
+}
+
+.logo{
+    font-size:45px;
+    font-weight:bold;
+    letter-spacing:5px;
+}
+
+.card{
+    margin-top:40px;
+    background:#111;
+    padding:35px;
+    border-radius:20px;
+    border:1px solid #222;
+}
+
+input{
+    width:90%;
+    padding:15px;
+    margin:10px;
+    background:#080808;
+    border:1px solid #333;
+    color:white;
+    border-radius:10px;
+}
+
+button{
+    padding:15px 40px;
+    background:white;
+    border:0;
+    border-radius:10px;
+    cursor:pointer;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="logo">
+NEXORA
+</div>
+
+<div class="card">
+
+<h2>Área do Aluno</h2>
+
+<p>
+Acesse seus cursos e materiais.
+</p>
+
+<input placeholder="Email">
+
+<input placeholder="Senha" type="password">
+
+<br>
+
+<button>
+Entrar
+</button>
+
+</div>
+
+</div>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+<meta charset="UTF-8">
+<title>NEXORA | Área do Aluno</title>
+
+<style>
+
+body{
+background:#050505;
+color:white;
+font-family:Arial;
+}
+
+.box{
+max-width:500px;
+margin:80px auto;
+background:#111;
+padding:40px;
+border-radius:20px;
+border:1px solid #222;
+}
+
+input{
+width:90%;
+padding:15px;
+margin:10px;
+background:#050505;
+border:1px solid #333;
+color:white;
+border-radius:10px;
+}
+
+button{
+padding:15px 40px;
+border:0;
+border-radius:10px;
+cursor:pointer;
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+<div class="box">
+
+<h1>NEXORA</h1>
+
+<h2>Área do Aluno</h2>
+
+<input placeholder="Nome">
+
+<input placeholder="Email">
+
+<input placeholder="Senha" type="password">
+
+<br>
+
+<button>
+Criar conta
+</button>
+
+</div>
+
+</body>
+
+</html>
+<input id="nome" placeholder="Nome">
+
+<input id="email" placeholder="Email">
+
+<input id="senha" placeholder="Senha" type="password">
+
+<br>
+
+<button onclick="registrar()">
+Criar conta
+</button>
+
+
+<script>
+
+async function registrar(){
+
+const resposta =
+await fetch("/api/register",{
+
+method:"POST",
+
+headers:{
+"Content-Type":"application/json"
+},
+
+body:JSON.stringify({
+
+nome:
+document.getElementById("nome").value,
+
+email:
+document.getElementById("email").value,
+
+senha:
+document.getElementById("senha").value
+
+})
+
+});
+
+
+const dados =
+await resposta.json();
+
+
+alert(
+dados.message ||
+dados.error
+);
+
+}
+
+</script>

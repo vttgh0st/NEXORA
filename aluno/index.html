@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<title>NEXORA | Área do Aluno</title>
+
+<style>
+*{box-sizing:border-box}
+
+:root{
+    --bg:#050505;
+    --card:#0d0d0d;
+    --line:#202020;
+    --muted:#858585;
+    --green:#00e894;
+}
+
+body{
+    margin:0;
+    min-height:100vh;
+    background:
+        radial-gradient(
+            circle at 15% 0%,
+            rgba(0,232,148,.10),
+            transparent 32%
+        ),
+        var(--bg);
+    color:#fff;
+    font-family:Arial,Helvetica,sans-serif;
+}
+
+a{
+    color:inherit;
+    text-decoration:none;
+}
+
+.nav{
+    border-bottom:1px solid var(--line);
+    background:rgba(5,5,5,.9);
+    backdrop-filter:blur(14px);
+}
+
+.nav-inner{
+    width:min(1100px,92%);
+    min-height:70px;
+    margin:auto;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.logo{
+    font-size:22px;
+    font-weight:900;
+    letter-spacing:4px;
+}
+
+.logo span{
+    color:var(--green);
+}
+
+.container{
+    width:min(1100px,92%);
+    margin:auto;
+    padding:55px 0 80px;
+}
+
+.card{
+    background:#0b0b0b;
+    border:1px solid var(--line);
+    border-radius:22px;
+    padding:28px;
+    margin-bottom:18px;
+}
+
+h1{
+    margin:0 0 8px;
+    font-size:clamp(34px,6vw,58px);
+    letter-spacing:-2px;
+}
+
+h2{
+    margin:0 0 8px;
+}
+
+.muted{
+    color:#777;
+    line-height:1.6;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:2fr 1fr;
+    gap:18px;
+}
+
+.progress{
+    height:10px;
+    background:#1a1a1a;
+    border-radius:99px;
+    overflow:hidden;
+    margin:18px 0 10px;
+}
+
+.progress-bar{
+    height:100%;
+    width:0%;
+    background:var(--green);
+    transition:.4s;
+}
+
+.progress-info{
+    display:flex;
+    justify-content:space-between;
+    color:#888;
+    font-size:13px;
+}
+
+.btn{
+    display:inline-block;
+    border:0;
+    border-radius:11px;
+    padding:13px 17px;
+    background:#fff;
+    color:#050505;
+    font-weight:bold;
+    cursor:pointer;
+    margin-top:15px;
+}
+
+.btn:hover{
+    background:var(--green);
+}
+
+.btn.secondary{
+    background:#151515;
+    color:#fff;
+    border:1px solid #292929;
+}
+
+.btn.danger{
+    background:#151515;
+    color:#ff7777;
+    border:1px solid #302020;
+}
+
+.status{
+    color:#72f8c0;
+    font-size:13px;
+}
+
+#loading{
+    color:#777;
+}
+
+.login{
+    width:min(470px,92%);
+    margin:70px auto;
+}
+
+input{
+    width:100%;
+    padding:14px;
+    margin:7px 0;
+    border-radius:11px;
+    border:1px solid #292929;
+    background:#050505;
+    color:#fff;
+    outline:none;
+}
+
+input:focus{
+    border-color:#00e894;
+}
+
+.error{
+    color:#ff7777;
+    margin-top:12px;
+}
+
+.success{
+    color:#72f8c0;
+    margin-top:12px;
+}
+
+.hidden{
+    display:none!important;
+}
+
+.course-link{
+    display:block;
+    padding:20px;
+    border:1px solid #222;
+    border-radius:16px;
+    margin-top:15px;
+    background:#101010;
+}
+
+.course-link:hover{
+    border-color:#00e894;
+}
+
+.certificate{
+    border:1px solid rgba(0,232,148,.35);
+    background:
+        radial-gradient(
+            circle at 100% 0%,
+            rgba(0,232,148,.10),
+            transparent 35%
+        ),
+        #0b0b0b;
+}
+
+footer{
+    text-align:center;
+    color:#555;
+    padding:30px;
+}
+
+@media(max-width:750px){
+    .grid{
+        grid-template-columns:1fr;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<nav class="nav">
+<div class="nav-inner">
+    <a class="logo" href="../">NEX<span>O</span>RA</a>
+    <button class="btn secondary" id="logoutBtn">
+        Sair
+    </button>
+</div>
+</nav>
+
+<main id="app" class="container hidden">
+
+    <section class="card">
+        <div class="status">NEXORA ACADEMY</div>
+        <h1>Olá, <span id="userName">Aluno</span> 👋</h1>
+        <p class="muted">
+            Acompanhe sua evolução, continue seus cursos
+            e conquiste seus certificados.
+        </p>
+    </section>
+
+    <div class="grid">
+
+        <section class="card">
+
+            <h2>Linux Pro</h2>
+
+            <p class="muted">
+                Formação prática em Linux, terminal,
+                administração e otimização.
+            </p>
+
+            <div class="progress">
+                <div
+                    class="progress-bar"
+                    id="progressBar">
+                </div>
+            </div>
+
+            <div class="progress-info">
+                <span id="progressText">
+                    0% concluído
+                </span>
+
+                <span id="lessonCount">
+                    0/3 aulas
+                </span>
+            </div>
+
+            <a
+                class="btn"
+                href="/cursos/linux-pro/">
+                Continuar curso →
+            </a>
+
+        </section>
+
+        <section class="card">
+
+            <h2>Status</h2>
+
+            <p
+                id="statusText"
+                class="muted">
+                Carregando...
+            </p>
+
+            <div id="certificateArea"></div>
+
+        </section>
+
+    </div>
+
+    <section
+        id="certificateCard"
+        class="card certificate hidden">
+
+        <div class="status">
+            CERTIFICADO LIBERADO
+        </div>
+
+        <h2>🏆 Parabéns!</h2>
+
+        <p class="muted">
+            Você concluiu todas as aulas do Linux Pro.
+        </p>
+
+        <a
+            class="btn"
+            href="/certificado/">
+            Ver certificado →
+        </a>
+
+    </section>
+
+</main>
+
+<section id="loginScreen" class="login">
+
+    <div class="card">
+
+        <div class="logo">
+            NEX<span>O</span>RA
+        </div>
+
+        <h2 id="formTitle" style="margin-top:25px">
+            Entrar na Área do Aluno
+        </h2>
+
+        <p class="muted">
+            Entre para sincronizar seu progresso em qualquer dispositivo.
+        </p>
+
+        <form id="authForm">
+
+            <div id="nameWrap" class="hidden">
+                <input
+                    id="nome"
+                    type="text"
+                    placeholder="Seu nome">
+            </div>
+
+            <input
+                id="email"
+                type="email"
+                placeholder="Email"
+                required>
+
+            <input
+                id="senha"
+                type="password"
+                placeholder="Senha"
+                minlength="6"
+                required>
+
+            <button
+                class="btn"
+                style="width:100%"
+                id="submitBtn"
+                type="submit">
+                Entrar
+            </button>
+
+        </form>
+
+        <button
+            class="btn secondary"
+            style="width:100%"
+            id="toggleMode">
+            Criar uma conta
+        </button>
+
+        <div id="message"></div>
+
+    </div>
+
+</section>
+
+<footer>
+    © 2026 NEXORA Academy
+</footer>
+
+<script>
+const loginScreen =
+    document.getElementById("loginScreen");
+
+const app =
+    document.getElementById("app");
+
+const authForm =
+    document.getElementById("authForm");
+
+const nameWrap =
+    document.getElementById("nameWrap");
+
+const formTitle =
+    document.getElementById("formTitle");
+
+const submitBtn =
+    document.getElementById("submitBtn");
+
+const toggleMode =
+    document.getElementById("toggleMode");
+
+const message =
+    document.getElementById("message");
+
+const userName =
+    document.getElementById("userName");
+
+const progressBar =
+    document.getElementById("progressBar");
+
+const progressText =
+    document.getElementById("progressText");
+
+const lessonCount =
+    document.getElementById("lessonCount");
+
+const statusText =
+    document.getElementById("statusText");
+
+const certificateCard =
+    document.getElementById("certificateCard");
+
+const logoutBtn =
+    document.getElementById("logoutBtn");
+
+let registerMode = false;
+
+function showMessage(text, error=false){
+
+    message.className =
+        error ? "error" : "success";
+
+    message.textContent = text;
+}
+
+function setProgress(progress){
+
+    const p = progress || {
+        percent:0,
+        completed:0,
+        total:3,
+        certificate:false
+    };
+
+    progressBar.style.width =
+        p.percent + "%";
+
+    progressText.textContent =
+        p.percent + "% concluído";
+
+    lessonCount.textContent =
+        p.completed + "/" + p.total + " aulas";
+
+    if(p.certificate){
+
+        statusText.textContent =
+            "Curso concluído!";
+
+        certificateCard.classList.remove(
+            "hidden"
+        );
+
+    }else{
+
+        statusText.textContent =
+            "Continue as aulas para chegar a 100%.";
+
+        certificateCard.classList.add(
+            "hidden"
+        );
+    }
+}
+
+async function loadUser(){
+
+    try{
+
+        const r =
+            await fetch(
+                "/api/me",
+                {
+                    credentials:"same-origin"
+                }
+            );
+
+        const data =
+            await r.json();
+
+        if(!r.ok || !data.authenticated){
+
+            loginScreen.classList.remove(
+                "hidden"
+            );
+
+            app.classList.add(
+                "hidden"
+            );
+
+            return;
+        }
+
+        loginScreen.classList.add(
+            "hidden"
+        );
+
+        app.classList.remove(
+            "hidden"
+        );
+
+        userName.textContent =
+            data.user.nome;
+
+        setProgress(
+            data.progress
+        );
+
+    }catch(e){
+
+        showMessage(
+            "Não foi possível conectar ao servidor.",
+            true
+        );
+    }
+}
+
+toggleMode.addEventListener(
+    "click",
+    () => {
+
+        registerMode =
+            !registerMode;
+
+        if(registerMode){
+
+            formTitle.textContent =
+                "Criar conta";
+
+            nameWrap.classList.remove(
+                "hidden"
+            );
+
+            document.getElementById(
+                "nome"
+            ).required = true;
+
+            submitBtn.textContent =
+                "Criar conta";
+
+            toggleMode.textContent =
+                "Já tenho uma conta";
+
+        }else{
+
+            formTitle.textContent =
+                "Entrar na Área do Aluno";
+
+            nameWrap.classList.add(
+                "hidden"
+            );
+
+            document.getElementById(
+                "nome"
+            ).required = false;
+
+            submitBtn.textContent =
+                "Entrar";
+
+            toggleMode.textContent =
+                "Criar uma conta";
+        }
+
+        message.textContent = "";
+    }
+);
+
+authForm.addEventListener(
+    "submit",
+    async e => {
+
+        e.preventDefault();
+
+        submitBtn.disabled = true;
+
+        message.textContent = "";
+
+        try{
+
+            const body = {
+                email:
+                    document.getElementById(
+                        "email"
+                    ).value.trim(),
+
+                senha:
+                    document.getElementById(
+                        "senha"
+                    ).value
+            };
+
+            let endpoint =
+                "/api/login";
+
+            if(registerMode){
+
+                endpoint =
+                    "/api/register";
+
+                body.nome =
+                    document.getElementById(
+                        "nome"
+                    ).value.trim();
+            }
+
+            const r =
+                await fetch(
+                    endpoint,
+                    {
+                        method:"POST",
+                        headers:{
+                            "Content-Type":
+                                "application/json"
+                        },
+                        credentials:"same-origin",
+                        body:
+                            JSON.stringify(body)
+                    }
+                );
+
+            const data =
+                await r.json();
+
+            if(!r.ok || !data.ok){
+
+                throw new Error(
+                    data.message ||
+                    "Não foi possível continuar."
+                );
+            }
+
+            showMessage(
+                registerMode
+                    ? "Conta criada com sucesso!"
+                    : "Login realizado!"
+            );
+
+            setTimeout(
+                loadUser,
+                250
+            );
+
+        }catch(err){
+
+            showMessage(
+                err.message,
+                true
+            );
+
+        }finally{
+
+            submitBtn.disabled = false;
+        }
+    }
+);
+
+logoutBtn.addEventListener(
+    "click",
+    async () => {
+
+        await fetch(
+            "/api/logout",
+            {
+                method:"POST",
+                credentials:"same-origin"
+            }
+        );
+
+        location.reload();
+    }
+);
+
+loadUser();
+</script>
+
+</body>
+</html>

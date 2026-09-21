@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<title>NEXORA | Linux Pro Masterclass</title>
+
+<style>
+
+*{
+    box-sizing:border-box;
+}
+
+:root{
+    --bg:#050505;
+    --card:#0d0d0d;
+    --line:#202020;
+    --muted:#858585;
+    --green:#00e894;
+}
+
+body{
+    margin:0;
+    background:
+        radial-gradient(
+            circle at 10% 0%,
+            rgba(0,232,148,.10),
+            transparent 30%
+        ),
+        var(--bg);
+    color:#fff;
+    font-family:Arial,Helvetica,sans-serif;
+}
+
+a{
+    color:inherit;
+    text-decoration:none;
+}
+
+.nav{
+    position:sticky;
+    top:0;
+    z-index:20;
+    border-bottom:1px solid var(--line);
+    background:rgba(5,5,5,.88);
+    backdrop-filter:blur(14px);
+}
+
+.nav-inner{
+    width:min(1150px,92%);
+    min-height:70px;
+    margin:auto;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.logo{
+    font-size:22px;
+    font-weight:900;
+    letter-spacing:4px;
+}
+
+.logo span{
+    color:var(--green);
+}
+
+.back{
+    color:#999;
+    font-size:13px;
+}
+
+.back:hover{
+    color:#fff;
+}
+
+.container{
+    width:min(1150px,92%);
+    margin:auto;
+}
+
+.hero{
+    padding:65px 0 35px;
+}
+
+.eyebrow{
+    display:inline-block;
+    padding:7px 11px;
+    border-radius:999px;
+    border:1px solid rgba(0,232,148,.25);
+    background:rgba(0,232,148,.06);
+    color:#72f8c0;
+    font-size:10px;
+    font-weight:bold;
+    letter-spacing:1.5px;
+}
+
+h1{
+    max-width:800px;
+    margin:18px 0 12px;
+    font-size:clamp(40px,7vw,70px);
+    line-height:.98;
+    letter-spacing:-3px;
+}
+
+h1 span{
+    color:var(--green);
+}
+
+.hero p{
+    max-width:650px;
+    color:#888;
+    line-height:1.7;
+    font-size:17px;
+}
+
+.progress-card{
+    margin-top:30px;
+    padding:20px;
+    border:1px solid var(--line);
+    border-radius:18px;
+    background:#0b0b0b;
+}
+
+.progress-top{
+    display:flex;
+    justify-content:space-between;
+    gap:15px;
+    margin-bottom:12px;
+    font-size:13px;
+}
+
+.progress-top span{
+    color:#888;
+}
+
+.progress{
+    height:8px;
+    border-radius:99px;
+    overflow:hidden;
+    background:#1b1b1b;
+}
+
+.progress-bar{
+    width:0%;
+    height:100%;
+    background:var(--green);
+}
+
+.section{
+    padding:35px 0 80px;
+}
+
+.section-title{
+    margin-bottom:20px;
+}
+
+.section-title h2{
+    margin:0 0 6px;
+    font-size:28px;
+}
+
+.section-title p{
+    margin:0;
+    color:#777;
+}
+
+.module{
+    border:1px solid var(--line);
+    border-radius:22px;
+    overflow:hidden;
+    background:#0b0b0b;
+}
+
+.module-header{
+    padding:24px;
+    border-bottom:1px solid var(--line);
+}
+
+.module-label{
+    color:var(--green);
+    font-size:10px;
+    font-weight:bold;
+    letter-spacing:1.5px;
+}
+
+.module-header h3{
+    margin:8px 0 5px;
+    font-size:23px;
+}
+
+.module-header p{
+    margin:0;
+    color:#777;
+}
+
+.lesson{
+    display:flex;
+    align-items:center;
+    gap:16px;
+    padding:20px 24px;
+    border-bottom:1px solid #171717;
+    transition:.2s;
+}
+
+.lesson:last-child{
+    border-bottom:0;
+}
+
+.lesson:hover{
+    background:#101010;
+}
+
+.lesson-icon{
+    width:45px;
+    height:45px;
+    flex-shrink:0;
+    border-radius:13px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:#151515;
+    font-size:20px;
+}
+
+.lesson-info{
+    flex:1;
+}
+
+.lesson-info strong{
+    display:block;
+    margin-bottom:5px;
+}
+
+.lesson-info span{
+    color:#707070;
+    font-size:12px;
+}
+
+.lesson-status{
+    color:#666;
+    font-size:12px;
+}
+
+.lesson.active .lesson-status{
+    color:var(--green);
+}
+
+.lesson-btn{
+    padding:10px 14px;
+    border-radius:10px;
+    background:#fff;
+    color:#050505;
+    font-weight:bold;
+    font-size:12px;
+}
+
+.lesson-btn:hover{
+    background:var(--green);
+}
+
+.materials{
+    margin-top:20px;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:12px;
+}
+
+.material{
+    padding:20px;
+    border:1px solid var(--line);
+    border-radius:16px;
+    background:#0b0b0b;
+}
+
+.material strong{
+    display:block;
+    margin-bottom:7px;
+}
+
+.material span{
+    color:#777;
+    font-size:12px;
+}
+
+.notice{
+    margin-top:20px;
+    padding:18px;
+    border:1px solid #242424;
+    border-radius:15px;
+    color:#888;
+    font-size:12px;
+    line-height:1.6;
+}
+
+footer{
+    border-top:1px solid var(--line);
+    padding:30px;
+    text-align:center;
+    color:#555;
+    font-size:12px;
+}
+
+@media(max-width:700px){
+
+    h1{
+        letter-spacing:-2px;
+    }
+
+    .materials{
+        grid-template-columns:1fr;
+    }
+
+    .lesson{
+        flex-wrap:wrap;
+    }
+
+    .lesson-btn{
+        width:100%;
+        text-align:center;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<nav class="nav">
+
+    <div class="nav-inner">
+
+        <a href="../../" class="logo">
+            NEX<span>O</span>RA
+        </a>
+
+        <a href="../" class="back">
+            ← Voltar para cursos
+        </a>
+
+    </div>
+
+</nav>
+
+<main class="container">
+
+<section class="hero">
+
+    <div class="eyebrow">
+        NEXORA ACADEMY • MASTERCLASS
+    </div>
+
+    <h1>
+        Linux <span>Pro</span>
+    </h1>
+
+    <p>
+        Uma formação prática para aprender Linux,
+        terminal, administração, servidores e otimização.
+    </p>
+
+    <div class="progress-card">
+
+        <div class="progress-top">
+
+            <strong>Seu progresso</strong>
+
+            <span id="progressText">
+                0% concluído
+            </span>
+
+        </div>
+
+        <div class="progress">
+
+            <div
+                class="progress-bar"
+                id="progressBar">
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<section class="section">
+
+    <div class="section-title">
+
+        <h2>Conteúdo do curso</h2>
+
+        <p>
+            Comece pela primeira aula.
+        </p>
+
+    </div>
+
+
+    <div class="module">
+
+        <div class="module-header">
+
+            <div class="module-label">
+                MÓDULO 01
+            </div>
+
+            <h3>
+                Fundamentos do Linux
+            </h3>
+
+            <p>
+                Entenda o sistema e comece a trabalhar
+                com o ambiente Linux.
+            </p>
+
+        </div>
+
+
+        <a
+            class="lesson active"
+            href="modulo-01/aula-01/">
+
+            <div class="lesson-icon">
+                🎬
+            </div>
+
+            <div class="lesson-info">
+
+                <strong>
+                    Aula 01 — Introdução ao Linux
+                </strong>
+
+                <span>
+                    Primeiros conceitos e fundamentos
+                </span>
+
+            </div>
+
+            <div class="lesson-status">
+                Disponível
+            </div>
+
+            <div class="lesson-btn">
+                Assistir →
+            </div>
+
+        </a>
+
+
+        <a
+            class="lesson active"
+            href="modulo-01/aula-02/">
+
+            <div class="lesson-icon">
+                💻
+            </div>
+
+            <div class="lesson-info">
+
+                <strong>
+                    Aula 02 — Conhecendo o Terminal
+                </strong>
+
+                <span>
+                    Comandos e navegação
+                </span>
+
+            </div>
+
+            <div
+                class="lesson-status"
+                data-status="aula_02">
+                Disponível
+            </div>
+
+            <div class="lesson-btn">
+                Estudar →
+            </div>
+
+        </a>
+
+
+        <a
+            class="lesson active"
+            href="modulo-01/aula-03/">
+
+            <div class="lesson-icon">
+                📁
+            </div>
+
+            <div class="lesson-info">
+
+                <strong>
+                    Aula 03 — Arquivos e Diretórios
+                </strong>
+
+                <span>
+                    Organização e gerenciamento
+                </span>
+
+            </div>
+
+            <div
+                class="lesson-status"
+                data-status="aula_03">
+                Disponível
+            </div>
+
+            <div class="lesson-btn">
+                Estudar →
+            </div>
+
+        </a>
+
+    </div>
+
+
+    <div class="materials">
+
+        <div class="material">
+
+            <strong>📦 Materiais</strong>
+
+            <span>
+                Arquivos complementares da formação.
+            </span>
+
+        </div>
+
+        <div class="material">
+
+            <strong>📝 Exercícios</strong>
+
+            <span>
+                Atividades práticas para fixação.
+            </span>
+
+        </div>
+
+        <div class="material">
+
+            <strong>🏆 Progresso</strong>
+
+            <span>
+                Acompanhe sua evolução.
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <div class="notice">
+
+        ⚠️ Algumas aulas ainda estão em produção.
+        O conteúdo será liberado progressivamente conforme
+        novas aulas forem adicionadas à plataforma.
+
+    </div>
+
+</section>
+
+</main>
+
+<footer>
+    © 2026 NEXORA Academy
+</footer>
+
+
+
+<script>
+(function(){
+
+    async function syncProgress(){
+
+        try{
+
+            const r =
+                await fetch(
+                    "/api/progress",
+                    {
+                        credentials:"same-origin"
+                    }
+                );
+
+            if(!r.ok) return;
+
+            const data =
+                await r.json();
+
+            if(!data.ok) return;
+
+            const p =
+                data.progress;
+
+            const text =
+                document.getElementById(
+                    "progressText"
+                );
+
+            const bar =
+                document.getElementById(
+                    "progressBar"
+                );
+
+            if(text){
+                text.textContent =
+                    p.percent +
+                    "% concluído";
+            }
+
+            if(bar){
+                bar.style.width =
+                    p.percent + "%";
+            }
+
+            document
+                .querySelectorAll(
+                    "[data-status]"
+                )
+                .forEach(el => {
+
+                    const aula =
+                        el.dataset.status;
+
+                    if(
+                        p.aulas &&
+                        p.aulas[aula]
+                    ){
+
+                        el.textContent =
+                            "✓ Concluída";
+
+                        el.style.color =
+                            "#00e894";
+                    }
+                });
+
+            const aula01 =
+                document.querySelector(
+                    ".lesson.active"
+                );
+
+            if(p.aulas?.aula_01 &&
+               aula01){
+
+                const status =
+                    aula01.querySelector(
+                        ".lesson-status"
+                    );
+
+                if(status){
+
+                    status.textContent =
+                        "✓ Concluída";
+
+                    status.style.color =
+                        "#00e894";
+                }
+            }
+
+        }catch(e){
+
+            console.log(
+                "NEXORA progress:",
+                e.message
+            );
+        }
+    }
+
+    syncProgress();
+
+})();
+</script>
+
+</body>
+
+</html>

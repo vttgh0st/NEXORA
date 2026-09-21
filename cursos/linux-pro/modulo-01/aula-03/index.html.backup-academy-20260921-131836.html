@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#07080b">
+<title>Aula 03 — Arquivos, Permissões e Processos | NEXORA Academy</title>
+
+<style>
+:root{--bg:#07080b;--panel:#0e1117;--line:#202630;--text:#f4f7fb;--muted:#929baa;--purple:#7c5cff;--cyan:#00d9ff;--green:#25d695}
+*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(circle at 80% 0%,rgba(124,92,255,.13),transparent 35%),var(--bg);color:var(--text);font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.7}
+.header{height:68px;display:flex;align-items:center;justify-content:space-between;padding:0 6%;background:rgba(7,8,11,.9);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:5}
+.logo{font-weight:900;letter-spacing:1px}.logo span{color:var(--cyan)}
+.back{color:var(--muted)}
+.container{width:min(1050px,92%);margin:auto}
+.hero{padding:65px 0 40px}
+.badge{display:inline-block;padding:6px 12px;border-radius:999px;background:rgba(124,92,255,.1);border:1px solid rgba(124,92,255,.3);color:#c5bbff;font-size:12px;font-weight:800}
+h1{font-size:clamp(36px,6vw,60px);line-height:1.05;letter-spacing:-2px;margin:18px 0 12px}
+.subtitle{color:var(--muted);font-size:18px;max-width:700px}
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 260px;gap:22px}
+.card,.side-card{background:linear-gradient(145deg,var(--panel),#0a0d12);border:1px solid var(--line);border-radius:18px;padding:25px;margin-bottom:18px}
+.card h2{margin-top:0}
+.card p,.card li{color:#b9c1cd}
+.terminal{background:#050608;border:1px solid #202630;border-radius:11px;padding:16px;margin:15px 0;font-family:monospace;color:#dce2ea;overflow:auto}
+.highlight{padding:17px;border-radius:12px;background:rgba(0,217,255,.05);border:1px solid rgba(0,217,255,.2)}
+.sidebar{position:sticky;top:85px}
+.side-title{text-transform:uppercase;font-size:11px;letter-spacing:1px;color:var(--muted);font-weight:800}
+.progress{height:8px;background:#1b2028;border-radius:20px;overflow:hidden;margin:12px 0}
+.progress-fill{height:100%;width:0;background:linear-gradient(90deg,var(--purple),var(--cyan));transition:.4s}
+.progress-text{display:flex;justify-content:space-between;color:var(--muted);font-size:12px}
+.lesson{display:flex;gap:10px;padding:12px 0;border-bottom:1px solid var(--line)}
+.lesson-number{width:32px;height:32px;display:grid;place-items:center;border-radius:9px;background:#181c23;font-size:12px}
+.lesson.completed .lesson-number{background:rgba(37,214,149,.15);color:var(--green)}
+.lesson-info{font-size:13px}.lesson-info small{display:block;color:var(--muted)}
+.exercise{border-color:rgba(124,92,255,.25)}
+.question{padding:18px 0;border-bottom:1px solid var(--line)}
+.option{display:block;padding:10px 12px;margin:7px 0;border:1px solid var(--line);border-radius:9px;color:#b9c1cd;cursor:pointer}
+.option:hover{background:#12161d}
+.btn{border:0;border-radius:11px;padding:13px 18px;background:linear-gradient(135deg,var(--purple),#5941dc);color:white;font-weight:900;cursor:pointer}
+.complete{width:100%;margin-top:10px}.complete.completed{background:linear-gradient(135deg,#168f65,#20b77d)}
+.result{display:none;margin-top:15px;padding:15px;border-radius:11px}
+.result.show{display:block}.good{background:rgba(37,214,149,.08);color:#9df0cd}.bad{background:rgba(255,200,87,.08);color:#ffe0a0}
+.material{padding:14px;border:1px solid var(--line);border-radius:11px;margin-top:10px;display:flex;justify-content:space-between;align-items:center}
+.footer{text-align:center;padding:45px;color:#667180}
+@media(max-width:750px){.layout{grid-template-columns:1fr}.sidebar{position:static;order:-1}}
+</style>
+
+</head>
+
+<body>
+
+<header class="header">
+<a href="../../index.html" class="logo">NEXORA<span>.</span>ACADEMY</a>
+<a href="../../index.html" class="back">← Voltar ao curso</a>
+</header>
+
+<main class="container">
+
+<section class="hero">
+<span class="badge">Linux Pro • Módulo 01 • Aula 03</span>
+<h1>Arquivos, Permissões e Processos</h1>
+<p class="subtitle">Aprenda os fundamentos de permissões, usuários e processos no Linux.</p>
+</section>
+
+<div class="layout">
+
+<article>
+
+<section class="card">
+<h2>🎬 Aula em vídeo</h2>
+<div style="aspect-ratio:16/9;background:#050608;border:1px solid #202630;border-radius:14px;display:grid;place-items:center;text-align:center;color:#778191">
+<div>
+<div style="font-size:42px">▶</div>
+<strong>Vídeo da Aula 03</strong>
+<p>Vídeo poderá ser conectado aqui.</p>
+</div>
+</div>
+</section>
+
+<section class="card"><h2>1. Usuários</h2>
+<p>O Linux possui um sistema de usuários e grupos.</p>
+<p>Para descobrir qual usuário está conectado:</p>
+<div class="terminal">$ whoami</div>
+</section><section class="card"><h2>2. Permissões</h2>
+<p>Use <code>ls -l</code> para visualizar permissões:</p>
+<div class="terminal">$ ls -l</div>
+<p>As permissões principais são:</p>
+<ul>
+<li><strong>r</strong> — leitura</li>
+<li><strong>w</strong> — escrita</li>
+<li><strong>x</strong> — execução</li>
+</ul>
+</section><section class="card"><h2>3. chmod</h2>
+<p>O comando <code>chmod</code> altera permissões.</p>
+<div class="terminal">$ chmod +x script.sh</div>
+<p>Isso pode tornar um script executável.</p>
+</section><section class="card"><h2>4. Processos</h2>
+<p>Programas em execução são chamados de processos.</p>
+<p>Para visualizar processos:</p>
+<div class="terminal">$ ps aux</div>
+<p>Para acompanhar processos em tempo real:</p>
+<div class="terminal">$ top</div>
+</section><section class="card"><h2>5. PID e encerramento</h2>
+<p>Cada processo possui um identificador chamado PID.</p>
+<div class="terminal">$ kill PID</div>
+<p>Antes de encerrar um processo, identifique corretamente o PID.</p>
+</section><section class="card"><h2>6. Conclusão do módulo</h2>
+<div class="highlight">
+<strong>Parabéns!</strong><br>
+Você chegou ao final do Módulo 01 do Linux Pro.
+</div>
+<p>Nos próximos módulos você poderá estudar serviços, rede, segurança e automação.</p>
+</section>
+
+<section class="card exercise">
+<span class="badge">Exercício</span>
+<h2 style="margin-top:15px">🧠 Teste seus conhecimentos</h2>
+<form id="quiz">
+<div class="question"><strong>1. Qual comando mostra o usuário atual?</strong>
+<label class="option">
+<input type="radio" name="q1" value="0"> whoami
+</label>
+
+<label class="option">
+<input type="radio" name="q1" value="1"> groups
+</label>
+
+<label class="option">
+<input type="radio" name="q1" value="2"> user
+</label>
+
+<label class="option">
+<input type="radio" name="q1" value="3"> login
+</label>
+</div><div class="question"><strong>2. Qual letra representa execução?</strong>
+<label class="option">
+<input type="radio" name="q2" value="0"> r
+</label>
+
+<label class="option">
+<input type="radio" name="q2" value="1"> w
+</label>
+
+<label class="option">
+<input type="radio" name="q2" value="2"> x
+</label>
+
+<label class="option">
+<input type="radio" name="q2" value="3"> e
+</label>
+</div><div class="question"><strong>3. Qual comando mostra processos em tempo real?</strong>
+<label class="option">
+<input type="radio" name="q3" value="0"> mkdir
+</label>
+
+<label class="option">
+<input type="radio" name="q3" value="1"> top
+</label>
+
+<label class="option">
+<input type="radio" name="q3" value="2"> pwd
+</label>
+
+<label class="option">
+<input type="radio" name="q3" value="3"> touch
+</label>
+</div>
+<br>
+<button class="btn" type="submit">Ver resultado</button>
+</form>
+<div id="result" class="result"></div>
+</section>
+
+<section class="card">
+<h2>📦 Materiais</h2>
+
+<div class="material">
+<div>
+<strong>Arquivos do curso</strong>
+<br><small>Material complementar</small>
+</div>
+<a class="btn" href="../../material/arquivos.zip" download>Baixar</a>
+</div>
+
+<div class="material">
+<div>
+<strong>README</strong>
+<br><small>Informações dos materiais</small>
+</div>
+<a class="btn" href="../../material/README.txt" target="_blank">Abrir</a>
+</div>
+</section>
+
+<section class="card">
+<h2>🏁 Conclusão</h2>
+<p>Terminou esta aula? Marque como concluída para atualizar seu progresso.</p>
+<button id="completeLesson" class="btn complete" type="button">
+✓ Marcar aula como concluída
+</button>
+</section>
+
+</article>
+
+<aside class="sidebar">
+
+<div class="side-card">
+<div class="side-title">Seu progresso</div>
+<div class="progress"><div id="progressBar" class="progress-fill"></div></div>
+<div class="progress-text">
+<span id="progressSummary">0/3 aulas</span>
+<strong id="progressPercent">0%</strong>
+</div>
+</div>
+
+<div class="side-card">
+<div class="side-title">Módulo 01</div>
+
+<div class="lesson" data-lesson="01">
+<div class="lesson-number">01</div>
+<div class="lesson-info">Introdução ao Linux<small class="lesson-status">Aula</small></div>
+</div>
+
+<div class="lesson" data-lesson="02">
+<div class="lesson-number">02</div>
+<div class="lesson-info">Comandos do Terminal<small class="lesson-status">Aula</small></div>
+</div>
+
+<div class="lesson" data-lesson="03">
+<div class="lesson-number">03</div>
+<div class="lesson-info">Permissões e Processos<small class="lesson-status">Aula</small></div>
+</div>
+
+</div>
+
+</aside>
+</div>
+</main>
+
+<footer class="footer">
+NEXORA Academy • Linux Pro
+</footer>
+
+<script>
+const STORAGE_KEY="nexora_linux_pro_aula_03";
+const LESSONS=[
+"nexora_linux_pro_aula_01",
+"nexora_linux_pro_aula_02",
+"nexora_linux_pro_aula_03"
+];
+
+function updateProgress(){
+const done=LESSONS.filter(k=>localStorage.getItem(k)==="completed").length;
+const percent=Math.round(done/LESSONS.length*100);
+
+document.getElementById("progressBar").style.width=percent+"%";
+document.getElementById("progressPercent").textContent=percent+"%";
+document.getElementById("progressSummary").textContent=done+"/3 aulas";
+
+document.querySelectorAll(".lesson").forEach(card=>{
+const key="nexora_linux_pro_aula_"+card.dataset.lesson;
+
+if(localStorage.getItem(key)==="completed"){
+card.classList.add("completed");
+const status=card.querySelector(".lesson-status");
+if(status) status.textContent="Concluída ✓";
+}
+});
+}
+
+function updateButton(){
+const b=document.getElementById("completeLesson");
+
+if(localStorage.getItem(STORAGE_KEY)==="completed"){
+b.textContent="✓ Aula concluída";
+b.classList.add("completed");
+}
+}
+
+document.getElementById("completeLesson").addEventListener("click",()=>{
+localStorage.setItem(STORAGE_KEY,"completed");
+updateButton();
+updateProgress();
+});
+
+document.getElementById("quiz").addEventListener("submit",e=>{
+e.preventDefault();
+
+const answers=[0,2,1];
+let score=0;
+
+answers.forEach((correct,i)=>{
+const selected=document.querySelector('input[name="q'+(i+1)+'"]:checked');
+if(selected && Number(selected.value)===correct) score++;
+});
+
+const result=document.getElementById("result");
+result.className="result show "+(score===answers.length?"good":"bad");
+
+result.textContent=
+score===answers.length
+?"🔥 Excelente! Você acertou "+score+"/"+answers.length+" questões."
+:"Você acertou "+score+"/"+answers.length+". Revise o conteúdo e tente novamente.";
+});
+
+updateButton();
+updateProgress();
+</script>
+
+</body>
+</html>

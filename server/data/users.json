@@ -1,0 +1,138 @@
+[
+  {
+    "id": "10b0272e-9c0b-4e8f-9fee-d85679d0d20a",
+    "nome": "Teste",
+    "email": "teste@nexora.com",
+    "criado": "2026-09-21T05:31:18.666Z",
+    "senhaHash": "65b552f452816b840bfc1e3920d8878fb7585dfd8996cebdb8e7b3d17f4e78ca828a69ad0073031ef85ac9c1963ece67c78696b3eaad8c0e5d9322e64131be0a",
+    "senhaSalt": "631e59ec86a3abf21a640ced4a8796a7"
+  },
+  {
+    "id": "014de58e-2a11-4d84-944f-4594a7975b49",
+    "nome": "Ighost",
+    "email": "joaovictormarques00091@gmail.com",
+    "criado": "2026-09-21T15:10:09.712Z",
+    "senhaHash": "b64b1662935f02fa298e17faf7a8f047225f2f46e9794707ffd450e0d35a7ef3737321bea96e209caca42e882b1e274b5e689779bebbe375d2a00d29b0bea4eb",
+    "senhaSalt": "03fb48bd00e6f86cc0c6acdf1cf710ae"
+  },
+  {
+    "id": "3c91c006-88e3-4d0c-a5d6-fbd32b3e4cbf",
+    "nome": "Ighost",
+    "email": "joaovictormarques00091@gmail.com",
+    "criado": "2026-09-21T15:10:42.002Z",
+    "senhaHash": "344cdeb5bbe91086a36e7fe0c97e914d4138fbbc555a9a3d18a7fbe0d52447a423942977446e3448ee1263911b8cfc43c418be14643ab22131cdc1c0b562fa5b",
+    "senhaSalt": "62da6eb15cff9b976735e7fadadf8792"
+  },
+  {
+    "id": "a9105a10-a606-46af-a156-215cbcdb9513",
+    "nome": "Teste Final",
+    "email": "final@nexora.com",
+    "criado": "2026-09-21T15:12:27.120Z",
+    "senhaHash": "489029aeba1199a01182b31310add9fd7679be04e2c6031e6dc468f1689939ef595e0945b9b745f668fab91c31778874680237836674c7741f7c656893a93164",
+    "senhaSalt": "b716a065e50ec2d2b74052a4dded9b58"
+  },
+  {
+    "id": "91b2adb6-f807-4769-aa11-fd53502dbdbe",
+    "nome": "Ighost",
+    "email": "joaovictormarques00091@gmail.com",
+    "criado": "2026-09-21T15:12:57.677Z",
+    "senhaHash": "1126679feecacd53bfc6ad86172a100b8191e4d683366c4b2e31c4b1c5c7e85d65a8a2b3af9180f4eccf2fb36e6fde68192426fa40dafbe6425057b83cab3342",
+    "senhaSalt": "c2f67d199516faa5a282501a9e022c95"
+  },
+  {
+    "id": "ea30783b-f2fd-4ee3-a172-1031e70dc999",
+    "nome": "Ighost",
+    "email": "joaovictormarques00091@gmail.com",
+    "criado": "2026-09-21T15:14:14.224Z",
+    "senhaHash": "976edd2994ca058fd66388910df18be44b918f9d70c96549e26e8906d0b97a06d1129ef2914c0313663adb3601fccb6ade506fba4e1beb3786081cb490f4beea",
+    "senhaSalt": "a17eeba3aed554cd894d046a4b1ee434"
+  },
+  {
+    "id": "dd8067d1-e4ef-4a48-a6bd-26d293cc2296",
+    "nome": "Teste Navegacao",
+    "email": "navegacao@teste.com",
+    "criado": "2026-09-21T15:14:42.763Z",
+    "senhaHash": "ea85b947bb2b72931aaac7bcc7083b30a302d074a6c1f3853afb03353d16cdf9fabc1a91536162f412cc6099430bc064f4a2b0bb5b70a6972e11a44e4454585e",
+    "senhaSalt": "a0f47f26d12fa906e2bfbbcbbb2b6702"
+  },
+  {
+    "id": "e1f90537-6d20-4490-877a-cfc982dd790d",
+    "nome": "Teste Curso",
+    "email": "teste-curso@teste.com",
+    "criado": "2026-09-21T15:17:12.030Z",
+    "senhaHash": "848657aaaf9db332b0beafb302c8057902f5e9fb0f40db20789d9b52477cf532b7d4f888a5360fb360d166871c07a46cf715463cdd090c891d2dea2eeb26b4ce",
+    "senhaSalt": "6c1479649d8349f4dea5fa815b70773c"
+  },
+  {
+    "id": "00ce21b8-af61-464b-94a9-851f8e1a0441",
+    "nome": "Ighost",
+    "email": "joaovictormarques00091@gmail.com",
+    "criado": "2026-09-21T15:17:46.650Z",
+    "senhaHash": "46b91b0b1af1688b2c4030f683667889d2fc9975b2467200b39ebebff33f72b70d81f5fc36c53299e13cbad360568805c305cb2f374aba151d79cfebc2ccaaf9",
+    "senhaSalt": "0bf835600a24c0834322605a581076e6"
+  },
+  {
+    "id": "c39875d8-2773-4ad3-9fb1-fbbb81257c06",
+    "nome": "Ighost",
+    "email": "joaovictormarques00091@gmail.com",
+    "senhaHash": "3c29efae470ff19c7af9e95ec075ebb04e21cf38452dbc81f4df73d1acab2e54947e46c2c4e724db0b372997f71240b227f32c8006c4d01138a634e8b01d7061",
+    "senhaSalt": "a0e7a866a6dfe78ea58414ec5bca32b8",
+    "criado": "2026-09-21T16:14:55.050Z"
+  },
+  {
+    "id": "40323ca1-e5ac-4718-a8c3-1100f0512c2b",
+    "nome": "joao victor marques",
+    "email": "joaovictormarques00091@gmail.com",
+    "senhaHash": "8b0c5c64fcccfe672e5389ab4826e6972d49e4ac77e85632dbf4059779254d7c2311364728a1c78e21b2914a57d2ce703f9547e2ddd463f45a52c179e7aa2658",
+    "senhaSalt": "7deca679147c774968a23405ba6ac83d",
+    "criado": "2026-09-21T16:20:57.429Z"
+  },
+  {
+    "id": "608b7f21-6b46-41b3-805e-a83fff879ffd",
+    "nome": "joao victor marques",
+    "email": "joaovictormarques00091@gmail.com",
+    "senhaHash": "9b91ed3130b4d13dc2eba78822a779de1c6e12563338081eecf6157c9702ee421db6c7b3f2a9753d9bd2558f484f8db2f01e995a178603c530345a411509aedd",
+    "senhaSalt": "91c70731d4fa30e431087e78706db5a0",
+    "criado": "2026-09-21T16:21:00.950Z"
+  },
+  {
+    "id": "56b12767-4ca8-4827-9130-eed89c9e73a5",
+    "nome": "Teste Automático",
+    "email": "teste-auto@nexora.local",
+    "senhaHash": "9b3c618d76df17b56835d3e05cdee87bdb0a934176c285e737f45455d5f008e35c27c77d1c357e7c4372b63732f1e512146aa5c2eb89d8139372eb156aacb858",
+    "senhaSalt": "7fbc3d006b17ccc9b8f3265dc484016a",
+    "criado": "2026-09-21T16:21:58.969Z"
+  },
+  {
+    "id": "a4a124e4-c019-4f5d-a2de-e4e68726cc7d",
+    "nome": "joao victor marques",
+    "email": "joaovictormarques00091@gmail.com",
+    "senhaHash": "40847a5779d6b6f1195ad5e33d3e75f8d3b89089ea8478faf157df10823e57fa0ec53c27e29114b1e9da27bf87833d2f8d7e3eba7584a6ffd9a9e38359212761",
+    "senhaSalt": "17a4e5eb975ca04ed30bcf9e6cdaa918",
+    "criado": "2026-09-21T16:22:44.916Z"
+  },
+  {
+    "id": "a60f3330-4866-45bd-be8f-2c25627ff149",
+    "nome": "joao victor marques",
+    "email": "joaovictormarques00091@gmail.com",
+    "senhaHash": "91703619ea977b53dfa13673ef17c6b65f3040a1913f350705a9b4d19031b20b1c36777664b142f9c15f513b3d0a27567c24c2285879075ce29b111acdb73267",
+    "senhaSalt": "19e6c46f8c98d341ccd8f8b0beaca3cb",
+    "criado": "2026-09-21T16:22:52.942Z"
+  },
+  {
+    "id": "188e7cc8-a3f7-4478-9c34-117ec6c657a5",
+    "nome": "joao victor marques",
+    "email": "joaovictormarques00091@gmail.com",
+    "senhaHash": "e8375f50dd4284a4c10bffbf5e3a56d44e7239d9af87ab24063a0c839269fe5e3064f171a5a8f27e7e5bc3c3bb5c7164abe7c3461e732bd0ccec93db9b9ad534",
+    "senhaSalt": "6234b7f40d6b2ab453d8f8410b663673",
+    "criado": "2026-09-21T16:23:02.761Z"
+  },
+  {
+    "id": "e705bb31-646e-4646-8933-7eacde53ea53",
+    "nome": "Teste NEXORA",
+    "email": "teste-academy-1790008290@example.com",
+    "senhaHash": "cef72924fd9df34a67a968d4f2a519e1efa63673dd256c90b10044d3f33095f1e040dfa968488dfac4ab7d4bd9c4aea9d93ec8506354b6da790efc8f21847fa4",
+    "senhaSalt": "d1751d3430e77a4815dc7ad3be1a60ca",
+    "criado": "2026-09-21T16:31:30.262Z"
+  }
+]

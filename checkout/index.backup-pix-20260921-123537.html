@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NEXORA — Checkout</title>
+
+<style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    min-height:100vh;
+    background:#070707;
+    color:#fff;
+    font-family:Arial,Helvetica,sans-serif;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:30px;
+}
+
+.container{
+    width:100%;
+    max-width:1050px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:25px;
+}
+
+.card{
+    background:#101010;
+    border:1px solid #242424;
+    border-radius:20px;
+    padding:30px;
+    box-shadow:0 20px 60px rgba(0,0,0,.35);
+}
+
+.logo{
+    font-size:25px;
+    font-weight:900;
+    letter-spacing:4px;
+    margin-bottom:35px;
+}
+
+.badge{
+    display:inline-block;
+    border:1px solid #333;
+    color:#aaa;
+    padding:7px 12px;
+    border-radius:50px;
+    font-size:11px;
+    letter-spacing:1px;
+    margin-bottom:18px;
+}
+
+h1{
+    font-size:38px;
+    line-height:1.05;
+    margin-bottom:15px;
+}
+
+.subtitle{
+    color:#999;
+    line-height:1.6;
+    margin-bottom:30px;
+}
+
+label{
+    display:block;
+    font-size:13px;
+    color:#aaa;
+    margin-bottom:8px;
+}
+
+input{
+    width:100%;
+    padding:15px;
+    margin-bottom:18px;
+    border-radius:12px;
+    border:1px solid #292929;
+    background:#080808;
+    color:#fff;
+    outline:none;
+}
+
+input:focus{
+    border-color:#666;
+}
+
+.product{
+    display:flex;
+    gap:15px;
+    align-items:center;
+    padding:18px;
+    background:#080808;
+    border:1px solid #242424;
+    border-radius:15px;
+    margin-bottom:25px;
+}
+
+.product-icon{
+    width:60px;
+    height:60px;
+    border-radius:12px;
+    background:linear-gradient(135deg,#222,#080808);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:900;
+    letter-spacing:1px;
+}
+
+.product-info{
+    flex:1;
+}
+
+.product-info strong{
+    display:block;
+    margin-bottom:5px;
+}
+
+.product-info span{
+    color:#888;
+    font-size:13px;
+}
+
+.price{
+    font-size:20px;
+    font-weight:800;
+}
+
+.total{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    border-top:1px solid #292929;
+    padding-top:20px;
+    margin-top:20px;
+}
+
+.total span:first-child{
+    color:#999;
+}
+
+.total strong{
+    font-size:25px;
+}
+
+button{
+    width:100%;
+    border:0;
+    border-radius:13px;
+    padding:17px;
+    background:#fff;
+    color:#000;
+    font-size:14px;
+    font-weight:900;
+    letter-spacing:1px;
+    cursor:pointer;
+    margin-top:20px;
+}
+
+button:hover{
+    opacity:.88;
+}
+
+button:disabled{
+    opacity:.5;
+    cursor:not-allowed;
+}
+
+.status{
+    display:none;
+    margin-top:18px;
+    padding:15px;
+    border-radius:12px;
+    border:1px solid #333;
+    background:#0b0b0b;
+    color:#aaa;
+    line-height:1.5;
+    font-size:13px;
+}
+
+.success{
+    display:none;
+    text-align:center;
+}
+
+.success-icon{
+    width:70px;
+    height:70px;
+    border-radius:50%;
+    border:1px solid #444;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin:0 auto 20px;
+    font-size:25px;
+}
+
+.links{
+    display:flex;
+    gap:10px;
+    margin-top:15px;
+}
+
+.links a{
+    flex:1;
+    text-align:center;
+    text-decoration:none;
+    color:#aaa;
+    border:1px solid #292929;
+    padding:13px;
+    border-radius:10px;
+    font-size:12px;
+}
+
+.security{
+    margin-top:20px;
+    color:#666;
+    font-size:11px;
+    line-height:1.5;
+    text-align:center;
+}
+
+@media(max-width:800px){
+    .container{
+        grid-template-columns:1fr;
+    }
+
+    h1{
+        font-size:32px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="card">
+
+        <div class="logo">NEXORA</div>
+
+        <div id="checkoutForm">
+
+            <div class="badge">CHECKOUT DIGITAL</div>
+
+            <h1>Finalize seu pedido.</h1>
+
+            <p class="subtitle">
+                Preencha seus dados para continuar com o pedido do Creator Pack.
+            </p>
+
+            <label for="name">Nome</label>
+            <input
+                id="name"
+                type="text"
+                placeholder="Seu nome"
+                autocomplete="name"
+            >
+
+            <label for="email">E-mail</label>
+            <input
+                id="email"
+                type="email"
+                placeholder="seu@email.com"
+                autocomplete="email"
+            >
+
+            <button id="submitBtn" onclick="createCheckout()">
+                CONTINUAR
+            </button>
+
+            <div id="status" class="status"></div>
+
+            <div class="security">
+                🔒 Seus dados são enviados ao servidor da NEXORA.
+            </div>
+
+        </div>
+
+        <div id="success" class="success">
+
+            <div class="success-icon">✓</div>
+
+            <h1>Pedido criado.</h1>
+
+            <p class="subtitle">
+                Seu pedido foi registrado no sistema da NEXORA.
+            </p>
+
+            <div id="orderInfo" class="status" style="display:block;"></div>
+
+            <div class="links">
+                <a href="../products/creator-pack/">PRODUTO</a>
+                <a href="../">LOJA</a>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="card">
+
+        <div class="badge">SEU PEDIDO</div>
+
+        <div class="product">
+
+            <div class="product-icon">
+                NX
+            </div>
+
+            <div class="product-info">
+                <strong>Creator Pack</strong>
+                <span>Pack digital para creators</span>
+            </div>
+
+            <div class="price">
+                R$ 19,90
+            </div>
+
+        </div>
+
+        <div class="total">
+            <span>Total</span>
+            <strong>R$ 19,90</strong>
+        </div>
+
+        <p class="security">
+            Produto digital • Entrega online
+        </p>
+
+    </div>
+
+</div>
+
+
+<script>
+
+async function createCheckout(){
+
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+
+    const button = document.getElementById("submitBtn");
+    const status = document.getElementById("status");
+
+    status.style.display = "none";
+
+    if(name.length < 2){
+        showStatus("Digite seu nome.");
+        return;
+    }
+
+    if(!email.includes("@") || !email.includes(".")){
+        showStatus("Digite um e-mail válido.");
+        return;
+    }
+
+    button.disabled = true;
+    button.textContent = "CRIANDO PEDIDO...";
+
+    try{
+
+        const response = await fetch("/api/create-checkout",{
+            method:"POST",
+            headers:{
+                "Content-Type":"application/json"
+            },
+            body:JSON.stringify({
+                name:name,
+                email:email
+            })
+        });
+
+        const data = await response.json();
+
+        if(!response.ok){
+            throw new Error(data.error || "Erro ao criar pedido.");
+        }
+
+        /*
+         * MODO DE CONFIGURAÇÃO
+         *
+         * O backend ainda não possui o token do Mercado Pago.
+         */
+        if(data.mode === "setup"){
+
+            localStorage.setItem(
+                "nexoraOrder",
+                JSON.stringify(data.order)
+            );
+
+            document.getElementById("checkoutForm").style.display = "none";
+            document.getElementById("success").style.display = "block";
+
+            document.getElementById("orderInfo").innerHTML =
+                "<strong>Pedido:</strong> " + data.order.id +
+                "<br><br>" +
+                "<strong>Status:</strong> Aguardando configuração do pagamento.";
+
+            return;
+        }
+
+        /*
+         * CHECKOUT REAL
+         *
+         * Quando o Mercado Pago estiver configurado,
+         * o backend devolverá checkoutUrl.
+         */
+        if(data.mode === "mercadopago" && data.checkoutUrl){
+
+            window.location.href = data.checkoutUrl;
+            return;
+        }
+
+        throw new Error("Resposta inesperada do servidor.");
+
+    }catch(error){
+
+        console.error(error);
+
+        showStatus(
+            "Não foi possível criar o pedido. " +
+            error.message
+        );
+
+        button.disabled = false;
+        button.textContent = "CONTINUAR";
+    }
+}
+
+
+function showStatus(message){
+
+    const status = document.getElementById("status");
+
+    status.textContent = message;
+    status.style.display = "block";
+}
+
+</script>
+
+</body>
+</html>

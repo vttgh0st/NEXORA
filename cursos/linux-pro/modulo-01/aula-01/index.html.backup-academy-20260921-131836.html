@@ -1,0 +1,1455 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>NEXORA Academy | Aula 01 — Introdução ao Linux</title>
+
+<style>
+
+*{
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    margin:0;
+    background:#050505;
+    color:#f5f5f5;
+    font-family:Arial,Helvetica,sans-serif;
+    line-height:1.7;
+}
+
+a{
+    color:inherit;
+    text-decoration:none;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+header{
+    position:sticky;
+    top:0;
+    z-index:50;
+
+    height:68px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    padding:0 6%;
+
+    background:rgba(5,5,5,.94);
+    border-bottom:1px solid #1b1b1b;
+
+    backdrop-filter:blur(10px);
+}
+
+.logo{
+    font-size:20px;
+    font-weight:900;
+    letter-spacing:2px;
+}
+
+.logo span{
+    color:#777;
+}
+
+.back{
+    color:#aaa;
+    font-size:14px;
+    transition:.2s;
+}
+
+.back:hover{
+    color:#fff;
+}
+
+/* =========================
+   PAGE
+========================= */
+
+.container{
+    width:min(1100px,92%);
+    margin:auto;
+    padding:45px 0 80px;
+}
+
+/* =========================
+   BREADCRUMB
+========================= */
+
+.breadcrumb{
+    color:#777;
+    font-size:13px;
+    margin-bottom:18px;
+}
+
+.breadcrumb span{
+    color:#aaa;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero{
+    margin-bottom:32px;
+}
+
+.badge{
+    display:inline-flex;
+    align-items:center;
+
+    padding:7px 13px;
+
+    border:1px solid #292929;
+    border-radius:999px;
+
+    background:#101010;
+    color:#aaa;
+
+    font-size:12px;
+    font-weight:bold;
+    letter-spacing:.5px;
+}
+
+h1{
+    margin:18px 0 8px;
+
+    font-size:clamp(30px,5vw,52px);
+    line-height:1.08;
+    letter-spacing:-1.5px;
+}
+
+.subtitle{
+    max-width:760px;
+    margin:0;
+
+    color:#999;
+    font-size:17px;
+}
+
+/* =========================
+   VIDEO
+========================= */
+
+.video-card{
+    overflow:hidden;
+
+    margin:35px 0;
+
+    border:1px solid #242424;
+    border-radius:20px;
+
+    background:#0d0d0d;
+
+    box-shadow:0 25px 80px rgba(0,0,0,.45);
+}
+
+.video{
+    position:relative;
+
+    width:100%;
+    aspect-ratio:16/9;
+
+    background:#000;
+}
+
+.video video{
+    width:100%;
+    height:100%;
+    display:block;
+
+    background:#000;
+}
+
+.video iframe{
+    width:100%;
+    height:100%;
+    display:block;
+    border:0;
+    background:#000;
+}
+
+.video-placeholder{
+    width:100%;
+    height:100%;
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+
+    padding:30px;
+    text-align:center;
+
+    background:
+        radial-gradient(circle at center,#151515 0%,#050505 65%);
+}
+
+.play-icon{
+    width:70px;
+    height:70px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    margin-bottom:18px;
+
+    border:1px solid #333;
+    border-radius:50%;
+
+    background:#111;
+
+    font-size:27px;
+}
+
+.video-placeholder h2{
+    margin:0 0 8px;
+    font-size:22px;
+}
+
+.video-placeholder p{
+    max-width:500px;
+    margin:0;
+
+    color:#777;
+    font-size:14px;
+}
+
+.video-info{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:20px;
+
+    padding:18px 22px;
+
+    border-top:1px solid #1d1d1d;
+}
+
+.video-info strong{
+    font-size:14px;
+}
+
+.video-info span{
+    color:#777;
+    font-size:13px;
+}
+
+/* =========================
+   GRID
+========================= */
+
+.layout{
+    display:grid;
+    grid-template-columns:minmax(0,1fr) 300px;
+    gap:28px;
+}
+
+/* =========================
+   CONTENT
+========================= */
+
+.card{
+    padding:28px;
+
+    border:1px solid #202020;
+    border-radius:18px;
+
+    background:#0c0c0c;
+
+    margin-bottom:22px;
+}
+
+.card h2{
+    margin:0 0 15px;
+    font-size:22px;
+}
+
+.card h3{
+    margin-top:25px;
+    margin-bottom:8px;
+}
+
+.card p{
+    color:#aaa;
+}
+
+.card ul{
+    padding-left:22px;
+    color:#aaa;
+}
+
+.card li{
+    margin:8px 0;
+}
+
+.highlight{
+    padding:18px;
+
+    border-left:3px solid #777;
+
+    background:#111;
+
+    color:#bbb;
+
+    border-radius:8px;
+}
+
+/* =========================
+   OBJECTIVES
+========================= */
+
+.objectives{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:12px;
+}
+
+.objective{
+    padding:16px;
+
+    border:1px solid #1f1f1f;
+    border-radius:12px;
+
+    background:#101010;
+}
+
+.objective b{
+    display:block;
+    margin-bottom:5px;
+}
+
+.objective span{
+    color:#888;
+    font-size:13px;
+}
+
+/* =========================
+   CODE
+========================= */
+
+pre{
+    overflow:auto;
+
+    padding:18px;
+
+    border:1px solid #222;
+    border-radius:12px;
+
+    background:#050505;
+
+    color:#ddd;
+
+    font-family:monospace;
+    font-size:13px;
+}
+
+code{
+    font-family:monospace;
+}
+
+/* =========================
+   EXERCISE
+========================= */
+
+.exercise{
+    border-color:#292929;
+}
+
+.question{
+    margin-bottom:22px;
+    padding:18px;
+
+    border:1px solid #202020;
+    border-radius:12px;
+
+    background:#101010;
+}
+
+.question strong{
+    display:block;
+    margin-bottom:12px;
+}
+
+.answer{
+    display:block;
+
+    width:100%;
+
+    margin:8px 0;
+    padding:12px 14px;
+
+    border:1px solid #292929;
+    border-radius:9px;
+
+    background:#0b0b0b;
+    color:#aaa;
+
+    cursor:pointer;
+
+    transition:.2s;
+}
+
+.answer:hover{
+    border-color:#555;
+    color:#fff;
+}
+
+.answer.correct{
+    border-color:#555;
+    background:#151515;
+    color:#fff;
+}
+
+.answer.wrong{
+    border-color:#333;
+    background:#111;
+    color:#777;
+}
+
+.result{
+    display:none;
+
+    margin-top:15px;
+    padding:15px;
+
+    border-radius:10px;
+
+    background:#111;
+    color:#aaa;
+}
+
+/* =========================
+   SIDEBAR
+========================= */
+
+.sidebar{
+    position:sticky;
+    top:95px;
+    height:max-content;
+}
+
+.side-card{
+    padding:22px;
+
+    border:1px solid #202020;
+    border-radius:17px;
+
+    background:#0c0c0c;
+
+    margin-bottom:18px;
+}
+
+.side-title{
+    margin-bottom:15px;
+
+    color:#888;
+
+    font-size:12px;
+    font-weight:bold;
+    letter-spacing:1px;
+    text-transform:uppercase;
+}
+
+.lesson{
+    display:block;
+
+    padding:13px;
+
+    border-radius:10px;
+
+    color:#aaa;
+
+    font-size:14px;
+
+    margin-bottom:6px;
+}
+
+.lesson.active{
+    background:#171717;
+    color:#fff;
+}
+
+.lesson.locked{
+    color:#555;
+}
+
+.progress-wrap{
+    height:7px;
+
+    overflow:hidden;
+
+    margin:12px 0;
+
+    border-radius:99px;
+
+    background:#1b1b1b;
+}
+
+.progress{
+    width:0%;
+    height:100%;
+
+    background:#aaa;
+
+    transition:.4s;
+}
+
+.progress-text{
+    color:#777;
+    font-size:12px;
+}
+
+/* =========================
+   MATERIALS
+========================= */
+
+.material{
+    display:flex;
+    align-items:center;
+    gap:14px;
+
+    padding:15px;
+
+    border:1px solid #202020;
+    border-radius:12px;
+
+    background:#101010;
+
+    margin-top:10px;
+}
+
+.material-icon{
+    font-size:22px;
+}
+
+.material-info{
+    flex:1;
+}
+
+.material-info strong{
+    display:block;
+    font-size:14px;
+}
+
+.material-info span{
+    color:#777;
+    font-size:12px;
+}
+
+.download{
+    padding:8px 12px;
+
+    border:1px solid #292929;
+    border-radius:8px;
+
+    color:#aaa;
+
+    font-size:12px;
+}
+
+.download:hover{
+    color:#fff;
+    border-color:#555;
+}
+
+/* =========================
+   COMPLETE
+========================= */
+
+.complete-box{
+    text-align:center;
+}
+
+.complete-button{
+    width:100%;
+
+    padding:16px;
+
+    border:1px solid #333;
+    border-radius:12px;
+
+    background:#151515;
+    color:#fff;
+
+    font-size:15px;
+    font-weight:bold;
+
+    cursor:pointer;
+
+    transition:.2s;
+}
+
+.complete-button:hover{
+    background:#1d1d1d;
+}
+
+.complete-button.completed{
+    background:#111;
+    color:#aaa;
+}
+
+.status{
+    margin-top:10px;
+
+    color:#777;
+    font-size:13px;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+    padding:35px 6%;
+
+    border-top:1px solid #191919;
+
+    color:#555;
+
+    text-align:center;
+    font-size:12px;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:800px){
+
+    header{
+        padding:0 5%;
+    }
+
+    .container{
+        width:94%;
+        padding-top:30px;
+    }
+
+    .layout{
+        grid-template-columns:1fr;
+    }
+
+    .sidebar{
+        position:static;
+        order:-1;
+    }
+
+    .objectives{
+        grid-template-columns:1fr;
+    }
+
+    .card{
+        padding:21px;
+    }
+
+    .video-info{
+        align-items:flex-start;
+        flex-direction:column;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+
+    <a href="../../../" class="logo">
+        NEXORA <span>ACADEMY</span>
+    </a>
+
+    <a href="../../../cursos/linux-pro/" class="back">
+        ← Voltar para o curso
+    </a>
+
+</header>
+
+
+<main class="container">
+
+    <div class="breadcrumb">
+        NEXORA Academy /
+        <span>Linux Pro</span> /
+        <span>Módulo 01</span> /
+        Aula 01
+    </div>
+
+
+    <section class="hero">
+
+        <span class="badge">
+            MÓDULO 01 • FUNDAMENTOS
+        </span>
+
+        <h1>
+            Introdução ao Linux
+        </h1>
+
+        <p class="subtitle">
+            Entenda o que é Linux, como ele funciona e por que ele é
+            utilizado em computadores, servidores e sistemas modernos.
+        </p>
+
+    </section>
+
+
+    <!-- =========================
+         VIDEO
+    ========================== -->
+
+    <section class="video-card">
+
+        <div class="video">
+
+            <!--
+                QUANDO TIVER O VÍDEO REAL:
+
+                coloque o arquivo em:
+
+                /server/public/videos/linux-pro/aula-01.mp4
+
+                e troque o bloco abaixo por:
+
+                <video controls preload="metadata">
+                    <source
+                        src="/videos/linux-pro/aula-01.mp4"
+                        type="video/mp4">
+                </video>
+            -->
+
+            <iframe
+                src="https://www.youtube.com/embed/jplEITNuXzU"
+                title="NEXORA Academy — Linux Pro — Aula 01"
+                loading="lazy"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen>
+            </iframe>
+
+        </div>
+
+        <div class="video-info">
+
+            <strong>
+                🎬 Aula 01 — Introdução ao Linux
+            </strong>
+
+            <span>
+                Aula em vídeo • YouTube
+            </span>
+
+        </div>
+
+    </section>
+
+
+    <div class="layout">
+
+
+        <!-- =========================
+             CONTEÚDO PRINCIPAL
+        ========================== -->
+
+        <div>
+
+
+            <section class="card">
+
+                <h2>
+                    📚 O que você vai aprender
+                </h2>
+
+                <div class="objectives">
+
+                    <div class="objective">
+                        <b>01 • Linux</b>
+                        <span>Entender o conceito do sistema.</span>
+                    </div>
+
+                    <div class="objective">
+                        <b>02 • Kernel</b>
+                        <span>Conhecer a função do núcleo.</span>
+                    </div>
+
+                    <div class="objective">
+                        <b>03 • Distribuições</b>
+                        <span>Entender o que são distros.</span>
+                    </div>
+
+                    <div class="objective">
+                        <b>04 • Terminal</b>
+                        <span>Conhecer a interface de comandos.</span>
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <section class="card">
+
+                <h2>
+                    🐧 1. O que é Linux?
+                </h2>
+
+                <p>
+                    Linux é o nome utilizado para o núcleo de um sistema
+                    operacional baseado no kernel Linux. Ele é utilizado
+                    em diferentes tipos de sistemas, desde computadores
+                    pessoais até servidores, dispositivos embarcados e
+                    outros equipamentos.
+                </p>
+
+                <p>
+                    Diferentemente de um programa comum, o kernel trabalha
+                    em uma camada fundamental do sistema, permitindo que
+                    softwares utilizem recursos do hardware.
+                </p>
+
+                <div class="highlight">
+                    <strong>Resumo:</strong>
+                    o kernel é uma das partes fundamentais de um sistema
+                    operacional e faz a comunicação entre software e hardware.
+                </div>
+
+            </section>
+
+
+            <section class="card">
+
+                <h2>
+                    ⚙️ 2. O que é o Kernel?
+                </h2>
+
+                <p>
+                    O kernel é responsável por tarefas fundamentais como
+                    gerenciamento de memória, processos, dispositivos e
+                    comunicação com o hardware.
+                </p>
+
+                <p>
+                    Quando um programa precisa acessar recursos do computador,
+                    o sistema operacional fornece mecanismos para que essa
+                    comunicação aconteça de maneira controlada.
+                </p>
+
+                <h3>
+                    Uma visão simplificada
+                </h3>
+
+<pre><code>Aplicativos
+     ↓
+Sistema Operacional
+     ↓
+Kernel
+     ↓
+Hardware</code></pre>
+
+            </section>
+
+
+            <section class="card">
+
+                <h2>
+                    🧩 3. O que são distribuições Linux?
+                </h2>
+
+                <p>
+                    Uma distribuição Linux reúne o kernel com outros
+                    componentes necessários para formar um sistema utilizável.
+                </p>
+
+                <p>
+                    Existem diversas distribuições com objetivos diferentes.
+                    Algumas são voltadas para computadores pessoais, outras
+                    para servidores, segurança, desenvolvimento ou equipamentos
+                    específicos.
+                </p>
+
+                <h3>
+                    Exemplos conhecidos
+                </h3>
+
+                <ul>
+                    <li>Linux Mint</li>
+                    <li>Ubuntu</li>
+                    <li>Debian</li>
+                    <li>Fedora</li>
+                    <li>Arch Linux</li>
+                    <li>openSUSE</li>
+                </ul>
+
+                <div class="highlight">
+                    <strong>Importante:</strong>
+                    Linux e distribuição Linux não são exatamente a mesma coisa.
+                    Linux normalmente se refere ao kernel, enquanto uma
+                    distribuição combina o kernel com vários outros componentes.
+                </div>
+
+            </section>
+
+
+            <section class="card">
+
+                <h2>
+                    💻 4. O Terminal
+                </h2>
+
+                <p>
+                    O terminal permite interagir com o sistema através de
+                    comandos de texto. Ele é uma ferramenta extremamente
+                    importante para administração, desenvolvimento e automação.
+                </p>
+
+                <p>
+                    Um dos primeiros comandos que você pode conhecer é:
+                </p>
+
+<pre><code>pwd</code></pre>
+
+                <p>
+                    Esse comando mostra o diretório atual.
+                </p>
+
+                <p>
+                    Outro comando muito utilizado é:
+                </p>
+
+<pre><code>ls</code></pre>
+
+                <p>
+                    Ele lista arquivos e diretórios no local atual.
+                </p>
+
+                <h3>
+                    Exemplo
+                </h3>
+
+<pre><code>pwd
+ls</code></pre>
+
+            </section>
+
+
+            <section class="card">
+
+                <h2>
+                    🔐 5. Por que aprender Linux?
+                </h2>
+
+                <p>
+                    Conhecer Linux pode ajudar em áreas como desenvolvimento,
+                    administração de sistemas, servidores, automação,
+                    programação e computação em geral.
+                </p>
+
+                <ul>
+                    <li>Aprender a utilizar o terminal.</li>
+                    <li>Administrar arquivos e processos.</li>
+                    <li>Automatizar tarefas.</li>
+                    <li>Conhecer melhor o funcionamento do computador.</li>
+                    <li>Trabalhar com servidores e ambientes Linux.</li>
+                </ul>
+
+            </section>
+
+
+            <!-- =========================
+                 EXERCÍCIO
+            ========================== -->
+
+            <section class="card exercise">
+
+                <h2>
+                    🧠 Exercício da Aula
+                </h2>
+
+                <p>
+                    Responda às perguntas abaixo para testar o que você aprendeu.
+                </p>
+
+
+                <div class="question">
+
+                    <strong>
+                        1. O que é o kernel?
+                    </strong>
+
+                    <button class="answer"
+                        onclick="answer(this,false)">
+                        Um navegador de internet
+                    </button>
+
+                    <button class="answer"
+                        onclick="answer(this,true)">
+                        O núcleo responsável por funções fundamentais do sistema
+                    </button>
+
+                    <button class="answer"
+                        onclick="answer(this,false)">
+                        Um editor de texto
+                    </button>
+
+                </div>
+
+
+                <div class="question">
+
+                    <strong>
+                        2. Qual comando mostra o diretório atual?
+                    </strong>
+
+                    <button class="answer"
+                        onclick="answer(this,true)">
+                        pwd
+                    </button>
+
+                    <button class="answer"
+                        onclick="answer(this,false)">
+                        lsusb
+                    </button>
+
+                    <button class="answer"
+                        onclick="answer(this,false)">
+                        mkdir
+                    </button>
+
+                </div>
+
+
+                <div class="question">
+
+                    <strong>
+                        3. Qual destas é uma distribuição Linux?
+                    </strong>
+
+                    <button class="answer"
+                        onclick="answer(this,false)">
+                        Google Chrome
+                    </button>
+
+                    <button class="answer"
+                        onclick="answer(this,true)">
+                        Linux Mint
+                    </button>
+
+                    <button class="answer"
+                        onclick="answer(this,false)">
+                        HTML
+                    </button>
+
+                </div>
+
+
+                <div id="exerciseResult" class="result"></div>
+
+            </section>
+
+
+            <!-- =========================
+                 MATERIAL
+            ========================== -->
+
+            <section class="card">
+
+                <h2>
+                    📥 Materiais da Aula
+                </h2>
+
+                <div class="material">
+
+                    <div class="material-icon">
+                        📦
+                    </div>
+
+                    <div class="material-info">
+
+                        <strong>
+                            Material complementar
+                        </strong>
+
+                        <span>
+                            Arquivos de apoio da aula
+                        </span>
+
+                    </div>
+
+                    <a
+                        class="download"
+                        href="/cursos/linux-pro/material/arquivos.zip"
+                        download>
+                        Baixar
+                    </a>
+
+                </div>
+
+
+                <div class="material">
+
+                    <div class="material-icon">
+                        📄
+                    </div>
+
+                    <div class="material-info">
+
+                        <strong>
+                            Guia rápido
+                        </strong>
+
+                        <span>
+                            Comandos e conceitos básicos
+                        </span>
+
+                    </div>
+
+                    <a
+                        class="download"
+                        href="/cursos/linux-pro/material/README.txt"
+                        target="_blank">
+                        Abrir
+                    </a>
+
+                </div>
+
+            </section>
+
+
+            <!-- =========================
+                 CONCLUSÃO
+            ========================== -->
+
+            <section class="card complete-box">
+
+                <h2>
+                    🎯 Terminou a aula?
+                </h2>
+
+                <p>
+                    Marque a aula como concluída para atualizar seu progresso.
+                </p>
+
+                <button
+                    id="completeButton"
+                    class="complete-button"
+                    onclick="completeLesson()">
+
+                    ✓ Marcar aula como concluída
+
+                </button>
+
+                <div id="completeStatus" class="status"></div>
+
+            </section>
+
+
+        </div>
+
+
+        <!-- =========================
+             SIDEBAR
+        ========================== -->
+
+        <aside class="sidebar">
+
+            <div class="side-card">
+
+                <div class="side-title">
+                    Seu progresso
+                </div>
+
+                <strong id="progressPercent">
+                    0%
+                </strong>
+
+                <div class="progress-wrap">
+                    <div
+                        id="progressBar"
+                        class="progress">
+                    </div>
+                </div>
+
+                <div class="progress-text">
+                    Aula 01 de 03
+                </div>
+
+            </div>
+
+
+            <div class="side-card">
+
+                <div class="side-title">
+                    Módulo 01
+                </div>
+
+                <a
+                    class="lesson active"
+                    href="#">
+                    ✓ Aula 01 — Introdução ao Linux
+                </a>
+
+                <div class="lesson locked">
+                    🔒 Aula 02 — Terminal Linux
+                </div>
+
+                <div class="lesson locked">
+                    🔒 Aula 03 — Arquivos e diretórios
+                </div>
+
+            </div>
+
+
+            <div class="side-card">
+
+                <div class="side-title">
+                    Curso
+                </div>
+
+                <a
+                    class="lesson"
+                    href="../../../">
+                    ← Página do Linux Pro
+                </a>
+
+                <a
+                    class="lesson"
+                    href="../../../../aluno/">
+                    👤 Área do aluno
+                </a>
+
+            </div>
+
+        </aside>
+
+    </div>
+
+</main>
+
+
+<footer>
+
+    NEXORA Academy • Linux Pro
+    <br>
+    Aprenda. Pratique. Evolua.
+
+</footer>
+
+
+<script>
+
+/* =========================================
+   PROGRESSO
+========================================= */
+
+const LESSON_KEY = "nexora_linux_pro_aula_01";
+
+function updateProgress(){
+
+    const completed =
+        localStorage.getItem(LESSON_KEY) === "completed";
+
+    const percent =
+        completed ? 33 : 0;
+
+    document.getElementById("progressPercent")
+        .textContent = percent + "%";
+
+    document.getElementById("progressBar")
+        .style.width = percent + "%";
+
+    const button =
+        document.getElementById("completeButton");
+
+    const status =
+        document.getElementById("completeStatus");
+
+    if(completed){
+
+        button.textContent =
+            "✓ Aula concluída";
+
+        button.classList.add("completed");
+
+        status.textContent =
+            "Esta aula já está marcada como concluída.";
+
+    }
+
+}
+
+
+/* =========================================
+   CONCLUIR AULA
+========================================= */
+
+function completeLesson(){
+
+    localStorage.setItem(
+        LESSON_KEY,
+        "completed"
+    );
+
+    updateProgress();
+
+}
+
+
+/* =========================================
+   EXERCÍCIO
+========================================= */
+
+let score = 0;
+let answered = 0;
+
+function answer(button, correct){
+
+    const question =
+        button.parentElement;
+
+    if(question.dataset.answered){
+        return;
+    }
+
+    question.dataset.answered = "true";
+
+    answered++;
+
+    const buttons =
+        question.querySelectorAll(".answer");
+
+    buttons.forEach(btn => {
+
+        btn.disabled = true;
+
+        if(btn === button && correct){
+            btn.classList.add("correct");
+        }
+
+        if(btn === button && !correct){
+            btn.classList.add("wrong");
+        }
+
+    });
+
+    if(correct){
+        score++;
+    }
+
+    if(answered === 3){
+
+        const result =
+            document.getElementById("exerciseResult");
+
+        result.style.display = "block";
+
+        if(score === 3){
+
+            result.textContent =
+                "🎉 Excelente! Você acertou todas as questões.";
+
+        }else if(score >= 2){
+
+            result.textContent =
+                "👍 Muito bem! Você acertou " +
+                score +
+                " de 3 questões.";
+
+        }else{
+
+            result.textContent =
+                "📚 Você acertou " +
+                score +
+                " de 3. Revise o conteúdo e tente novamente.";
+
+        }
+
+    }
+
+}
+
+
+/* =========================================
+   INICIALIZAÇÃO
+========================================= */
+
+updateProgress();
+
+</script>
+
+
+<!-- NEXORA-LESSON-PROGRESS-01 -->
+<script>
+(function(){
+
+    const STORAGE_KEY = "nexora_linux_pro_aula_01";
+
+    function isCompleted(){
+        return localStorage.getItem(STORAGE_KEY) === "completed";
+    }
+
+    function markCompleted(){
+        localStorage.setItem(STORAGE_KEY, "completed");
+        updateButton();
+        updatePage();
+    }
+
+    function updateButton(){
+        document.querySelectorAll(
+            "#completeLesson, #markComplete, .complete-lesson, [data-complete-lesson]"
+        ).forEach(button => {
+
+            if(isCompleted()){
+                button.textContent = "✓ Aula concluída";
+                button.classList.add("completed");
+            }
+
+        });
+    }
+
+    function updatePage(){
+        document.querySelectorAll(
+            "[data-lesson-status]"
+        ).forEach(el => {
+            el.textContent =
+                isCompleted()
+                ? "Concluída ✓"
+                : "Em andamento";
+        });
+    }
+
+    document.addEventListener("click", function(event){
+
+        const button =
+            event.target.closest(
+                "#completeLesson, #markComplete, .complete-lesson, [data-complete-lesson]"
+            );
+
+        if(!button) return;
+
+        event.preventDefault();
+
+        markCompleted();
+
+    });
+
+    updateButton();
+    updatePage();
+
+})();
+</script>
+<!-- /NEXORA-LESSON-PROGRESS-01 -->
+
+</body>
+</html>

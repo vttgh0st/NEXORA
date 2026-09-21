@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1080" viewBox="0 0 1080 1080">
+<rect width="1080" height="1080" fill="#fff"/>
+<rect x="70" y="70" width="940" height="940" fill="#111"/>
+<text x="120" y="180" fill="#777" font-family="Arial,sans-serif" font-size="22" letter-spacing="6">NEXORA / 03</text>
+<text x="120" y="470" fill="#fff" font-family="Arial,sans-serif" font-size="115" font-weight="900">THINK</text>
+<text x="120" y="590" fill="#fff" font-family="Arial,sans-serif" font-size="115" font-weight="900">BIGGER.</text>
+<circle cx="870" cy="820" r="75" fill="none" stroke="#fff" stroke-width="3"/>
+<circle cx="870" cy="820" r="25" fill="#fff"/>
+<text x="120" y="850" fill="#777" font-family="Arial,sans-serif" font-size="22">BUILD SOMETHING PEOPLE REMEMBER.</text>
+</svg>

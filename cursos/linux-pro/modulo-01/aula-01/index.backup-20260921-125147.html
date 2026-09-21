@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<title>NEXORA | Linux Pro | Aula 01</title>
+
+<style>
+
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    background:#050505;
+    color:#fff;
+    font-family:Arial,Helvetica,sans-serif;
+}
+
+.nav{
+    border-bottom:1px solid #202020;
+    background:#080808;
+}
+
+.nav-inner{
+    width:min(1000px,92%);
+    min-height:65px;
+    margin:auto;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.logo{
+    font-weight:900;
+    letter-spacing:4px;
+}
+
+.logo span{
+    color:#00e894;
+}
+
+.back{
+    color:#888;
+    text-decoration:none;
+    font-size:13px;
+}
+
+.container{
+    width:min(900px,92%);
+    margin:50px auto 80px;
+}
+
+.eyebrow{
+    color:#00e894;
+    font-size:10px;
+    font-weight:bold;
+    letter-spacing:1.5px;
+}
+
+h1{
+    font-size:42px;
+    margin:12px 0 8px;
+}
+
+.subtitle{
+    color:#777;
+    margin-bottom:30px;
+}
+
+.video{
+    width:100%;
+    min-height:420px;
+    background:#0d0d0d;
+    border:1px solid #202020;
+    border-radius:20px;
+    overflow:hidden;
+}
+
+.video iframe{
+    width:100%;
+    height:420px;
+    display:block;
+    border:0;
+}
+
+.card{
+    margin-top:20px;
+    padding:25px;
+    background:#0d0d0d;
+    border:1px solid #202020;
+    border-radius:20px;
+}
+
+.card h2{
+    margin-top:0;
+}
+
+.card p{
+    color:#888;
+    line-height:1.7;
+}
+
+.material{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-top:20px;
+}
+
+.material span{
+    padding:10px 13px;
+    border:1px solid #222;
+    border-radius:10px;
+    color:#aaa;
+    font-size:12px;
+}
+
+.next{
+    display:inline-block;
+    margin-top:25px;
+    padding:13px 18px;
+    border-radius:11px;
+    background:#00e894;
+    color:#00150d;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+@media(max-width:600px){
+
+    h1{
+        font-size:34px;
+    }
+
+    .video{
+        min-height:300px;
+    }
+
+    .video iframe{
+        height:300px;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<nav class="nav">
+
+    <div class="nav-inner">
+
+        <div class="logo">
+            NEX<span>O</span>RA
+        </div>
+
+        <a
+            class="back"
+            href="../../../">
+            ← Linux Pro
+        </a>
+
+    </div>
+
+</nav>
+
+
+<main class="container">
+
+    <div class="eyebrow">
+        LINUX PRO • MÓDULO 01
+    </div>
+
+    <h1>
+        Aula 01 — Introdução ao Linux
+    </h1>
+
+    <p class="subtitle">
+        Comece pelos fundamentos do sistema.
+    </p>
+
+
+    <div class="video">
+
+        <iframe
+            src="/videos/linux-pro/aula-01.html"
+            title="Linux Pro — Aula 01">
+        </iframe>
+
+    </div>
+
+
+    <div class="card">
+
+        <h2>
+            📚 Sobre esta aula
+        </h2>
+
+        <p>
+            Bem-vindo ao Linux Pro Masterclass.
+            Nesta aula você vai conhecer os fundamentos
+            que serão utilizados durante toda a formação.
+        </p>
+
+        <div class="material">
+
+            <span>📦 Arquivos da aula</span>
+
+            <span>📝 Exercício prático</span>
+
+            <span>🎬 Vídeo</span>
+
+        </div>
+
+        <a
+            class="next"
+            href="../../../">
+            ← Voltar para o curso
+        </a>
+
+    </div>
+
+</main>
+
+</body>
+
+</html>

@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<title>NEXORA | Certificado</title>
+
+<style>
+*{box-sizing:border-box}
+
+body{
+    margin:0;
+    min-height:100vh;
+    background:#050505;
+    color:#fff;
+    font-family:Arial,Helvetica,sans-serif;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:25px;
+}
+
+.certificate{
+    width:min(950px,100%);
+    min-height:620px;
+    padding:70px;
+    border:1px solid #303030;
+    background:
+        radial-gradient(
+            circle at 100% 0%,
+            rgba(0,232,148,.13),
+            transparent 30%
+        ),
+        #0b0b0b;
+    text-align:center;
+    position:relative;
+    box-shadow:0 30px 100px rgba(0,0,0,.5);
+}
+
+.logo{
+    font-size:25px;
+    font-weight:900;
+    letter-spacing:6px;
+}
+
+.logo span{
+    color:#00e894;
+}
+
+.badge{
+    color:#72f8c0;
+    font-size:11px;
+    letter-spacing:3px;
+    font-weight:bold;
+    margin-top:45px;
+}
+
+h1{
+    font-size:clamp(40px,7vw,70px);
+    margin:20px 0;
+    letter-spacing:-3px;
+}
+
+.name{
+    color:#00e894;
+    font-size:clamp(25px,4vw,40px);
+    font-weight:bold;
+    margin:25px 0;
+}
+
+.text{
+    color:#888;
+    line-height:1.8;
+}
+
+.code{
+    margin-top:35px;
+    color:#666;
+    font-size:11px;
+}
+
+.buttons{
+    margin-top:35px;
+}
+
+button,a{
+    display:inline-block;
+    padding:13px 18px;
+    border-radius:10px;
+    border:1px solid #292929;
+    background:#fff;
+    color:#050505;
+    text-decoration:none;
+    font-weight:bold;
+    cursor:pointer;
+    margin:5px;
+}
+
+button:hover,a:hover{
+    background:#00e894;
+}
+
+@media print{
+
+    body{
+        background:#fff;
+        padding:0;
+    }
+
+    .certificate{
+        box-shadow:none;
+        color:#000;
+        min-height:100vh;
+    }
+
+    .buttons{
+        display:none;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<main class="certificate">
+
+    <div class="logo">
+        NEX<span>O</span>RA
+    </div>
+
+    <div class="badge">
+        CERTIFICADO DE CONCLUSÃO
+    </div>
+
+    <h1>Parabéns!</h1>
+
+    <p class="text">
+        Certificamos que
+    </p>
+
+    <div
+        class="name"
+        id="studentName">
+        Carregando...
+    </div>
+
+    <p class="text">
+        concluiu com sucesso a formação
+        <strong>NEXORA Linux Pro</strong>,
+        completando todas as aulas disponíveis
+        do programa.
+    </p>
+
+    <div
+        class="code"
+        id="certificateCode">
+        Verificando certificado...
+    </div>
+
+    <div class="buttons">
+
+        <button
+            onclick="window.print()">
+            Imprimir / Salvar PDF
+        </button>
+
+        <a href="/aluno/">
+            Área do aluno
+        </a>
+
+    </div>
+
+</main>
+
+<script>
+(async function(){
+
+    try{
+
+        const r =
+            await fetch(
+                "/api/certificate",
+                {
+                    credentials:"same-origin"
+                }
+            );
+
+        const data =
+            await r.json();
+
+        if(!r.ok || !data.ok){
+
+            document.getElementById(
+                "studentName"
+            ).textContent =
+                "Certificado indisponível";
+
+            document.getElementById(
+                "certificateCode"
+            ).textContent =
+                data.message ||
+                "Faça login e conclua o curso.";
+
+            return;
+        }
+
+        document.getElementById(
+            "studentName"
+        ).textContent =
+            data.certificate.nome;
+
+        document.getElementById(
+            "certificateCode"
+        ).textContent =
+            "Código: " +
+            data.certificate.codigo +
+            " • Concluído em " +
+            data.certificate.concluidoEm;
+
+    }catch(e){
+
+        document.getElementById(
+            "certificateCode"
+        ).textContent =
+            "Erro ao verificar certificado.";
+    }
+
+})();
+</script>
+
+</body>
+</html>

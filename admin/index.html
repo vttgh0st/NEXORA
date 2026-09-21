@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>NEXORA — Admin</title>
+
+<style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    background:#070707;
+    color:#fff;
+    font-family:Arial,Helvetica,sans-serif;
+    min-height:100vh;
+}
+
+header{
+    height:70px;
+    border-bottom:1px solid #222;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 35px;
+    background:#090909;
+}
+
+.logo{
+    font-size:22px;
+    font-weight:900;
+    letter-spacing:4px;
+}
+
+.admin{
+    color:#777;
+    font-size:12px;
+    letter-spacing:2px;
+}
+
+main{
+    max-width:1200px;
+    margin:auto;
+    padding:45px 25px;
+}
+
+.top{
+    display:flex;
+    justify-content:space-between;
+    align-items:end;
+    margin-bottom:30px;
+}
+
+h1{
+    font-size:42px;
+    letter-spacing:-2px;
+}
+
+.subtitle{
+    color:#777;
+    margin-top:8px;
+}
+
+.refresh{
+    background:#fff;
+    color:#000;
+    border:0;
+    border-radius:10px;
+    padding:12px 18px;
+    font-weight:800;
+    cursor:pointer;
+}
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:15px;
+    margin-bottom:25px;
+}
+
+.stat{
+    background:#101010;
+    border:1px solid #222;
+    border-radius:15px;
+    padding:22px;
+}
+
+.stat span{
+    display:block;
+    color:#777;
+    font-size:12px;
+    margin-bottom:12px;
+}
+
+.stat strong{
+    font-size:30px;
+}
+
+.panel{
+    background:#101010;
+    border:1px solid #222;
+    border-radius:18px;
+    overflow:hidden;
+}
+
+.panel-head{
+    padding:22px;
+    border-bottom:1px solid #222;
+    display:flex;
+    justify-content:space-between;
+}
+
+.panel-head strong{
+    font-size:17px;
+}
+
+#status{
+    color:#777;
+    font-size:12px;
+}
+
+.empty{
+    padding:60px 20px;
+    text-align:center;
+    color:#666;
+}
+
+.orders{
+    width:100%;
+    border-collapse:collapse;
+}
+
+.orders th{
+    text-align:left;
+    color:#666;
+    font-size:11px;
+    letter-spacing:1px;
+    padding:16px 20px;
+    border-bottom:1px solid #222;
+}
+
+.orders td{
+    padding:18px 20px;
+    border-bottom:1px solid #1d1d1d;
+    font-size:13px;
+}
+
+.orders tr:last-child td{
+    border-bottom:0;
+}
+
+.order-id{
+    font-weight:800;
+}
+
+.email{
+    color:#888;
+}
+
+.badge{
+    display:inline-block;
+    padding:6px 9px;
+    border-radius:20px;
+    background:#1a1a1a;
+    color:#aaa;
+    font-size:10px;
+    letter-spacing:.5px;
+}
+
+.price{
+    font-weight:800;
+}
+
+@media(max-width:800px){
+
+    header{
+        padding:0 18px;
+    }
+
+    main{
+        padding:30px 15px;
+    }
+
+    h1{
+        font-size:32px;
+    }
+
+    .stats{
+        grid-template-columns:1fr;
+    }
+
+    .panel{
+        overflow-x:auto;
+    }
+
+    .orders{
+        min-width:750px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+
+    <div class="logo">
+        NEXORA
+    </div>
+
+    <div class="admin">
+        ADMIN PANEL
+    </div>
+
+</header>
+
+
+<main>
+
+    <div class="top">
+
+        <div>
+            <h1>Pedidos.</h1>
+            <p class="subtitle">
+                Controle local dos pedidos da NEXORA.
+            </p>
+        </div>
+
+        <button
+            class="refresh"
+            onclick="loadOrders()"
+        >
+            ATUALIZAR
+        </button>
+
+    </div>
+
+
+    <div class="stats">
+
+        <div class="stat">
+            <span>TOTAL DE PEDIDOS</span>
+            <strong id="total">0</strong>
+        </div>
+
+        <div class="stat">
+            <span>PENDENTES</span>
+            <strong id="pending">0</strong>
+        </div>
+
+        <div class="stat">
+            <span>VALOR REGISTRADO</span>
+            <strong id="revenue">R$ 0,00</strong>
+        </div>
+
+    </div>
+
+
+    <div class="panel">
+
+        <div class="panel-head">
+
+            <strong>
+                Pedidos recentes
+            </strong>
+
+            <span id="status">
+                Carregando...
+            </span>
+
+        </div>
+
+
+        <div id="tableContainer">
+
+            <div class="empty">
+                Carregando pedidos...
+            </div>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+<script>
+
+async function loadOrders(){
+
+    const container =
+        document.getElementById(
+            "tableContainer"
+        );
+
+    const status =
+        document.getElementById(
+            "status"
+        );
+
+    status.textContent =
+        "Atualizando...";
+
+    try{
+
+        /*
+         * Endpoint administrativo local.
+         */
+
+        const response =
+            await fetch(
+                "/api/admin/orders"
+            );
+
+        const data =
+            await response.json();
+
+
+        if(!response.ok){
+
+            throw new Error(
+                data.error ||
+                "Erro ao carregar pedidos."
+            );
+        }
+
+
+        renderOrders(
+            data.orders || []
+        );
+
+
+        status.textContent =
+            "Atualizado agora";
+
+
+    }catch(error){
+
+        console.error(error);
+
+        container.innerHTML =
+            `<div class="empty">
+                Não foi possível carregar os pedidos.
+            </div>`;
+
+        status.textContent =
+            "Erro";
+    }
+}
+
+
+function renderOrders(orders){
+
+    document.getElementById(
+        "total"
+    ).textContent =
+        orders.length;
+
+
+    const pending =
+        orders.filter(
+            order =>
+                order.status ===
+                "pending_payment"
+        ).length;
+
+
+    document.getElementById(
+        "pending"
+    ).textContent =
+        pending;
+
+
+    const totalValue =
+        orders.reduce(
+            (sum, order) =>
+                sum +
+                Number(
+                    order.product?.price ||
+                    0
+                ),
+            0
+        );
+
+
+    document.getElementById(
+        "revenue"
+    ).textContent =
+        totalValue.toLocaleString(
+            "pt-BR",
+            {
+                style:"currency",
+                currency:"BRL"
+            }
+        );
+
+
+    const container =
+        document.getElementById(
+            "tableContainer"
+        );
+
+
+    if(!orders.length){
+
+        container.innerHTML =
+            `<div class="empty">
+                Nenhum pedido registrado ainda.
+            </div>`;
+
+        return;
+    }
+
+
+    const rows =
+        orders
+        .slice()
+        .reverse()
+        .map(order => {
+
+            const date =
+                new Date(
+                    order.createdAt
+                ).toLocaleString(
+                    "pt-BR"
+                );
+
+
+            return `
+                <tr>
+
+                    <td>
+                        <div class="order-id">
+                            ${escapeHtml(
+                                order.id
+                            )}
+                        </div>
+                    </td>
+
+                    <td>
+                        ${escapeHtml(
+                            order.customer?.name ||
+                            "-"
+                        )}
+                        <br>
+                        <span class="email">
+                            ${escapeHtml(
+                                order.customer?.email ||
+                                "-"
+                            )}
+                        </span>
+                    </td>
+
+                    <td>
+                        ${escapeHtml(
+                            order.product?.name ||
+                            "-"
+                        )}
+                    </td>
+
+                    <td class="price">
+                        R$ ${
+                            Number(
+                                order.product?.price ||
+                                0
+                            ).toFixed(2)
+                            .replace(".",",")
+                        }
+                    </td>
+
+                    <td>
+                        <span class="badge">
+                            ${escapeHtml(
+                                order.status
+                            )}
+                        </span>
+                    </td>
+
+                    <td>
+                        ${date}
+                    </td>
+
+                </tr>
+            `;
+        })
+        .join("");
+
+
+    container.innerHTML = `
+        <table class="orders">
+
+            <thead>
+
+                <tr>
+                    <th>PEDIDO</th>
+                    <th>CLIENTE</th>
+                    <th>PRODUTO</th>
+                    <th>VALOR</th>
+                    <th>STATUS</th>
+                    <th>DATA</th>
+                </tr>
+
+            </thead>
+
+            <tbody>
+                ${rows}
+            </tbody>
+
+        </table>
+    `;
+}
+
+
+function escapeHtml(value){
+
+    return String(value)
+        .replaceAll("&","&amp;")
+        .replaceAll("<","&lt;")
+        .replaceAll(">","&gt;")
+        .replaceAll('"',"&quot;")
+        .replaceAll("'","&#039;");
+}
+
+
+loadOrders();
+
+</script>
+
+</body>
+</html>

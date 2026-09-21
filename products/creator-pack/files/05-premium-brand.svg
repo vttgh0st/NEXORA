@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1080" viewBox="0 0 1080 1080">
+<rect width="1080" height="1080" fill="#0a0a0a"/>
+<rect x="55" y="55" width="970" height="970" rx="20" fill="none" stroke="#444"/>
+<rect x="90" y="90" width="900" height="900" rx="12" fill="none" stroke="#222"/>
+<text x="540" y="270" text-anchor="middle" fill="#777" font-family="Arial,sans-serif" font-size="22" letter-spacing="9">NEXORA STUDIO</text>
+<text x="540" y="500" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="86" font-weight="700">YOUR</text>
+<text x="540" y="600" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="86" font-weight="700">IDENTITY.</text>
+<line x1="390" y1="680" x2="690" y2="680" stroke="#fff" stroke-width="2"/>
+<text x="540" y="750" text-anchor="middle" fill="#777" font-family="Arial,sans-serif" font-size="22" letter-spacing="4">DESIGN WITH PURPOSE</text>
+<text x="540" y="930" text-anchor="middle" fill="#444" font-family="Arial,sans-serif" font-size="17">CREATOR PACK / 05</text>
+</svg>

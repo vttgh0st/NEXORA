@@ -1,0 +1,2537 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>NEXORA — Digital Design Store</title>
+
+<meta
+name="description"
+content="NEXORA — produtos digitais, templates e recursos para criadores."
+>
+
+<style>
+
+/* =====================================================
+   RESET
+===================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family:
+        Inter,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
+    background: #060606;
+    color: #fff;
+
+    min-height: 100vh;
+}
+
+button,
+input {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+
+/* =====================================================
+   SCROLLBAR
+===================================================== */
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #080808;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #333;
+    border-radius: 20px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #8b5cf6;
+}
+
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
+    background: rgba(6,6,6,.82);
+    backdrop-filter: blur(20px);
+
+    border-bottom: 1px solid #1c1c1c;
+}
+
+.navbar {
+    max-width: 1250px;
+    margin: auto;
+
+    min-height: 72px;
+
+    padding: 0 24px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 20px;
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: 900;
+    letter-spacing: -1px;
+}
+
+.logo span {
+    color: #8b5cf6;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+nav a {
+    color: #929292;
+    font-size: 14px;
+    transition: .2s;
+}
+
+nav a:hover {
+    color: white;
+}
+
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.icon-btn {
+    width: 42px;
+    height: 42px;
+
+    display: grid;
+    place-items: center;
+
+    background: #101010;
+    color: white;
+
+    border: 1px solid #252525;
+    border-radius: 12px;
+
+    transition: .2s;
+}
+
+.icon-btn:hover {
+    background: #181818;
+    border-color: #8b5cf6;
+}
+
+.mobile-menu {
+    display: none;
+}
+
+
+/* =====================================================
+   HERO
+===================================================== */
+
+.hero {
+    max-width: 1250px;
+    margin: auto;
+
+    padding: 110px 24px 80px;
+
+    text-align: center;
+
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: "";
+
+    position: absolute;
+
+    width: 500px;
+    height: 500px;
+
+    left: 50%;
+    top: 0;
+
+    transform: translateX(-50%);
+
+    background: #7c3aed;
+
+    filter: blur(180px);
+
+    opacity: .13;
+
+    pointer-events: none;
+}
+
+.badge {
+    position: relative;
+
+    display: inline-block;
+
+    padding: 8px 15px;
+
+    border: 1px solid #282828;
+    background: #101010;
+
+    border-radius: 999px;
+
+    color: #aaa;
+
+    font-size: 13px;
+
+    margin-bottom: 25px;
+}
+
+.hero h1 {
+    position: relative;
+
+    font-size: clamp(48px, 8vw, 95px);
+
+    line-height: .92;
+
+    letter-spacing: -6px;
+
+    max-width: 950px;
+
+    margin: auto;
+}
+
+.gradient {
+    background:
+        linear-gradient(
+            90deg,
+            #fff,
+            #c4b5fd,
+            #8b5cf6
+        );
+
+    -webkit-background-clip: text;
+
+    color: transparent;
+}
+
+.hero p {
+    position: relative;
+
+    max-width: 650px;
+
+    margin: 30px auto;
+
+    color: #929292;
+
+    font-size: 18px;
+
+    line-height: 1.7;
+}
+
+.hero-buttons {
+    position: relative;
+
+    display: flex;
+    justify-content: center;
+
+    gap: 12px;
+
+    flex-wrap: wrap;
+}
+
+.btn {
+    border: none;
+
+    padding: 14px 22px;
+
+    border-radius: 12px;
+
+    font-weight: 800;
+
+    transition: .25s;
+}
+
+.primary {
+    background: white;
+    color: black;
+}
+
+.primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 35px rgba(255,255,255,.12);
+}
+
+.secondary {
+    background: #111;
+    color: white;
+
+    border: 1px solid #292929;
+}
+
+.secondary:hover {
+    transform: translateY(-3px);
+
+    border-color: #8b5cf6;
+}
+
+
+/* =====================================================
+   STATS
+===================================================== */
+
+.stats {
+    max-width: 1000px;
+
+    margin: 0 auto 70px;
+
+    padding: 0 24px;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 15px;
+}
+
+.stat {
+    background: #0c0c0c;
+
+    border: 1px solid #1d1d1d;
+
+    border-radius: 18px;
+
+    padding: 25px;
+
+    text-align: center;
+}
+
+.stat strong {
+    display: block;
+
+    font-size: 28px;
+
+    margin-bottom: 6px;
+}
+
+.stat span {
+    color: #707070;
+
+    font-size: 13px;
+}
+
+
+/* =====================================================
+   SECTIONS
+===================================================== */
+
+section {
+    max-width: 1250px;
+
+    margin: auto;
+
+    padding: 70px 24px;
+}
+
+.section-head {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: end;
+
+    gap: 25px;
+
+    margin-bottom: 30px;
+}
+
+.section-head h2 {
+    font-size: 38px;
+
+    letter-spacing: -1px;
+}
+
+.section-head p {
+    max-width: 550px;
+
+    color: #777;
+
+    line-height: 1.6;
+}
+
+
+/* =====================================================
+   STORE CONTROLS
+===================================================== */
+
+.store-controls {
+    display: flex;
+
+    gap: 12px;
+
+    margin-bottom: 25px;
+
+    flex-wrap: wrap;
+}
+
+.search {
+    flex: 1;
+
+    min-width: 220px;
+
+    padding: 14px 16px;
+
+    border-radius: 12px;
+
+    background: #101010;
+
+    border: 1px solid #242424;
+
+    color: white;
+
+    outline: none;
+}
+
+.search:focus {
+    border-color: #8b5cf6;
+}
+
+.category-filter {
+    padding: 14px 16px;
+
+    border-radius: 12px;
+
+    background: #101010;
+
+    color: white;
+
+    border: 1px solid #242424;
+
+    outline: none;
+}
+
+
+/* =====================================================
+   PRODUCTS
+===================================================== */
+
+.products {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 20px;
+}
+
+.product {
+    position: relative;
+
+    overflow: hidden;
+
+    background: #0c0c0c;
+
+    border: 1px solid #1d1d1d;
+
+    border-radius: 20px;
+
+    transition: .3s;
+}
+
+.product:hover {
+    transform: translateY(-7px);
+
+    border-color: #383838;
+
+    box-shadow:
+        0 25px 60px rgba(0,0,0,.45);
+}
+
+.product-image {
+    height: 220px;
+
+    display: grid;
+
+    place-items: center;
+
+    font-size: 65px;
+
+    background:
+        radial-gradient(
+            circle at 25% 25%,
+            #4c1d95,
+            transparent 40%
+        ),
+        radial-gradient(
+            circle at 80% 80%,
+            #111827,
+            #080808
+        );
+}
+
+.favorite {
+    position: absolute;
+
+    top: 15px;
+    right: 15px;
+
+    width: 38px;
+    height: 38px;
+
+    border-radius: 50%;
+
+    border: 1px solid #333;
+
+    background: rgba(0,0,0,.6);
+
+    color: white;
+
+    z-index: 2;
+}
+
+.favorite.active {
+    color: #ff4d7d;
+}
+
+.product-body {
+    padding: 20px;
+}
+
+.category {
+    color: #9b7bff;
+
+    font-size: 11px;
+
+    font-weight: 900;
+
+    text-transform: uppercase;
+
+    letter-spacing: 1px;
+}
+
+.product h3 {
+    font-size: 20px;
+
+    margin: 8px 0;
+}
+
+.product-description {
+    color: #777;
+
+    font-size: 13px;
+
+    line-height: 1.6;
+
+    min-height: 42px;
+
+    margin-bottom: 18px;
+}
+
+.product-bottom {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 10px;
+}
+
+.price {
+    font-size: 19px;
+
+    font-weight: 900;
+}
+
+.product-buttons {
+    display: flex;
+
+    gap: 7px;
+}
+
+.small-btn {
+    border: 1px solid #292929;
+
+    background: #151515;
+
+    color: white;
+
+    padding: 9px 12px;
+
+    border-radius: 9px;
+
+    transition: .2s;
+}
+
+.small-btn:hover {
+    background: #8b5cf6;
+
+    border-color: #8b5cf6;
+}
+
+
+/* =====================================================
+   FREE
+===================================================== */
+
+.free {
+    padding: 50px;
+
+    border-radius: 25px;
+
+    border: 1px solid #292929;
+
+    background:
+        radial-gradient(
+            circle at 80% 20%,
+            rgba(139,92,246,.2),
+            transparent 35%
+        ),
+        #0d0d0d;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 30px;
+}
+
+.free h2 {
+    font-size: 36px;
+
+    margin-bottom: 10px;
+}
+
+.free p {
+    max-width: 650px;
+
+    color: #888;
+
+    line-height: 1.7;
+}
+
+
+/* =====================================================
+   CATEGORIES
+===================================================== */
+
+.categories {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 15px;
+}
+
+.category-card {
+    padding: 25px;
+
+    background: #0d0d0d;
+
+    border: 1px solid #1d1d1d;
+
+    border-radius: 18px;
+
+    transition: .25s;
+}
+
+.category-card:hover {
+    transform: translateY(-5px);
+
+    border-color: #8b5cf6;
+}
+
+.category-card .emoji {
+    font-size: 32px;
+
+    margin-bottom: 15px;
+}
+
+.category-card h3 {
+    margin-bottom: 6px;
+}
+
+.category-card p {
+    color: #707070;
+
+    font-size: 13px;
+}
+
+
+/* =====================================================
+   NEWSLETTER
+===================================================== */
+
+.newsletter {
+    text-align: center;
+
+    padding: 80px 24px;
+}
+
+.newsletter h2 {
+    font-size: 40px;
+
+    margin-bottom: 12px;
+}
+
+.newsletter p {
+    color: #777;
+
+    margin-bottom: 25px;
+}
+
+.newsletter-form {
+    max-width: 550px;
+
+    margin: auto;
+
+    display: flex;
+
+    gap: 10px;
+}
+
+.newsletter-form input {
+    flex: 1;
+
+    padding: 14px;
+
+    background: #101010;
+
+    border: 1px solid #252525;
+
+    border-radius: 12px;
+
+    color: white;
+
+    outline: none;
+}
+
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+footer {
+    border-top: 1px solid #1c1c1c;
+
+    margin-top: 60px;
+}
+
+.footer-inner {
+    max-width: 1250px;
+
+    margin: auto;
+
+    padding: 40px 24px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    gap: 20px;
+}
+
+.footer-inner p {
+    color: #666;
+
+    font-size: 13px;
+}
+
+
+/* =====================================================
+   CART
+===================================================== */
+
+.cart-overlay {
+    position: fixed;
+
+    inset: 0;
+
+    background: rgba(0,0,0,.65);
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    z-index: 1999;
+
+    transition: .3s;
+}
+
+.cart-overlay.active {
+    opacity: 1;
+
+    pointer-events: auto;
+}
+
+.cart {
+    position: fixed;
+
+    top: 0;
+
+    right: -430px;
+
+    width: min(430px, 100%);
+
+    height: 100vh;
+
+    background: #0b0b0b;
+
+    border-left: 1px solid #222;
+
+    z-index: 2000;
+
+    padding: 25px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    transition: .3s;
+}
+
+.cart.open {
+    right: 0;
+}
+
+.cart-header {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding-bottom: 20px;
+
+    border-bottom: 1px solid #222;
+}
+
+.close {
+    border: none;
+
+    background: none;
+
+    color: white;
+
+    font-size: 28px;
+}
+
+.cart-items {
+    flex: 1;
+
+    overflow-y: auto;
+
+    padding: 20px 0;
+}
+
+.cart-item {
+    display: grid;
+
+    grid-template-columns:
+        1fr auto;
+
+    gap: 15px;
+
+    padding: 15px 0;
+
+    border-bottom: 1px solid #1c1c1c;
+}
+
+.cart-item small {
+    color: #777;
+}
+
+.quantity {
+    display: flex;
+
+    align-items: center;
+
+    gap: 7px;
+
+    margin-top: 8px;
+}
+
+.quantity button {
+    width: 27px;
+    height: 27px;
+
+    border-radius: 7px;
+
+    border: 1px solid #333;
+
+    background: #151515;
+
+    color: white;
+}
+
+.remove {
+    border: none;
+
+    background: none;
+
+    color: #ff5b5b;
+
+    font-size: 12px;
+}
+
+.cart-footer {
+    padding-top: 20px;
+
+    border-top: 1px solid #222;
+}
+
+.total {
+    display: flex;
+
+    justify-content: space-between;
+
+    margin-bottom: 15px;
+
+    font-size: 19px;
+}
+
+.checkout {
+    width: 100%;
+
+    padding: 15px;
+
+    border: none;
+
+    border-radius: 12px;
+
+    background: #8b5cf6;
+
+    color: white;
+
+    font-weight: 900;
+}
+
+
+/* =====================================================
+   MODAL
+===================================================== */
+
+.modal-overlay {
+    position: fixed;
+
+    inset: 0;
+
+    background: rgba(0,0,0,.75);
+
+    backdrop-filter: blur(8px);
+
+    display: none;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 20px;
+
+    z-index: 3000;
+}
+
+.modal-overlay.active {
+    display: flex;
+}
+
+.modal {
+    width: min(650px, 100%);
+
+    background: #0e0e0e;
+
+    border: 1px solid #292929;
+
+    border-radius: 20px;
+
+    padding: 30px;
+
+    position: relative;
+
+    animation: modalIn .25s ease;
+}
+
+@keyframes modalIn {
+
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+
+}
+
+.modal-close {
+    position: absolute;
+
+    top: 15px;
+    right: 15px;
+
+    width: 35px;
+    height: 35px;
+
+    border-radius: 50%;
+
+    border: 1px solid #333;
+
+    background: #151515;
+
+    color: white;
+}
+
+.modal-image {
+    height: 220px;
+
+    display: grid;
+
+    place-items: center;
+
+    font-size: 70px;
+
+    border-radius: 15px;
+
+    margin-bottom: 25px;
+
+    background:
+        radial-gradient(
+            circle at 30% 30%,
+            #4c1d95,
+            transparent 40%
+        ),
+        #090909;
+}
+
+.modal h2 {
+    margin-bottom: 10px;
+}
+
+.modal p {
+    color: #888;
+
+    line-height: 1.7;
+
+    margin-bottom: 20px;
+}
+
+
+/* =====================================================
+   TOAST
+===================================================== */
+
+.toast {
+    position: fixed;
+
+    bottom: 25px;
+
+    left: 50%;
+
+    transform:
+        translate(-50%, 100px);
+
+    background: #151515;
+
+    border: 1px solid #333;
+
+    color: white;
+
+    padding: 13px 18px;
+
+    border-radius: 12px;
+
+    opacity: 0;
+
+    z-index: 5000;
+
+    transition: .3s;
+
+    box-shadow:
+        0 15px 40px rgba(0,0,0,.4);
+}
+
+.toast.show {
+    opacity: 1;
+
+    transform:
+        translate(-50%, 0);
+}
+
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media(max-width:900px) {
+
+    nav {
+        display: none;
+
+        position: absolute;
+
+        top: 72px;
+
+        left: 0;
+        right: 0;
+
+        background: #090909;
+
+        padding: 20px;
+
+        flex-direction: column;
+
+        border-bottom: 1px solid #222;
+    }
+
+    nav.active {
+        display: flex;
+    }
+
+    .mobile-menu {
+        display: grid;
+    }
+
+    .products {
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+    .categories {
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+}
+
+@media(max-width:650px) {
+
+    .hero {
+        padding-top: 75px;
+    }
+
+    .hero h1 {
+        letter-spacing: -3px;
+    }
+
+    .stats {
+        grid-template-columns: 1fr;
+    }
+
+    .products {
+        grid-template-columns: 1fr;
+    }
+
+    .categories {
+        grid-template-columns: 1fr;
+    }
+
+    .section-head {
+        display: block;
+    }
+
+    .section-head h2 {
+        margin-bottom: 10px;
+    }
+
+    .free {
+        padding: 30px;
+
+        flex-direction: column;
+
+        align-items: flex-start;
+    }
+
+    .newsletter-form {
+        flex-direction: column;
+    }
+
+    .footer-inner {
+        flex-direction: column;
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
+<header>
+
+<div class="navbar">
+
+<a href="#" class="logo">
+    NEXORA<span>.</span>
+</a>
+
+<button
+class="icon-btn mobile-menu"
+onclick="toggleMenu()">
+    ☰
+</button>
+
+<nav id="nav">
+
+<a href="#inicio">Início</a>
+
+<a href="#loja">Loja</a>
+
+<a href="#gratis">Grátis</a>
+
+<a href="#categorias">Categorias</a>
+
+<a href="#newsletter">Newsletter</a>
+
+</nav>
+
+
+<div class="nav-actions">
+
+<button
+class="icon-btn"
+onclick="toggleCart()"
+title="Carrinho">
+
+🛒 <span id="cartCount">0</span>
+
+</button>
+
+</div>
+
+</div>
+
+</header>
+
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<main>
+
+<div class="hero" id="inicio">
+
+<div class="badge">
+    ✦ Design digital para criadores
+</div>
+
+<h1>
+
+    CRIE.
+    <span class="gradient">
+        IMPACTE.
+    </span>
+
+</h1>
+
+<p>
+
+    Templates, recursos e produtos digitais
+    para deixar seu conteúdo mais profissional,
+    moderno e marcante.
+
+</p>
+
+<div class="hero-buttons">
+
+<a
+href="#loja"
+class="btn primary">
+
+    Explorar produtos
+
+</a>
+
+<a
+href="#gratis"
+class="btn secondary">
+
+    🎁 Produtos grátis
+
+</a>
+
+</div>
+
+</div>
+
+
+<!-- =====================================================
+     STATS
+===================================================== -->
+
+<div class="stats">
+
+<div class="stat">
+
+<strong>100%</strong>
+
+<span>
+Produtos digitais
+</span>
+
+</div>
+
+
+<div class="stat">
+
+<strong>24/7</strong>
+
+<span>
+Acesso aos produtos
+</span>
+
+</div>
+
+
+<div class="stat">
+
+<strong>∞</strong>
+
+<span>
+Criatividade
+</span>
+
+</div>
+
+</div>
+
+
+<!-- =====================================================
+     LOJA
+===================================================== -->
+
+<section id="loja">
+
+<div class="section-head">
+
+<div>
+
+<h2>
+🔥 Loja
+</h2>
+
+</div>
+
+<p>
+
+Encontre templates e recursos
+para elevar seus projetos.
+
+</p>
+
+</div>
+
+
+<div class="store-controls">
+
+<input
+id="search"
+class="search"
+placeholder="🔎 Procurar produto..."
+oninput="renderProducts()"
+>
+
+
+<select
+id="categoryFilter"
+class="category-filter"
+onchange="renderProducts()">
+
+<option value="all">
+Todas as categorias
+</option>
+
+<option value="social">
+Social Media
+</option>
+
+<option value="youtube">
+YouTube
+</option>
+
+<option value="wallpapers">
+Wallpapers
+</option>
+
+<option value="branding">
+Branding
+</option>
+
+</select>
+
+</div>
+
+
+<div
+class="products"
+id="products">
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     GRÁTIS
+===================================================== -->
+
+<section id="gratis">
+
+<div class="free">
+
+<div>
+
+<h2>
+🎁 Pack grátis
+</h2>
+
+<p>
+
+Experimente recursos gratuitos da NEXORA
+e conheça nossa coleção digital.
+
+</p>
+
+</div>
+
+
+<button
+class="btn primary"
+onclick="freeDownload()">
+
+Baixar grátis
+
+</button>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     CATEGORIAS
+===================================================== -->
+
+<section id="categorias">
+
+<div class="section-head">
+
+<div>
+
+<h2>
+🎨 Categorias
+</h2>
+
+</div>
+
+<p>
+Escolha o tipo de recurso que você procura.
+</p>
+
+</div>
+
+
+<div class="categories">
+
+<div class="category-card">
+
+<div class="emoji">
+📱
+</div>
+
+<h3>
+Social Media
+</h3>
+
+<p>
+Posts, Stories e conteúdo social.
+</p>
+
+</div>
+
+
+<div class="category-card">
+
+<div class="emoji">
+🎬
+</div>
+
+<h3>
+YouTube
+</h3>
+
+<p>
+Thumbnails e recursos para vídeos.
+</p>
+
+</div>
+
+
+<div class="category-card">
+
+<div class="emoji">
+🖥️
+</div>
+
+<h3>
+Wallpapers
+</h3>
+
+<p>
+Wallpapers para PC e celular.
+</p>
+
+</div>
+
+
+<div class="category-card">
+
+<div class="emoji">
+✨
+</div>
+
+<h3>
+Branding
+</h3>
+
+<p>
+Recursos para identidade visual.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     NEWSLETTER
+===================================================== -->
+
+<section
+class="newsletter"
+id="newsletter">
+
+<h2>
+Entre para a NEXORA.
+</h2>
+
+<p>
+Receba novidades e novos produtos.
+</p>
+
+
+<form
+class="newsletter-form"
+onsubmit="subscribe(event)">
+
+<input
+type="email"
+id="email"
+placeholder="Seu melhor e-mail"
+required
+>
+
+<button
+class="btn primary"
+type="submit">
+
+Entrar
+
+</button>
+
+</form>
+
+</section>
+
+</main>
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer>
+
+<div class="footer-inner">
+
+<div>
+
+<strong>
+NEXORA.
+</strong>
+
+<p>
+Design que chama atenção.
+</p>
+
+</div>
+
+
+<p>
+© 2026 NEXORA — Todos os direitos reservados.
+</p>
+
+</div>
+
+</footer>
+
+
+<!-- =====================================================
+     CART OVERLAY
+===================================================== -->
+
+<div
+id="cartOverlay"
+class="cart-overlay"
+onclick="toggleCart()">
+</div>
+
+
+<!-- =====================================================
+     CART
+===================================================== -->
+
+<aside
+id="cart"
+class="cart">
+
+<div class="cart-header">
+
+<h2>
+🛒 Carrinho
+</h2>
+
+<button
+class="close"
+onclick="toggleCart()">
+
+×
+</button>
+
+</div>
+
+
+<div
+id="cartItems"
+class="cart-items">
+
+</div>
+
+
+<div class="cart-footer">
+
+<div class="total">
+
+<strong>
+Total
+</strong>
+
+<strong id="cartTotal">
+R$ 0,00
+</strong>
+
+</div>
+
+
+<button
+class="checkout"
+onclick="checkout()">
+
+Continuar para pagamento
+
+</button>
+
+</div>
+
+</aside>
+
+
+<!-- =====================================================
+     MODAL
+===================================================== -->
+
+<div
+id="modalOverlay"
+class="modal-overlay"
+onclick="closeModal(event)">
+
+<div
+class="modal"
+onclick="event.stopPropagation()">
+
+<button
+class="modal-close"
+onclick="closeModal()">
+
+×
+</button>
+
+<div
+id="modalImage"
+class="modal-image">
+</div>
+
+<h2 id="modalTitle">
+Produto
+</h2>
+
+<p id="modalDescription">
+Descrição
+</p>
+
+<strong id="modalPrice">
+R$ 0,00
+</strong>
+
+<br><br>
+
+<button
+id="modalAdd"
+class="btn primary">
+
+Adicionar ao carrinho
+
+</button>
+
+</div>
+
+</div>
+
+
+<!-- =====================================================
+     TOAST
+===================================================== -->
+
+<div
+id="toast"
+class="toast">
+
+Produto adicionado!
+
+</div>
+
+
+<script>
+
+/* =====================================================
+   PRODUTOS
+===================================================== */
+
+const products = [
+
+{
+    id: 1,
+    name: "Creator Pack",
+    category: "social",
+    categoryName: "Social Media",
+    price: 19.90,
+    icon: "🎨",
+    description:
+    "Pack de recursos visuais para criadores de conteúdo."
+},
+
+{
+    id: 2,
+    name: "Social Media Pack",
+    category: "social",
+    categoryName: "Social Media",
+    price: 14.90,
+    icon: "📱",
+    description:
+    "Templates para posts, Stories e conteúdo social."
+},
+
+{
+    id: 3,
+    name: "Thumbnail Pack",
+    category: "youtube",
+    categoryName: "YouTube",
+    price: 12.90,
+    icon: "🖼️",
+    description:
+    "Elementos para criar thumbnails mais chamativas."
+},
+
+{
+    id: 4,
+    name: "Wallpaper Pack",
+    category: "wallpapers",
+    categoryName: "Wallpapers",
+    price: 9.90,
+    icon: "🖥️",
+    description:
+    "Wallpapers dark para PC, celular e setup."
+},
+
+{
+    id: 5,
+    name: "Brand Kit",
+    category: "branding",
+    categoryName: "Branding",
+    price: 29.90,
+    icon: "✨",
+    description:
+    "Recursos para criar uma identidade visual consistente."
+},
+
+{
+    id: 6,
+    name: "Ultimate Creator Pack",
+    category: "branding",
+    categoryName: "Premium",
+    price: 39.90,
+    icon: "🚀",
+    description:
+    "Pacote completo para criadores que querem elevar sua identidade."
+}
+
+];
+
+
+/* =====================================================
+   CARRINHO
+===================================================== */
+
+let cart =
+JSON.parse(
+localStorage.getItem("nexoraCart")
+) || [];
+
+
+/* =====================================================
+   FAVORITOS
+===================================================== */
+
+let favorites =
+JSON.parse(
+localStorage.getItem("nexoraFavorites")
+) || [];
+
+
+/* =====================================================
+   FORMATAR PREÇO
+===================================================== */
+
+function money(value) {
+
+return "R$ " +
+value
+.toFixed(2)
+.replace(".", ",");
+
+}
+
+
+/* =====================================================
+   RENDER PRODUCTS
+===================================================== */
+
+function renderProducts() {
+
+const container =
+document.getElementById("products");
+
+const search =
+document
+.getElementById("search")
+.value
+.toLowerCase();
+
+const category =
+document
+.getElementById("categoryFilter")
+.value;
+
+
+const filtered =
+products.filter(product => {
+
+const matchesSearch =
+product.name
+.toLowerCase()
+.includes(search);
+
+const matchesCategory =
+category === "all" ||
+product.category === category;
+
+return matchesSearch &&
+matchesCategory;
+
+});
+
+
+if(filtered.length === 0) {
+
+container.innerHTML = `
+
+<div style="
+grid-column:1/-1;
+text-align:center;
+padding:60px;
+color:#777;
+">
+
+Nenhum produto encontrado.
+
+</div>
+
+`;
+
+return;
+
+}
+
+
+container.innerHTML =
+filtered.map(product => {
+
+const favorite =
+favorites.includes(product.id);
+
+return `
+
+<article class="product">
+
+<button
+class="favorite ${favorite ? "active" : ""}"
+onclick="toggleFavorite(${product.id})">
+
+${favorite ? "♥" : "♡"}
+
+</button>
+
+
+<div class="product-image">
+
+${product.icon}
+
+</div>
+
+
+<div class="product-body">
+
+<span class="category">
+
+${product.categoryName}
+
+</span>
+
+
+<h3>
+${product.name}
+</h3>
+
+
+<p class="product-description">
+
+${product.description}
+
+</p>
+
+
+<div class="product-bottom">
+
+<span class="price">
+
+${money(product.price)}
+
+</span>
+
+
+<div class="product-buttons">
+
+<button
+class="small-btn"
+onclick="openProduct(${product.id})">
+
+Ver
+
+</button>
+
+
+<button
+class="small-btn"
+onclick="addToCart(${product.id})">
+
++
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</article>
+
+`;
+
+}).join("");
+
+}
+
+
+/* =====================================================
+   ADD CART
+===================================================== */
+
+function addToCart(id) {
+
+const existing =
+cart.find(item => item.id === id);
+
+
+if(existing) {
+
+existing.quantity++;
+
+} else {
+
+cart.push({
+    id: id,
+    quantity: 1
+});
+
+}
+
+
+saveCart();
+
+updateCart();
+
+showToast("Produto adicionado ao carrinho!");
+
+}
+
+
+/* =====================================================
+   REMOVE CART
+===================================================== */
+
+function removeFromCart(id) {
+
+cart =
+cart.filter(
+item => item.id !== id
+);
+
+saveCart();
+
+updateCart();
+
+}
+
+
+/* =====================================================
+   QUANTITY
+===================================================== */
+
+function changeQuantity(id, amount) {
+
+const item =
+cart.find(
+item => item.id === id
+);
+
+if(!item) return;
+
+
+item.quantity += amount;
+
+
+if(item.quantity <= 0) {
+
+removeFromCart(id);
+
+return;
+
+}
+
+
+saveCart();
+
+updateCart();
+
+}
+
+
+/* =====================================================
+   SAVE CART
+===================================================== */
+
+function saveCart() {
+
+localStorage.setItem(
+"nexoraCart",
+JSON.stringify(cart)
+);
+
+}
+
+
+/* =====================================================
+   UPDATE CART
+===================================================== */
+
+function updateCart() {
+
+const container =
+document.getElementById("cartItems");
+
+const count =
+document.getElementById("cartCount");
+
+const totalElement =
+document.getElementById("cartTotal");
+
+
+let total = 0;
+
+let totalQuantity = 0;
+
+
+if(cart.length === 0) {
+
+container.innerHTML = `
+
+<p style="color:#777">
+
+Seu carrinho está vazio.
+
+</p>
+
+`;
+
+count.textContent = "0";
+
+totalElement.textContent =
+"R$ 0,00";
+
+return;
+
+}
+
+
+container.innerHTML =
+cart.map(item => {
+
+const product =
+products.find(
+product => product.id === item.id
+);
+
+if(!product) return "";
+
+
+const subtotal =
+product.price * item.quantity;
+
+total += subtotal;
+
+totalQuantity +=
+item.quantity;
+
+
+return `
+
+<div class="cart-item">
+
+<div>
+
+<strong>
+${product.name}
+</strong>
+
+<br>
+
+<small>
+${money(product.price)}
+</small>
+
+
+<div class="quantity">
+
+<button
+onclick="changeQuantity(${product.id},-1)">
+−
+</button>
+
+<span>
+${item.quantity}
+</span>
+
+<button
+onclick="changeQuantity(${product.id},1)">
++
+</button>
+
+</div>
+
+</div>
+
+
+<button
+class="remove"
+onclick="removeFromCart(${product.id})">
+
+remover
+
+</button>
+
+</div>
+
+`;
+
+}).join("");
+
+
+count.textContent =
+totalQuantity;
+
+totalElement.textContent =
+money(total);
+
+}
+
+
+/* =====================================================
+   FAVORITES
+===================================================== */
+
+function toggleFavorite(id) {
+
+if(favorites.includes(id)) {
+
+favorites =
+favorites.filter(
+favorite => favorite !== id
+);
+
+showToast("Removido dos favoritos.");
+
+} else {
+
+favorites.push(id);
+
+showToast("Adicionado aos favoritos!");
+
+}
+
+
+localStorage.setItem(
+"nexoraFavorites",
+JSON.stringify(favorites)
+);
+
+renderProducts();
+
+}
+
+
+/* =====================================================
+   PRODUCT MODAL
+===================================================== */
+
+function openProduct(id) {
+
+const product =
+products.find(
+product => product.id === id
+);
+
+if(!product) return;
+
+
+document.getElementById(
+"modalImage"
+).textContent =
+product.icon;
+
+
+document.getElementById(
+"modalTitle"
+).textContent =
+product.name;
+
+
+document.getElementById(
+"modalDescription"
+).textContent =
+product.description;
+
+
+document.getElementById(
+"modalPrice"
+).textContent =
+money(product.price);
+
+
+document.getElementById(
+"modalAdd"
+).onclick =
+function() {
+
+addToCart(product.id);
+
+closeModal();
+
+};
+
+
+document.getElementById(
+"modalOverlay"
+).classList.add("active");
+
+}
+
+
+/* =====================================================
+   CLOSE MODAL
+===================================================== */
+
+function closeModal(event) {
+
+if(
+event &&
+event.target !==
+document.getElementById("modalOverlay")
+) {
+
+return;
+
+}
+
+
+document.getElementById(
+"modalOverlay"
+).classList.remove("active");
+
+}
+
+
+/* =====================================================
+   CART TOGGLE
+===================================================== */
+
+function toggleCart() {
+
+document
+.getElementById("cart")
+.classList
+.toggle("open");
+
+
+document
+.getElementById("cartOverlay")
+.classList
+.toggle("active");
+
+}
+
+
+/* =====================================================
+   MOBILE MENU
+===================================================== */
+
+function toggleMenu() {
+
+document
+.getElementById("nav")
+.classList
+.toggle("active");
+
+}
+
+
+/* =====================================================
+   FREE DOWNLOAD
+===================================================== */
+
+function freeDownload() {
+
+showToast(
+"🎁 O Pack grátis será conectado aqui!"
+);
+
+}
+
+
+/* =====================================================
+   CHECKOUT
+===================================================== */
+
+function checkout() {
+
+if(cart.length === 0) {
+
+showToast(
+"Seu carrinho está vazio."
+);
+
+return;
+
+}
+
+
+/*
+   IMPORTANTE:
+
+   Aqui futuramente vamos conectar
+   um checkout real.
+
+   Nunca coloque chaves secretas
+   de pagamento neste arquivo.
+*/
+
+showToast(
+"Checkout preparado para integração!"
+);
+
+}
+
+
+/* =====================================================
+   NEWSLETTER
+===================================================== */
+
+function subscribe(event) {
+
+event.preventDefault();
+
+
+const email =
+document.getElementById(
+"email"
+).value;
+
+
+if(!email) return;
+
+
+showToast(
+"📧 Cadastro realizado!"
+);
+
+
+document.getElementById(
+"email"
+).value = "";
+
+}
+
+
+/* =====================================================
+   TOAST
+===================================================== */
+
+let toastTimer;
+
+
+function showToast(message) {
+
+const toast =
+document.getElementById("toast");
+
+toast.textContent =
+message;
+
+toast.classList.add("show");
+
+
+clearTimeout(toastTimer);
+
+
+toastTimer =
+setTimeout(() => {
+
+toast.classList.remove("show");
+
+}, 2500);
+
+}
+
+
+/* =====================================================
+   ESC
+===================================================== */
+
+document.addEventListener(
+"keydown",
+event => {
+
+if(event.key === "Escape") {
+
+document
+.getElementById("modalOverlay")
+.classList.remove("active");
+
+}
+
+});
+
+
+/* =====================================================
+   INIT
+===================================================== */
+
+renderProducts();
+
+updateCart();
+
+</script>
+
+</body>
+</html>

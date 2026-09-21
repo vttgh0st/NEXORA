@@ -1,0 +1,4202 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+<title>NEXORA — Create Beyond Limits</title>
+
+<meta name="description"
+content="NEXORA — Design resources for the next generation of creators.">
+
+<style>
+
+/* =========================================================
+   NEXORA // ULTRA STORE
+========================================================= */
+
+:root{
+    --bg:#050507;
+    --bg-soft:#09090d;
+    --surface:#0d0d13;
+    --surface-2:#12121a;
+    --surface-3:#171720;
+
+    --white:#fff;
+    --text:#f5f5f7;
+    --muted:#8b8b98;
+    --muted-2:#5e5e6a;
+
+    --purple:#8b5cf6;
+    --purple-light:#c4b5fd;
+    --pink:#ec4899;
+    --cyan:#22d3ee;
+    --green:#22c55e;
+
+    --border:rgba(255,255,255,.075);
+
+    --radius:22px;
+    --shadow:0 25px 80px rgba(0,0,0,.45);
+}
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    min-height:100vh;
+
+    color:var(--text);
+
+    font-family:
+        Inter,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Arial,
+        sans-serif;
+
+    background:
+        radial-gradient(
+            circle at 50% -15%,
+            rgba(139,92,246,.14),
+            transparent 35%
+        ),
+        var(--bg);
+
+    overflow-x:hidden;
+}
+
+button,
+input{
+    font:inherit;
+}
+
+button{
+    cursor:pointer;
+}
+
+a{
+    color:inherit;
+    text-decoration:none;
+}
+
+::selection{
+    background:rgba(139,92,246,.35);
+    color:white;
+}
+
+::-webkit-scrollbar{
+    width:8px;
+}
+
+::-webkit-scrollbar-track{
+    background:#050507;
+}
+
+::-webkit-scrollbar-thumb{
+    background:#292934;
+    border-radius:99px;
+}
+
+::-webkit-scrollbar-thumb:hover{
+    background:var(--purple);
+}
+
+
+/* =========================================================
+   UTILITY
+========================================================= */
+
+.container{
+    width:min(1240px,92%);
+    margin:auto;
+}
+
+.gradient{
+    background:
+        linear-gradient(
+            90deg,
+            #fff 0%,
+            #ddd6fe 35%,
+            #a78bfa 65%,
+            #f0abfc 100%
+        );
+
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+}
+
+.glass{
+    background:rgba(15,15,22,.72);
+    backdrop-filter:blur(14px);
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.header{
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+
+    z-index:1000;
+
+    height:74px;
+
+    border-bottom:
+        1px solid rgba(255,255,255,.055);
+
+    background:
+        rgba(5,5,7,.76);
+
+    backdrop-filter:blur(18px);
+}
+
+.header-inner{
+    height:100%;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:10px;
+
+    font-size:20px;
+    font-weight:950;
+
+    letter-spacing:3px;
+}
+
+.logo-mark{
+    width:36px;
+    height:36px;
+
+    display:grid;
+    place-items:center;
+
+    border-radius:11px;
+
+    color:white;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--purple),
+            var(--pink)
+        );
+
+    box-shadow:
+        0 0 28px rgba(139,92,246,.28);
+}
+
+.nav{
+    display:flex;
+    align-items:center;
+    gap:28px;
+}
+
+.nav a{
+    color:var(--muted);
+    font-size:13px;
+    transition:.25s;
+}
+
+.nav a:hover{
+    color:white;
+}
+
+.header-actions{
+    display:flex;
+    align-items:center;
+    gap:8px;
+}
+
+.icon-btn{
+    width:42px;
+    height:42px;
+
+    display:grid;
+    place-items:center;
+
+    color:white;
+
+    background:
+        rgba(255,255,255,.035);
+
+    border:
+        1px solid var(--border);
+
+    border-radius:12px;
+
+    transition:.25s;
+}
+
+.icon-btn:hover{
+    border-color:
+        rgba(139,92,246,.65);
+
+    transform:translateY(-2px);
+
+    background:
+        rgba(139,92,246,.09);
+}
+
+.cart-badge{
+    position:absolute;
+
+    min-width:18px;
+    height:18px;
+
+    padding:0 4px;
+
+    display:grid;
+    place-items:center;
+
+    margin:
+        -28px
+        0
+        0
+        24px;
+
+    border-radius:50%;
+
+    color:white;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--purple),
+            var(--pink)
+        );
+
+    font-size:9px;
+    font-weight:900;
+}
+
+.mobile-menu-btn{
+    display:none;
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero{
+    min-height:100vh;
+
+    padding:
+        155px
+        0
+        90px;
+
+    display:flex;
+    align-items:center;
+
+    position:relative;
+
+    overflow:hidden;
+}
+
+.hero-orb{
+    position:absolute;
+
+    width:500px;
+    height:500px;
+
+    left:50%;
+    top:32%;
+
+    transform:
+        translate(-50%,-50%);
+
+    border-radius:50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(139,92,246,.15),
+            transparent 68%
+        );
+
+    pointer-events:none;
+}
+
+.hero-grid{
+    position:absolute;
+
+    inset:0;
+
+    opacity:.08;
+
+    background-image:
+        linear-gradient(
+            rgba(255,255,255,.1) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,.1) 1px,
+            transparent 1px
+        );
+
+    background-size:
+        70px 70px;
+
+    mask-image:
+        linear-gradient(
+            to bottom,
+            black,
+            transparent 75%
+        );
+
+    pointer-events:none;
+}
+
+.hero-content{
+    width:100%;
+
+    position:relative;
+
+    text-align:center;
+}
+
+.status-pill{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+
+    padding:
+        9px
+        14px;
+
+    margin-bottom:27px;
+
+    color:#c4b5fd;
+
+    border:
+        1px solid
+        rgba(139,92,246,.28);
+
+    border-radius:999px;
+
+    background:
+        rgba(139,92,246,.07);
+
+    font-size:11px;
+    font-weight:800;
+
+    letter-spacing:1.5px;
+}
+
+.status-dot{
+    width:7px;
+    height:7px;
+
+    border-radius:50%;
+
+    background:
+        var(--green);
+
+    box-shadow:
+        0 0 14px
+        rgba(34,197,94,.8);
+}
+
+.hero h1{
+    max-width:1050px;
+
+    margin:auto;
+
+    font-size:
+        clamp(
+            58px,
+            10vw,
+            125px
+        );
+
+    line-height:.86;
+
+    letter-spacing:-7px;
+
+    font-weight:950;
+}
+
+.hero-description{
+    max-width:650px;
+
+    margin:
+        32px
+        auto
+        35px;
+
+    color:var(--muted);
+
+    font-size:17px;
+
+    line-height:1.75;
+}
+
+.hero-actions{
+    display:flex;
+    justify-content:center;
+
+    gap:12px;
+
+    flex-wrap:wrap;
+}
+
+.btn{
+    min-height:48px;
+
+    padding:
+        0
+        22px;
+
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+
+    gap:8px;
+
+    border-radius:13px;
+
+    font-weight:850;
+
+    transition:.25s;
+}
+
+.btn-primary{
+    color:white;
+
+    border:0;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--purple),
+            var(--pink)
+        );
+
+    box-shadow:
+        0 14px 40px
+        rgba(139,92,246,.22);
+}
+
+.btn-primary:hover{
+    transform:
+        translateY(-3px)
+        scale(1.015);
+
+    box-shadow:
+        0 18px 50px
+        rgba(139,92,246,.35);
+}
+
+.btn-secondary{
+    color:white;
+
+    border:
+        1px solid var(--border);
+
+    background:
+        rgba(255,255,255,.035);
+}
+
+.btn-secondary:hover{
+    transform:translateY(-3px);
+
+    border-color:
+        rgba(139,92,246,.5);
+}
+
+.hero-mini{
+    margin-top:45px;
+
+    display:flex;
+    justify-content:center;
+
+    gap:22px;
+
+    flex-wrap:wrap;
+
+    color:#686875;
+
+    font-size:12px;
+}
+
+.hero-mini span{
+    display:flex;
+    align-items:center;
+    gap:6px;
+}
+
+
+/* =========================================================
+   TRUST BAR
+========================================================= */
+
+.trust{
+    margin-top:-30px;
+
+    position:relative;
+    z-index:2;
+}
+
+.trust-box{
+    display:grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    border:
+        1px solid var(--border);
+
+    border-radius:20px;
+
+    overflow:hidden;
+
+    background:
+        rgba(11,11,16,.8);
+
+    backdrop-filter:blur(12px);
+}
+
+.trust-item{
+    padding:25px;
+
+    text-align:center;
+
+    border-right:
+        1px solid var(--border);
+}
+
+.trust-item:last-child{
+    border-right:0;
+}
+
+.trust-item strong{
+    display:block;
+
+    margin-bottom:5px;
+
+    font-size:25px;
+}
+
+.trust-item span{
+    color:var(--muted-2);
+
+    font-size:11px;
+}
+
+
+/* =========================================================
+   SECTION
+========================================================= */
+
+.section{
+    padding:
+        105px
+        0;
+}
+
+.section-top{
+    margin-bottom:35px;
+}
+
+.eyebrow{
+    margin-bottom:10px;
+
+    color:
+        var(--purple-light);
+
+    font-size:11px;
+
+    font-weight:900;
+
+    letter-spacing:2px;
+
+    text-transform:uppercase;
+}
+
+.section-title{
+    font-size:
+        clamp(
+            34px,
+            5vw,
+            52px
+        );
+
+    letter-spacing:-2.5px;
+
+    line-height:1;
+}
+
+.section-description{
+    margin-top:10px;
+
+    color:var(--muted);
+
+    line-height:1.6;
+}
+
+
+/* =========================================================
+   FEATURED PRODUCTS
+========================================================= */
+
+.featured-grid{
+    display:grid;
+
+    grid-template-columns:
+        1.35fr
+        .65fr;
+
+    gap:18px;
+}
+
+.feature{
+    position:relative;
+
+    min-height:430px;
+
+    overflow:hidden;
+
+    border:
+        1px solid var(--border);
+
+    border-radius:
+        var(--radius);
+
+    background:
+        linear-gradient(
+            145deg,
+            #15151e,
+            #08080c
+        );
+
+    transition:.3s;
+}
+
+.feature:hover{
+    border-color:
+        rgba(139,92,246,.35);
+
+    transform:translateY(-4px);
+}
+
+.feature-art{
+    position:absolute;
+
+    inset:0;
+
+    display:grid;
+    place-items:center;
+
+    font-size:120px;
+
+    background:
+        radial-gradient(
+            circle at 50% 38%,
+            rgba(139,92,246,.25),
+            transparent 55%
+        );
+
+    opacity:.9;
+}
+
+.feature-art::after{
+    content:"";
+
+    position:absolute;
+
+    width:180px;
+    height:180px;
+
+    border-radius:50%;
+
+    border:
+        1px solid
+        rgba(167,139,250,.14);
+}
+
+.feature-content{
+    position:absolute;
+
+    left:30px;
+    right:30px;
+    bottom:30px;
+
+    z-index:2;
+}
+
+.feature-label{
+    display:inline-flex;
+
+    padding:
+        6px
+        10px;
+
+    margin-bottom:10px;
+
+    border-radius:8px;
+
+    color:#ddd6fe;
+
+    background:
+        rgba(139,92,246,.13);
+
+    font-size:9px;
+    font-weight:900;
+
+    letter-spacing:1.2px;
+}
+
+.feature h3{
+    margin-bottom:8px;
+
+    font-size:34px;
+
+    letter-spacing:-1.5px;
+}
+
+.feature p{
+    max-width:550px;
+
+    color:#858592;
+
+    line-height:1.55;
+}
+
+.feature-stack{
+    display:grid;
+
+    gap:18px;
+}
+
+.feature-small{
+    min-height:206px;
+}
+
+
+/* =========================================================
+   SHOP
+========================================================= */
+
+.shop-tools{
+    display:flex;
+
+    gap:10px;
+
+    flex-wrap:wrap;
+
+    margin-bottom:24px;
+}
+
+.search{
+    flex:1;
+
+    min-width:240px;
+
+    position:relative;
+}
+
+.search input{
+    width:100%;
+
+    height:48px;
+
+    padding:
+        0
+        16px
+        0
+        45px;
+
+    color:white;
+
+    outline:none;
+
+    border:
+        1px solid var(--border);
+
+    border-radius:13px;
+
+    background:
+        rgba(255,255,255,.025);
+}
+
+.search input:focus{
+    border-color:
+        rgba(139,92,246,.7);
+
+    box-shadow:
+        0 0 0 3px
+        rgba(139,92,246,.06);
+}
+
+.search-icon{
+    position:absolute;
+
+    left:16px;
+    top:14px;
+
+    color:#666673;
+}
+
+.categories{
+    display:flex;
+
+    gap:7px;
+
+    overflow:auto;
+}
+
+.category{
+    height:48px;
+
+    padding:
+        0
+        16px;
+
+    white-space:nowrap;
+
+    border:
+        1px solid var(--border);
+
+    border-radius:12px;
+
+    color:#7f7f8b;
+
+    background:#0c0c11;
+
+    transition:.2s;
+}
+
+.category:hover,
+.category.active{
+    color:white;
+
+    border-color:
+        rgba(139,92,246,.55);
+
+    background:
+        rgba(139,92,246,.09);
+}
+
+
+/* =========================================================
+   PRODUCT GRID
+========================================================= */
+
+.products{
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:18px;
+}
+
+.product{
+    position:relative;
+
+    overflow:hidden;
+
+    border:
+        1px solid var(--border);
+
+    border-radius:
+        var(--radius);
+
+    background:
+        linear-gradient(
+            145deg,
+            #111119,
+            #09090d
+        );
+
+    transition:.3s;
+}
+
+.product:hover{
+    transform:
+        translateY(-6px);
+
+    border-color:
+        rgba(255,255,255,.14);
+
+    box-shadow:
+        var(--shadow);
+}
+
+.product-image{
+    height:225px;
+
+    display:grid;
+    place-items:center;
+
+    position:relative;
+
+    cursor:pointer;
+
+    font-size:76px;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(139,92,246,.19),
+            transparent 65%
+        ),
+        #0d0d13;
+
+    border-bottom:
+        1px solid var(--border);
+}
+
+.product-image::after{
+    content:"VER PRODUTO";
+
+    position:absolute;
+
+    left:50%;
+    top:50%;
+
+    transform:
+        translate(-50%,20px);
+
+    padding:
+        8px
+        12px;
+
+    border-radius:9px;
+
+    color:white;
+
+    background:
+        rgba(0,0,0,.7);
+
+    border:
+        1px solid rgba(255,255,255,.1);
+
+    opacity:0;
+
+    font-size:9px;
+    font-weight:900;
+
+    letter-spacing:1px;
+
+    transition:.25s;
+}
+
+.product:hover
+.product-image::after{
+    opacity:1;
+
+    transform:
+        translate(-50%,-50%);
+}
+
+.product-body{
+    padding:20px;
+}
+
+.product-tag{
+    margin-bottom:8px;
+
+    color:#777783;
+
+    font-size:9px;
+
+    font-weight:900;
+
+    text-transform:uppercase;
+
+    letter-spacing:1.5px;
+}
+
+.product-name{
+    margin-bottom:7px;
+
+    font-size:19px;
+
+    letter-spacing:-.4px;
+}
+
+.product-description{
+    min-height:39px;
+
+    color:#747480;
+
+    font-size:13px;
+
+    line-height:1.5;
+}
+
+.product-bottom{
+    margin-top:19px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.price{
+    font-size:20px;
+    font-weight:950;
+}
+
+.actions{
+    display:flex;
+    gap:6px;
+}
+
+.action{
+    width:38px;
+    height:38px;
+
+    display:grid;
+    place-items:center;
+
+    border:
+        1px solid var(--border);
+
+    border-radius:10px;
+
+    color:white;
+
+    background:#15151d;
+
+    transition:.2s;
+}
+
+.action:hover{
+    border-color:
+        var(--purple);
+}
+
+.action.favorite.active{
+    color:#fb7185;
+
+    border-color:#fb7185;
+}
+
+
+/* =========================================================
+   FREE CTA
+========================================================= */
+
+.free-section{
+    position:relative;
+
+    overflow:hidden;
+
+    padding:
+        75px
+        30px;
+
+    text-align:center;
+
+    border:
+        1px solid
+        rgba(139,92,246,.25);
+
+    border-radius:
+        28px;
+
+    background:
+        radial-gradient(
+            circle at 50% 0%,
+            rgba(139,92,246,.16),
+            transparent 55%
+        ),
+        #0a0a10;
+}
+
+.free-section::before{
+    content:"";
+
+    position:absolute;
+
+    width:300px;
+    height:300px;
+
+    left:-120px;
+    bottom:-150px;
+
+    border-radius:50%;
+
+    background:
+        rgba(236,72,153,.08);
+
+    filter:blur(40px);
+}
+
+.free-section h2{
+    position:relative;
+
+    font-size:
+        clamp(
+            32px,
+            5vw,
+            55px
+        );
+
+    letter-spacing:-2.5px;
+}
+
+.free-section p{
+    position:relative;
+
+    max-width:580px;
+
+    margin:
+        14px
+        auto
+        25px;
+
+    color:#858592;
+
+    line-height:1.7;
+}
+
+
+/* =========================================================
+   BENEFITS
+========================================================= */
+
+.benefits{
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:16px;
+}
+
+.benefit{
+    padding:28px;
+
+    border:
+        1px solid var(--border);
+
+    border-radius:
+        var(--radius);
+
+    background:
+        rgba(255,255,255,.02);
+}
+
+.benefit-icon{
+    width:45px;
+    height:45px;
+
+    display:grid;
+    place-items:center;
+
+    margin-bottom:18px;
+
+    border-radius:13px;
+
+    background:
+        rgba(139,92,246,.1);
+
+    border:
+        1px solid
+        rgba(139,92,246,.18);
+}
+
+.benefit h3{
+    margin-bottom:8px;
+
+    font-size:18px;
+}
+
+.benefit p{
+    color:#70707c;
+
+    font-size:13px;
+
+    line-height:1.6;
+}
+
+
+/* =========================================================
+   FAQ
+========================================================= */
+
+.faq{
+    max-width:850px;
+    margin:auto;
+}
+
+.faq-item{
+    border-bottom:
+        1px solid var(--border);
+}
+
+.faq-question{
+    width:100%;
+
+    display:flex;
+    justify-content:space-between;
+
+    padding:
+        22px
+        0;
+
+    color:white;
+
+    background:none;
+
+    border:0;
+
+    text-align:left;
+
+    font-weight:750;
+}
+
+.faq-answer{
+    max-height:0;
+
+    overflow:hidden;
+
+    color:#73737f;
+
+    line-height:1.7;
+
+    transition:
+        max-height .25s ease;
+}
+
+.faq-item.open
+.faq-answer{
+    max-height:200px;
+
+    padding-bottom:22px;
+}
+
+.faq-plus{
+    color:#777783;
+
+    transition:.2s;
+}
+
+.faq-item.open
+.faq-plus{
+    transform:rotate(45deg);
+
+    color:var(--purple-light);
+}
+
+
+/* =========================================================
+   NEWSLETTER
+========================================================= */
+
+.newsletter{
+    display:flex;
+
+    align-items:center;
+    justify-content:space-between;
+
+    gap:30px;
+
+    padding:42px;
+
+    border:
+        1px solid var(--border);
+
+    border-radius:
+        var(--radius);
+
+    background:
+        #0b0b10;
+}
+
+.newsletter h2{
+    margin-bottom:7px;
+
+    font-size:29px;
+}
+
+.newsletter p{
+    color:#70707c;
+}
+
+.newsletter-form{
+    display:flex;
+
+    gap:8px;
+
+    min-width:390px;
+}
+
+.newsletter-form input{
+    flex:1;
+
+    min-width:0;
+
+    height:48px;
+
+    padding:
+        0
+        14px;
+
+    color:white;
+
+    outline:none;
+
+    border:
+        1px solid var(--border);
+
+    border-radius:12px;
+
+    background:#111119;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.footer{
+    margin-top:70px;
+
+    padding:
+        65px
+        0
+        25px;
+
+    border-top:
+        1px solid var(--border);
+
+    background:#030304;
+}
+
+.footer-grid{
+    display:grid;
+
+    grid-template-columns:
+        2fr
+        1fr
+        1fr
+        1fr;
+
+    gap:40px;
+}
+
+.footer-brand p{
+    max-width:330px;
+
+    margin-top:15px;
+
+    color:#5f5f6b;
+
+    line-height:1.7;
+}
+
+.footer h4{
+    margin-bottom:15px;
+}
+
+.footer a{
+    display:block;
+
+    margin:
+        9px
+        0;
+
+    color:#60606b;
+
+    font-size:13px;
+}
+
+.footer a:hover{
+    color:white;
+}
+
+.footer-bottom{
+    display:flex;
+
+    justify-content:space-between;
+
+    margin-top:50px;
+
+    padding-top:20px;
+
+    border-top:
+        1px solid #14141a;
+
+    color:#4f4f59;
+
+    font-size:11px;
+}
+
+
+/* =========================================================
+   CART
+========================================================= */
+
+.overlay{
+    position:fixed;
+
+    inset:0;
+
+    z-index:2000;
+
+    opacity:0;
+
+    pointer-events:none;
+
+    background:
+        rgba(0,0,0,.7);
+
+    transition:.25s;
+}
+
+.overlay.active{
+    opacity:1;
+
+    pointer-events:auto;
+}
+
+.cart{
+    position:fixed;
+
+    top:0;
+    right:-460px;
+
+    z-index:2100;
+
+    width:
+        min(
+            460px,
+            100%
+        );
+
+    height:100vh;
+
+    display:flex;
+    flex-direction:column;
+
+    background:#09090e;
+
+    border-left:
+        1px solid var(--border);
+
+    box-shadow:
+        -30px
+        0
+        80px
+        rgba(0,0,0,.55);
+
+    transition:.3s;
+}
+
+.cart.active{
+    right:0;
+}
+
+.cart-header{
+    height:75px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    padding:
+        0
+        20px;
+
+    border-bottom:
+        1px solid var(--border);
+}
+
+.cart-items{
+    flex:1;
+
+    overflow:auto;
+
+    padding:20px;
+}
+
+.empty-cart{
+    padding:
+        80px
+        20px;
+
+    text-align:center;
+
+    color:#656570;
+}
+
+.empty-cart-icon{
+    margin-bottom:15px;
+
+    font-size:55px;
+}
+
+.empty-cart h3{
+    margin-bottom:7px;
+
+    color:white;
+}
+
+.cart-item{
+    display:grid;
+
+    grid-template-columns:
+        58px
+        1fr
+        auto;
+
+    gap:12px;
+
+    padding:
+        13px
+        0;
+
+    border-bottom:
+        1px solid #17171e;
+}
+
+.cart-thumb{
+    width:58px;
+    height:58px;
+
+    display:grid;
+    place-items:center;
+
+    border-radius:12px;
+
+    background:#15151d;
+
+    font-size:24px;
+}
+
+.cart-info strong{
+    display:block;
+
+    margin-bottom:5px;
+
+    font-size:13px;
+}
+
+.cart-info span{
+    color:#747480;
+
+    font-size:11px;
+}
+
+.quantity{
+    display:flex;
+
+    align-items:center;
+
+    gap:6px;
+
+    margin-top:8px;
+}
+
+.quantity button{
+    width:25px;
+    height:25px;
+
+    border:
+        1px solid #292933;
+
+    border-radius:7px;
+
+    color:white;
+
+    background:#16161e;
+}
+
+.cart-price{
+    text-align:right;
+}
+
+.cart-price strong{
+    display:block;
+
+    font-size:13px;
+}
+
+.remove{
+    margin-top:5px;
+
+    border:0;
+
+    color:#686874;
+
+    background:none;
+
+    font-size:10px;
+}
+
+.remove:hover{
+    color:#fb7185;
+}
+
+.cart-footer{
+    padding:20px;
+
+    border-top:
+        1px solid var(--border);
+}
+
+.cart-total{
+    display:flex;
+
+    justify-content:space-between;
+
+    margin-bottom:15px;
+
+    font-size:20px;
+    font-weight:900;
+}
+
+.checkout{
+    width:100%;
+
+    height:50px;
+
+    border:0;
+
+    border-radius:13px;
+
+    color:white;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--purple),
+            var(--pink)
+        );
+
+    font-weight:900;
+}
+
+
+/* =========================================================
+   MODAL
+========================================================= */
+
+.modal{
+    position:fixed;
+
+    inset:0;
+
+    z-index:3000;
+
+    display:none;
+
+    place-items:center;
+
+    padding:20px;
+
+    background:
+        rgba(0,0,0,.8);
+
+    backdrop-filter:blur(8px);
+}
+
+.modal.active{
+    display:grid;
+}
+
+.modal-box{
+    width:
+        min(
+            720px,
+            100%
+        );
+
+    max-height:90vh;
+
+    overflow:auto;
+
+    position:relative;
+
+    padding:28px;
+
+    border:
+        1px solid var(--border);
+
+    border-radius:
+        24px;
+
+    background:
+        #0b0b10;
+
+    box-shadow:
+        0
+        35px
+        100px
+        rgba(0,0,0,.6);
+}
+
+.modal-close{
+    position:absolute;
+
+    top:14px;
+    right:14px;
+
+    width:38px;
+    height:38px;
+
+    border:
+        1px solid var(--border);
+
+    border-radius:10px;
+
+    color:white;
+
+    background:#15151d;
+}
+
+.modal-art{
+    height:270px;
+
+    display:grid;
+    place-items:center;
+
+    margin-bottom:24px;
+
+    border-radius:16px;
+
+    font-size:100px;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(139,92,246,.23),
+            transparent 65%
+        ),
+        #111119;
+}
+
+.modal-box h2{
+    margin-bottom:10px;
+
+    font-size:33px;
+
+    letter-spacing:-1px;
+}
+
+.modal-box p{
+    margin-bottom:20px;
+
+    color:#81818d;
+
+    line-height:1.7;
+}
+
+.modal-price{
+    margin-bottom:20px;
+
+    font-size:26px;
+    font-weight:950;
+}
+
+
+/* =========================================================
+   TOAST
+========================================================= */
+
+.toasts{
+    position:fixed;
+
+    right:20px;
+    bottom:20px;
+
+    z-index:5000;
+
+    display:flex;
+    flex-direction:column;
+
+    gap:8px;
+}
+
+.toast{
+    min-width:250px;
+
+    padding:
+        14px
+        17px;
+
+    border:
+        1px solid #292934;
+
+    border-radius:12px;
+
+    color:white;
+
+    background:#15151d;
+
+    box-shadow:
+        0
+        20px
+        50px
+        rgba(0,0,0,.45);
+
+    animation:
+        toastIn .25s ease;
+}
+
+@keyframes toastIn{
+    from{
+        opacity:0;
+        transform:translateY(15px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media(max-width:900px){
+
+    .nav{
+        display:none;
+    }
+
+    .mobile-menu-btn{
+        display:grid;
+    }
+
+    .featured-grid{
+        grid-template-columns:1fr;
+    }
+
+    .products{
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+    .trust-box{
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+    .trust-item{
+        border-bottom:
+            1px solid var(--border);
+    }
+
+    .trust-item:nth-child(2){
+        border-right:0;
+    }
+
+    .benefits{
+        grid-template-columns:1fr;
+    }
+
+    .newsletter{
+        flex-direction:column;
+
+        align-items:stretch;
+    }
+
+    .newsletter-form{
+        min-width:0;
+    }
+
+    .footer-grid{
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+}
+
+@media(max-width:600px){
+
+    .container{
+        width:min(94%,1240px);
+    }
+
+    .header{
+        height:68px;
+    }
+
+    .hero{
+        padding-top:125px;
+    }
+
+    .hero h1{
+        letter-spacing:-4px;
+    }
+
+    .hero-description{
+        font-size:15px;
+    }
+
+    .hero-mini{
+        gap:12px;
+    }
+
+    .trust{
+        margin-top:0;
+    }
+
+    .trust-box{
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+    .trust-item{
+        padding:20px 10px;
+    }
+
+    .section{
+        padding:
+            75px
+            0;
+    }
+
+    .products{
+        grid-template-columns:1fr;
+    }
+
+    .feature{
+        min-height:360px;
+    }
+
+    .feature-small{
+        min-height:190px;
+    }
+
+    .newsletter{
+        padding:28px 20px;
+    }
+
+    .newsletter-form{
+        flex-direction:column;
+    }
+
+    .footer-grid{
+        grid-template-columns:1fr;
+    }
+
+    .footer-bottom{
+        flex-direction:column;
+
+        gap:10px;
+    }
+
+    .modal-box{
+        padding:20px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
+<header class="header">
+
+<div class="container header-inner">
+
+<a
+    href="#inicio"
+    class="logo">
+
+<span class="logo-mark">
+N
+</span>
+
+NEXORA
+
+</a>
+
+
+<nav class="nav">
+
+<a href="#inicio">
+Início
+</a>
+
+<a href="#destaques">
+Destaques
+</a>
+
+<a href="#loja">
+Loja
+</a>
+
+<a href="#beneficios">
+Benefícios
+</a>
+
+<a href="#faq">
+FAQ
+</a>
+
+</nav>
+
+
+<div class="header-actions">
+
+<button
+    class="icon-btn mobile-menu-btn"
+    onclick="toggleMobileMenu()">
+
+☰
+
+</button>
+
+
+<button
+    class="icon-btn"
+    onclick="goToShop()">
+
+⌕
+
+</button>
+
+
+<button
+    class="icon-btn"
+    onclick="toggleCart()"
+    style="position:relative">
+
+🛒
+
+<span
+    id="cartBadge"
+    class="cart-badge">
+
+0
+
+</span>
+
+</button>
+
+</div>
+
+</div>
+
+</header>
+
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<section
+    id="inicio"
+    class="hero">
+
+<div class="hero-grid"></div>
+
+<div class="hero-orb"></div>
+
+
+<div class="container">
+
+<div class="hero-content">
+
+
+<div class="status-pill">
+
+<span class="status-dot"></span>
+
+NEXORA DIGITAL STORE
+
+</div>
+
+
+<h1>
+
+CREATE
+
+<br>
+
+<span class="gradient">
+BEYOND
+</span>
+
+<br>
+
+LIMITS.
+
+</h1>
+
+
+<p class="hero-description">
+
+Recursos digitais para criadores que
+querem transformar ideias comuns em
+conteúdo com identidade.
+
+</p>
+
+
+<div class="hero-actions">
+
+<button
+    class="btn btn-primary"
+    onclick="goToShop()">
+
+Explorar produtos
+
+<span>→</span>
+
+</button>
+
+
+<button
+    class="btn btn-secondary"
+    onclick="freePack()">
+
+🎁 Pack grátis
+
+</button>
+
+</div>
+
+
+<div class="hero-mini">
+
+<span>
+✓ Produtos digitais
+</span>
+
+<span>
+✓ Acesso rápido
+</span>
+
+<span>
+✓ Criado para creators
+</span>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     TRUST
+===================================================== -->
+
+<section class="trust">
+
+<div class="container">
+
+<div class="trust-box">
+
+<div class="trust-item">
+
+<strong>
+100%
+</strong>
+
+<span>
+Digital
+</span>
+
+</div>
+
+
+<div class="trust-item">
+
+<strong>
+24/7
+</strong>
+
+<span>
+Disponível
+</span>
+
+</div>
+
+
+<div class="trust-item">
+
+<strong>
+∞
+</strong>
+
+<span>
+Criatividade
+</span>
+
+</div>
+
+
+<div class="trust-item">
+
+<strong>
+2026
+</strong>
+
+<span>
+NEXORA
+</span>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     DESTAQUES
+===================================================== -->
+
+<section
+    id="destaques"
+    class="section">
+
+<div class="container">
+
+
+<div class="section-top">
+
+<div class="eyebrow">
+DESTAQUES
+</div>
+
+<h2 class="section-title">
+Feito para quem quer <span class="gradient">criar.</span>
+</h2>
+
+<p class="section-description">
+Recursos selecionados para acelerar seus projetos.
+</p>
+
+</div>
+
+
+<div class="featured-grid">
+
+
+<div class="feature">
+
+<div class="feature-art">
+🚀
+</div>
+
+<div class="feature-content">
+
+<span class="feature-label">
+ULTIMATE
+</span>
+
+<h3>
+Ultimate Creator Pack
+</h3>
+
+<p>
+O pacote completo para começar
+sua jornada criativa.
+</p>
+
+<br>
+
+<button
+    class="btn btn-primary"
+    onclick="openProduct(6)">
+
+Ver produto →
+
+</button>
+
+</div>
+
+</div>
+
+
+<div class="feature-stack">
+
+
+<div class="feature feature-small">
+
+<div class="feature-art">
+🎨
+</div>
+
+<div class="feature-content">
+
+<span class="feature-label">
+CREATORS
+</span>
+
+<h3>
+Creator Pack
+</h3>
+
+<p>
+Recursos para conteúdo social.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="feature feature-small">
+
+<div class="feature-art">
+🌑
+</div>
+
+<div class="feature-content">
+
+<span class="feature-label">
+DARK
+</span>
+
+<h3>
+Wallpaper Pack
+</h3>
+
+<p>
+Sua tela. Sua identidade.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     LOJA
+===================================================== -->
+
+<section
+    id="loja"
+    class="section">
+
+<div class="container">
+
+
+<div class="section-top">
+
+<div class="eyebrow">
+NEXORA STORE
+</div>
+
+<h2 class="section-title">
+Escolha seu próximo recurso.
+</h2>
+
+<p class="section-description">
+Pesquise, explore e monte seu kit.
+</p>
+
+</div>
+
+
+<div class="shop-tools">
+
+
+<div class="search">
+
+<span class="search-icon">
+⌕
+</span>
+
+<input
+    id="search"
+    type="text"
+    placeholder="Pesquisar produtos..."
+    oninput="renderProducts()">
+
+</div>
+
+
+<div class="categories">
+
+<button
+    class="category active"
+    onclick="setCategory('all',this)">
+Todos
+</button>
+
+<button
+    class="category"
+    onclick="setCategory('social',this)">
+Social
+</button>
+
+<button
+    class="category"
+    onclick="setCategory('youtube',this)">
+YouTube
+</button>
+
+<button
+    class="category"
+    onclick="setCategory('wallpapers',this)">
+Wallpapers
+</button>
+
+<button
+    class="category"
+    onclick="setCategory('branding',this)">
+Branding
+</button>
+
+</div>
+
+</div>
+
+
+<div
+    id="products"
+    class="products">
+</div>
+
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     FREE
+===================================================== -->
+
+<section
+    id="gratis"
+    class="section">
+
+<div class="container">
+
+<div class="free-section">
+
+<div class="eyebrow">
+COMECE GRÁTIS
+</div>
+
+<h2>
+Experimente a NEXORA.
+</h2>
+
+<p>
+Antes de comprar qualquer pack,
+você pode conhecer o estilo da NEXORA
+com um recurso gratuito.
+</p>
+
+<button
+    class="btn btn-primary"
+    onclick="freePack()">
+
+🎁 Baixar Pack Grátis
+
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     BENEFÍCIOS
+===================================================== -->
+
+<section
+    id="beneficios"
+    class="section">
+
+<div class="container">
+
+
+<div class="section-top">
+
+<div class="eyebrow">
+POR QUE NEXORA?
+</div>
+
+<h2 class="section-title">
+Menos complicação.<br>
+Mais criação.
+</h2>
+
+</div>
+
+
+<div class="benefits">
+
+
+<div class="benefit">
+
+<div class="benefit-icon">
+⚡
+</div>
+
+<h3>
+Rápido
+</h3>
+
+<p>
+Encontre recursos sem passar horas
+procurando por arquivos espalhados.
+</p>
+
+</div>
+
+
+<div class="benefit">
+
+<div class="benefit-icon">
+🎨
+</div>
+
+<h3>
+Visual
+</h3>
+
+<p>
+Recursos pensados para projetos
+modernos e criativos.
+</p>
+
+</div>
+
+
+<div class="benefit">
+
+<div class="benefit-icon">
+📦
+</div>
+
+<h3>
+Digital
+</h3>
+
+<p>
+Produtos digitais que podem ser
+entregues sem complicação.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     FAQ
+===================================================== -->
+
+<section
+    id="faq"
+    class="section">
+
+<div class="container">
+
+
+<div class="section-top">
+
+<div class="eyebrow">
+FAQ
+</div>
+
+<h2 class="section-title">
+Perguntas frequentes.
+</h2>
+
+</div>
+
+
+<div class="faq">
+
+
+<div class="faq-item">
+
+<button
+    class="faq-question"
+    onclick="toggleFaq(this)">
+
+<span>
+O que a NEXORA vende?
+</span>
+
+<span class="faq-plus">
++
+</span>
+
+</button>
+
+<div class="faq-answer">
+
+A NEXORA é planejada como uma loja de
+produtos digitais, como templates, packs,
+wallpapers e recursos para criadores.
+
+</div>
+
+</div>
+
+
+<div class="faq-item">
+
+<button
+    class="faq-question"
+    onclick="toggleFaq(this)">
+
+<span>
+Os produtos são digitais?
+</span>
+
+<span class="faq-plus">
++
+</span>
+
+</button>
+
+<div class="faq-answer">
+
+Sim. A proposta da loja é trabalhar com
+arquivos e recursos digitais.
+
+</div>
+
+</div>
+
+
+<div class="faq-item">
+
+<button
+    class="faq-question"
+    onclick="toggleFaq(this)">
+
+<span>
+Como vou receber um produto?
+</span>
+
+<span class="faq-plus">
++
+</span>
+
+</button>
+
+<div class="faq-answer">
+
+A área de checkout será conectada posteriormente
+a um sistema de pagamento e entrega digital.
+
+</div>
+
+</div>
+
+
+<div class="faq-item">
+
+<button
+    class="faq-question"
+    onclick="toggleFaq(this)">
+
+<span>
+Posso usar os produtos nos meus projetos?
+</span>
+
+<span class="faq-plus">
++
+</span>
+
+</button>
+
+<div class="faq-answer">
+
+Cada produto deverá possuir sua própria licença
+e regras de utilização. Essas informações serão
+mostradas na página do produto.
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     NEWSLETTER
+===================================================== -->
+
+<section class="section">
+
+<div class="container">
+
+<div class="newsletter">
+
+
+<div>
+
+<h2>
+Entre para a NEXORA.
+</h2>
+
+<p>
+Novos recursos e novidades diretamente no seu email.
+</p>
+
+</div>
+
+
+<form
+    class="newsletter-form"
+    onsubmit="subscribe(event)">
+
+<input
+    id="email"
+    type="email"
+    placeholder="seu@email.com"
+    required>
+
+<button
+    class="btn btn-primary">
+
+Entrar
+
+</button>
+
+</form>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer class="footer">
+
+<div class="container">
+
+
+<div class="footer-grid">
+
+
+<div class="footer-brand">
+
+<div class="logo">
+
+<span class="logo-mark">
+N
+</span>
+
+NEXORA
+
+</div>
+
+<p>
+Digital resources for the next generation
+of creators.
+</p>
+
+</div>
+
+
+<div>
+
+<h4>
+Loja
+</h4>
+
+<a href="#loja">
+Produtos
+</a>
+
+<a href="#destaques">
+Destaques
+</a>
+
+<a href="#gratis">
+Pack grátis
+</a>
+
+</div>
+
+
+<div>
+
+<h4>
+NEXORA
+</h4>
+
+<a href="#beneficios">
+Benefícios
+</a>
+
+<a href="#faq">
+FAQ
+</a>
+
+<a href="#">
+Contato
+</a>
+
+</div>
+
+
+<div>
+
+<h4>
+Social
+</h4>
+
+<a href="#">
+Instagram
+</a>
+
+<a href="#">
+TikTok
+</a>
+
+<a href="#">
+YouTube
+</a>
+
+<a href="#">
+Discord
+</a>
+
+</div>
+
+
+</div>
+
+
+<div class="footer-bottom">
+
+<span>
+© 2026 NEXORA
+</span>
+
+<span>
+CREATE BEYOND LIMITS.
+</span>
+
+</div>
+
+</div>
+
+</footer>
+
+
+<!-- =====================================================
+     OVERLAY
+===================================================== -->
+
+<div
+    id="overlay"
+    class="overlay"
+    onclick="toggleCart()">
+</div>
+
+
+<!-- =====================================================
+     CART
+===================================================== -->
+
+<aside
+    id="cart"
+    class="cart">
+
+
+<div class="cart-header">
+
+<h2>
+Seu carrinho
+</h2>
+
+<button
+    class="icon-btn"
+    onclick="toggleCart()">
+
+✕
+
+</button>
+
+</div>
+
+
+<div
+    id="cartItems"
+    class="cart-items">
+</div>
+
+
+<div class="cart-footer">
+
+<div class="cart-total">
+
+<span>
+Total
+</span>
+
+<span id="cartTotal">
+R$ 0,00
+</span>
+
+</div>
+
+
+<button
+    class="checkout"
+    onclick="checkout()">
+
+Continuar para pagamento →
+
+</button>
+
+</div>
+
+</aside>
+
+
+<!-- =====================================================
+     MODAL
+===================================================== -->
+
+<div
+    id="modal"
+    class="modal"
+    onclick="modalOutside(event)">
+
+
+<div class="modal-box">
+
+
+<button
+    class="modal-close"
+    onclick="closeModal()">
+
+✕
+
+</button>
+
+
+<div
+    id="modalArt"
+    class="modal-art">
+</div>
+
+
+<h2
+    id="modalTitle">
+Produto
+</h2>
+
+
+<p
+    id="modalDescription">
+Descrição
+</p>
+
+
+<div
+    id="modalPrice"
+    class="modal-price">
+R$ 0,00
+</div>
+
+
+<button
+    id="modalAdd"
+    class="btn btn-primary"
+    style="width:100%">
+
+Adicionar ao carrinho
+
+</button>
+
+</div>
+
+</div>
+
+
+<!-- =====================================================
+     TOAST
+===================================================== -->
+
+<div
+    id="toasts"
+    class="toasts">
+</div>
+
+
+<script>
+
+/* =========================================================
+   PRODUTOS
+========================================================= */
+
+const products = [
+
+{
+    id:1,
+    name:"Creator Pack",
+    category:"social",
+    tag:"Social Media",
+    price:19.90,
+    icon:"🎨",
+    description:
+    "Pack visual para criadores que querem deixar seu conteúdo mais consistente."
+},
+
+{
+    id:2,
+    name:"Social Media Pack",
+    category:"social",
+    tag:"Social",
+    price:14.90,
+    icon:"📱",
+    description:
+    "Recursos para posts, stories e conteúdo para redes sociais."
+},
+
+{
+    id:3,
+    name:"Thumbnail Pack",
+    category:"youtube",
+    tag:"YouTube",
+    price:12.90,
+    icon:"🖼️",
+    description:
+    "Recursos para criar thumbnails com presença visual."
+},
+
+{
+    id:4,
+    name:"Wallpaper Pack",
+    category:"wallpapers",
+    tag:"Wallpapers",
+    price:9.90,
+    icon:"🌑",
+    description:
+    "Wallpapers dark e modernos para sua área de trabalho."
+},
+
+{
+    id:5,
+    name:"Brand Kit",
+    category:"branding",
+    tag:"Branding",
+    price:29.90,
+    icon:"✨",
+    description:
+    "Elementos para criar uma identidade visual consistente."
+},
+
+{
+    id:6,
+    name:"Ultimate Creator Pack",
+    category:"branding",
+    tag:"Ultimate",
+    price:39.90,
+    icon:"🚀",
+    description:
+    "Um pacote completo para criadores que querem elevar seus projetos."
+},
+
+{
+    id:7,
+    name:"Reels Template Pack",
+    category:"social",
+    tag:"Reels",
+    price:17.90,
+    icon:"🎬",
+    description:
+    "Templates para vídeos curtos, Reels, Shorts e TikTok."
+},
+
+{
+    id:8,
+    name:"Dark UI Pack",
+    category:"branding",
+    tag:"UI Design",
+    price:16.90,
+    icon:"🖥️",
+    description:
+    "Elementos visuais para interfaces modernas em estilo dark."
+},
+
+{
+    id:9,
+    name:"Streamer Pack",
+    category:"youtube",
+    tag:"Streaming",
+    price:24.90,
+    icon:"🎮",
+    description:
+    "Recursos visuais para streamers e criadores de conteúdo gamer."
+}
+
+];
+
+
+/* =========================================================
+   STATE
+========================================================= */
+
+let cart =
+    JSON.parse(
+        localStorage.getItem(
+            "nexoraCart"
+        )
+    ) || [];
+
+
+let favorites =
+    JSON.parse(
+        localStorage.getItem(
+            "nexoraFavorites"
+        )
+    ) || [];
+
+
+let currentCategory =
+    "all";
+
+
+/* =========================================================
+   MONEY
+========================================================= */
+
+function money(value){
+
+    return value.toLocaleString(
+        "pt-BR",
+        {
+            style:"currency",
+            currency:"BRL"
+        }
+    );
+
+}
+
+
+/* =========================================================
+   RENDER PRODUCTS
+========================================================= */
+
+function renderProducts(){
+
+    const container =
+        document.getElementById(
+            "products"
+        );
+
+    const input =
+        document.getElementById(
+            "search"
+        );
+
+    const search =
+        input.value
+        .trim()
+        .toLowerCase();
+
+
+    const filtered =
+        products.filter(
+            product => {
+
+                const searchable =
+                    (
+                        product.name +
+                        " " +
+                        product.tag +
+                        " " +
+                        product.description
+                    )
+                    .toLowerCase();
+
+
+                const searchMatch =
+                    searchable.includes(
+                        search
+                    );
+
+
+                const categoryMatch =
+                    currentCategory === "all"
+                    ||
+                    product.category ===
+                    currentCategory;
+
+
+                return (
+                    searchMatch &&
+                    categoryMatch
+                );
+
+            }
+        );
+
+
+    if(!filtered.length){
+
+        container.innerHTML = `
+
+        <div style="
+            grid-column:1/-1;
+            text-align:center;
+            padding:80px 20px;
+            color:#666;
+        ">
+
+            <div style="font-size:50px">
+                🔎
+            </div>
+
+            <h3 style="
+                color:white;
+                margin:15px 0 8px;
+            ">
+                Nenhum resultado
+            </h3>
+
+            <p>
+                Tente pesquisar outro termo.
+            </p>
+
+        </div>
+
+        `;
+
+        return;
+    }
+
+
+    container.innerHTML =
+        filtered.map(
+            product => {
+
+                const isFavorite =
+                    favorites.includes(
+                        product.id
+                    );
+
+
+                return `
+
+                <article class="product">
+
+
+                    <div
+                        class="product-image"
+                        onclick="openProduct(${product.id})">
+
+                        ${product.icon}
+
+                    </div>
+
+
+                    <div class="product-body">
+
+
+                        <div class="product-tag">
+
+                            ${product.tag}
+
+                        </div>
+
+
+                        <h3
+                            class="product-name">
+
+                            ${product.name}
+
+                        </h3>
+
+
+                        <p
+                            class="product-description">
+
+                            ${product.description}
+
+                        </p>
+
+
+                        <div
+                            class="product-bottom">
+
+
+                            <div class="price">
+
+                                ${money(
+                                    product.price
+                                )}
+
+                            </div>
+
+
+                            <div class="actions">
+
+
+                                <button
+                                    class="action favorite
+                                    ${isFavorite ? "active":""}"
+                                    onclick="toggleFavorite(${product.id})">
+
+                                    ${
+                                        isFavorite
+                                        ? "♥"
+                                        : "♡"
+                                    }
+
+                                </button>
+
+
+                                <button
+                                    class="action"
+                                    onclick="openProduct(${product.id})">
+
+                                    👁
+
+                                </button>
+
+
+                                <button
+                                    class="action"
+                                    onclick="addToCart(${product.id})">
+
+                                    🛒
+
+                                </button>
+
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+                `;
+
+            }
+        ).join("");
+
+}
+
+
+/* =========================================================
+   CATEGORY
+========================================================= */
+
+function setCategory(
+    category,
+    button
+){
+
+    currentCategory =
+        category;
+
+
+    document
+        .querySelectorAll(
+            ".category"
+        )
+        .forEach(
+            element =>
+                element.classList
+                .remove("active")
+        );
+
+
+    button.classList.add(
+        "active"
+    );
+
+
+    renderProducts();
+
+}
+
+
+/* =========================================================
+   FAVORITES
+========================================================= */
+
+function toggleFavorite(id){
+
+    if(
+        favorites.includes(id)
+    ){
+
+        favorites =
+            favorites.filter(
+                item =>
+                    item !== id
+            );
+
+        showToast(
+            "♡ Removido dos favoritos."
+        );
+
+    }else{
+
+        favorites.push(id);
+
+        showToast(
+            "♥ Adicionado aos favoritos."
+        );
+
+    }
+
+
+    localStorage.setItem(
+        "nexoraFavorites",
+        JSON.stringify(
+            favorites
+        )
+    );
+
+
+    renderProducts();
+
+}
+
+
+/* =========================================================
+   CART
+========================================================= */
+
+function addToCart(id){
+
+    const item =
+        cart.find(
+            product =>
+                product.id === id
+        );
+
+
+    if(item){
+
+        item.quantity++;
+
+    }else{
+
+        cart.push({
+            id:id,
+            quantity:1
+        });
+
+    }
+
+
+    saveCart();
+
+    updateCart();
+
+    showToast(
+        "🛒 Produto adicionado."
+    );
+
+}
+
+
+function removeFromCart(id){
+
+    cart =
+        cart.filter(
+            item =>
+                item.id !== id
+        );
+
+
+    saveCart();
+
+    updateCart();
+
+}
+
+
+function changeQuantity(
+    id,
+    amount
+){
+
+    const item =
+        cart.find(
+            product =>
+                product.id === id
+        );
+
+
+    if(!item)
+        return;
+
+
+    item.quantity += amount;
+
+
+    if(
+        item.quantity <= 0
+    ){
+
+        removeFromCart(id);
+
+        return;
+
+    }
+
+
+    saveCart();
+
+    updateCart();
+
+}
+
+
+function saveCart(){
+
+    localStorage.setItem(
+        "nexoraCart",
+        JSON.stringify(
+            cart
+        )
+    );
+
+}
+
+
+/* =========================================================
+   UPDATE CART
+========================================================= */
+
+function updateCart(){
+
+    const container =
+        document.getElementById(
+            "cartItems"
+        );
+
+
+    const badge =
+        document.getElementById(
+            "cartBadge"
+        );
+
+
+    const count =
+        cart.reduce(
+            (
+                total,
+                item
+            ) =>
+                total +
+                item.quantity,
+            0
+        );
+
+
+    badge.textContent =
+        count;
+
+
+    if(!cart.length){
+
+        container.innerHTML = `
+
+        <div class="empty-cart">
+
+            <div class="empty-cart-icon">
+                🛒
+            </div>
+
+            <h3>
+                Seu carrinho está vazio
+            </h3>
+
+            <p>
+                Explore nossos produtos
+                e escolha seus favoritos.
+            </p>
+
+        </div>
+
+        `;
+
+
+        document.getElementById(
+            "cartTotal"
+        ).textContent =
+            money(0);
+
+
+        return;
+
+    }
+
+
+    let total = 0;
+
+
+    container.innerHTML =
+        cart.map(
+            item => {
+
+                const product =
+                    products.find(
+                        p =>
+                            p.id ===
+                            item.id
+                    );
+
+
+                if(!product)
+                    return "";
+
+
+                const subtotal =
+                    product.price *
+                    item.quantity;
+
+
+                total += subtotal;
+
+
+                return `
+
+                <div class="cart-item">
+
+
+                    <div class="cart-thumb">
+
+                        ${product.icon}
+
+                    </div>
+
+
+                    <div class="cart-info">
+
+                        <strong>
+                            ${product.name}
+                        </strong>
+
+                        <span>
+                            ${money(
+                                product.price
+                            )}
+                        </span>
+
+
+                        <div
+                            class="quantity">
+
+                            <button
+                                onclick="
+                                changeQuantity(
+                                    ${product.id},
+                                    -1
+                                )">
+
+                                −
+
+                            </button>
+
+
+                            <span>
+                                ${item.quantity}
+                            </span>
+
+
+                            <button
+                                onclick="
+                                changeQuantity(
+                                    ${product.id},
+                                    1
+                                )">
+
+                                +
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="cart-price">
+
+                        <strong>
+                            ${money(
+                                subtotal
+                            )}
+                        </strong>
+
+                        <button
+                            class="remove"
+                            onclick="
+                            removeFromCart(
+                                ${product.id}
+                            )">
+
+                            remover
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+                `;
+
+            }
+        ).join("");
+
+
+    document.getElementById(
+        "cartTotal"
+    ).textContent =
+        money(total);
+
+}
+
+
+/* =========================================================
+   CART UI
+========================================================= */
+
+function toggleCart(){
+
+    document
+        .getElementById("cart")
+        .classList.toggle(
+            "active"
+        );
+
+
+    document
+        .getElementById("overlay")
+        .classList.toggle(
+            "active"
+        );
+
+}
+
+
+/* =========================================================
+   PRODUCT MODAL
+========================================================= */
+
+function openProduct(id){
+
+    const product =
+        products.find(
+            p =>
+                p.id === id
+        );
+
+
+    if(!product)
+        return;
+
+
+    document.getElementById(
+        "modalArt"
+    ).textContent =
+        product.icon;
+
+
+    document.getElementById(
+        "modalTitle"
+    ).textContent =
+        product.name;
+
+
+    document.getElementById(
+        "modalDescription"
+    ).textContent =
+        product.description;
+
+
+    document.getElementById(
+        "modalPrice"
+    ).textContent =
+        money(product.price);
+
+
+    document.getElementById(
+        "modalAdd"
+    ).onclick =
+        function(){
+
+            addToCart(
+                product.id
+            );
+
+            closeModal();
+
+        };
+
+
+    document
+        .getElementById("modal")
+        .classList.add(
+            "active"
+        );
+
+}
+
+
+function closeModal(){
+
+    document
+        .getElementById("modal")
+        .classList.remove(
+            "active"
+        );
+
+}
+
+
+function modalOutside(event){
+
+    if(
+        event.target.id ===
+        "modal"
+    ){
+
+        closeModal();
+
+    }
+
+}
+
+
+/* =========================================================
+   FREE PACK
+========================================================= */
+
+function freePack(){
+
+    showToast(
+        "🎁 O Pack Grátis será conectado nesta etapa."
+    );
+
+}
+
+
+/* =========================================================
+   CHECKOUT
+========================================================= */
+
+function checkout(){
+
+    if(!cart.length){
+
+        showToast(
+            "Seu carrinho está vazio."
+        );
+
+        return;
+
+    }
+
+
+    showToast(
+        "💳 Checkout preparado para integração."
+    );
+
+}
+
+
+/* =========================================================
+   NEWSLETTER
+========================================================= */
+
+function subscribe(event){
+
+    event.preventDefault();
+
+
+    const input =
+        document.getElementById(
+            "email"
+        );
+
+
+    if(!input.value)
+        return;
+
+
+    showToast(
+        "🚀 Você entrou para a NEXORA!"
+    );
+
+
+    input.value = "";
+
+}
+
+
+/* =========================================================
+   FAQ
+========================================================= */
+
+function toggleFaq(button){
+
+    const item =
+        button.parentElement;
+
+
+    document
+        .querySelectorAll(
+            ".faq-item"
+        )
+        .forEach(
+            other => {
+
+                if(
+                    other !== item
+                ){
+
+                    other.classList
+                        .remove(
+                            "open"
+                        );
+
+                }
+
+            }
+        );
+
+
+    item.classList.toggle(
+        "open"
+    );
+
+}
+
+
+/* =========================================================
+   TOAST
+========================================================= */
+
+function showToast(message){
+
+    const container =
+        document.getElementById(
+            "toasts"
+        );
+
+
+    const toast =
+        document.createElement(
+            "div"
+        );
+
+
+    toast.className =
+        "toast";
+
+
+    toast.textContent =
+        message;
+
+
+    container.appendChild(
+        toast
+    );
+
+
+    setTimeout(
+        () => {
+
+            toast.style.opacity =
+                "0";
+
+            toast.style.transform =
+                "translateY(10px)";
+
+
+            setTimeout(
+                () =>
+                    toast.remove(),
+                300
+            );
+
+        },
+        2400
+    );
+
+}
+
+
+/* =========================================================
+   SCROLL
+========================================================= */
+
+function goToShop(){
+
+    document
+        .getElementById(
+            "loja"
+        )
+        .scrollIntoView({
+            behavior:"smooth"
+        });
+
+}
+
+
+/* =========================================================
+   MOBILE MENU
+========================================================= */
+
+function toggleMobileMenu(){
+
+    const nav =
+        document.querySelector(
+            ".nav"
+        );
+
+
+    if(
+        nav.style.display ===
+        "flex"
+    ){
+
+        nav.style.display =
+            "";
+
+        return;
+
+    }
+
+
+    nav.style.display =
+        "flex";
+
+    nav.style.position =
+        "absolute";
+
+    nav.style.top =
+        "74px";
+
+    nav.style.left =
+        "0";
+
+    nav.style.right =
+        "0";
+
+    nav.style.padding =
+        "22px";
+
+    nav.style.flexDirection =
+        "column";
+
+    nav.style.background =
+        "#08080d";
+
+    nav.style.borderBottom =
+        "1px solid #20202a";
+
+}
+
+
+/* =========================================================
+   ESC
+========================================================= */
+
+document.addEventListener(
+    "keydown",
+    event => {
+
+        if(
+            event.key === "Escape"
+        ){
+
+            closeModal();
+
+            document
+                .getElementById(
+                    "cart"
+                )
+                .classList.remove(
+                    "active"
+                );
+
+            document
+                .getElementById(
+                    "overlay"
+                )
+                .classList.remove(
+                    "active"
+                );
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   START
+========================================================= */
+
+renderProducts();
+
+updateCart();
+
+</script>
+
+</body>
+</html>
