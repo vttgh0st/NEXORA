@@ -1,0 +1,13 @@
+node_modules/
+.env
+.env.*
+!.env.example
+
+server/data/orders.json
+server/data/users.json
+server/data/sessions.json
+server/data/progress.json
+
+*.log
+/tmp/
+.DS_Store
