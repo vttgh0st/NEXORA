@@ -2329,6 +2329,76 @@ footer{
     </div>
 </section>
 
+
+<section id="reviews" style="max-width:1100px;margin:90px auto;padding:30px 24px;">
+    <div style="text-align:center;margin-bottom:35px;">
+        <div style="font-size:12px;letter-spacing:2px;color:#aaa;">
+            FEEDBACK DA COMUNIDADE
+        </div>
+
+        <h2 style="font-size:clamp(30px,5vw,50px);margin:12px 0;">
+            O que você acha do NEXORA?
+        </h2>
+
+        <p style="color:var(--muted);">
+            Avalie sua experiência e deixe sua opinião.
+        </p>
+    </div>
+
+    <div style="display:grid;grid-template-columns:280px 1fr;gap:24px;">
+
+        <div style="background:var(--card);border:1px solid var(--border);border-radius:22px;padding:30px;text-align:center;">
+            <div id="reviewAverage" style="font-size:58px;font-weight:900;">
+                0.0
+            </div>
+
+            <div id="reviewStars" style="font-size:28px;letter-spacing:3px;">
+                ☆☆☆☆☆
+            </div>
+
+            <p style="color:var(--muted);">
+                <span id="reviewTotal">0</span> avaliações
+            </p>
+        </div>
+
+        <div style="background:var(--card);border:1px solid var(--border);border-radius:22px;padding:30px;">
+
+            <h3>Deixe sua avaliação</h3>
+
+            <div id="reviewSelector" style="margin:15px 0;font-size:38px;">
+                <button type="button" data-star="1" style="background:none;border:0;color:#555;cursor:pointer;">★</button>
+                <button type="button" data-star="2" style="background:none;border:0;color:#555;cursor:pointer;">★</button>
+                <button type="button" data-star="3" style="background:none;border:0;color:#555;cursor:pointer;">★</button>
+                <button type="button" data-star="4" style="background:none;border:0;color:#555;cursor:pointer;">★</button>
+                <button type="button" data-star="5" style="background:none;border:0;color:#555;cursor:pointer;">★</button>
+            </div>
+
+            <input
+                id="reviewName"
+                maxlength="50"
+                placeholder="Seu nome"
+                style="width:100%;box-sizing:border-box;padding:14px;margin:7px 0;background:#08080d;color:white;border:1px solid var(--border);border-radius:12px;">
+
+            <textarea
+                id="reviewComment"
+                maxlength="500"
+                placeholder="O que você achou do site?"
+                style="width:100%;box-sizing:border-box;padding:14px;margin:7px 0;background:#08080d;color:white;border:1px solid var(--border);border-radius:12px;min-height:110px;"></textarea>
+
+            <button
+                id="sendReview"
+                type="button"
+                style="width:100%;padding:14px;margin-top:8px;border:0;border-radius:12px;background:white;color:black;font-weight:800;cursor:pointer;">
+                Enviar avaliação
+            </button>
+
+            <p id="reviewMessage" style="text-align:center;color:#aaa;"></p>
+        </div>
+    </div>
+
+    <div id="reviewsList" style="display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:25px;"></div>
+</section>
+
 <footer>
 <div class="container">
 
@@ -3082,6 +3152,239 @@ document.addEventListener("keydown",e => {
 renderProducts();
 updateCart();
 
+</script>
+
+
+<script>
+(function(){
+
+let selected = 0;
+
+const buttons =
+    document.querySelectorAll(
+        "#reviewSelector button"
+    );
+
+buttons.forEach(button => {
+
+    button.addEventListener("click", () => {
+
+        selected =
+            Number(button.dataset.star);
+
+        buttons.forEach(star => {
+
+            star.style.color =
+                Number(star.dataset.star) <= selected
+                    ? "#fff"
+                    : "#555";
+
+        });
+
+    });
+
+});
+
+function stars(n){
+
+    n = Math.round(Number(n) || 0);
+
+    return "★".repeat(n) +
+           "☆".repeat(5 - n);
+}
+
+function safe(text){
+
+    return String(text)
+        .replaceAll("&","&amp;")
+        .replaceAll("<","&lt;")
+        .replaceAll(">","&gt;")
+        .replaceAll('"',"&quot;")
+        .replaceAll("'","&#039;");
+
+}
+
+async function loadReviews(){
+
+    try{
+
+        const r =
+            await fetch(
+                "/api/reviews",
+                {cache:"no-store"}
+            );
+
+        const data =
+            await r.json();
+
+        if(!data.ok) return;
+
+        document.getElementById(
+            "reviewAverage"
+        ).textContent =
+            Number(data.average || 0).toFixed(1);
+
+        document.getElementById(
+            "reviewStars"
+        ).textContent =
+            data.total
+                ? stars(data.average)
+                : "☆☆☆☆☆";
+
+        document.getElementById(
+            "reviewTotal"
+        ).textContent =
+            data.total || 0;
+
+        const list =
+            document.getElementById(
+                "reviewsList"
+            );
+
+        list.innerHTML = "";
+
+        data.reviews
+            .slice(0,12)
+            .forEach(review => {
+
+                const card =
+                    document.createElement("div");
+
+                card.style.cssText =
+                    "background:var(--card);border:1px solid var(--border);border-radius:18px;padding:22px;";
+
+                card.innerHTML =
+                    "<strong>" +
+                    safe(review.name) +
+                    "</strong>" +
+
+                    "<div style='margin:8px 0;letter-spacing:2px;'>" +
+                    stars(review.rating) +
+                    "</div>" +
+
+                    "<p style='color:#ccc;line-height:1.6;'>" +
+                    safe(review.comment) +
+                    "</p>";
+
+                list.appendChild(card);
+
+            });
+
+    }catch(e){
+
+        console.error(
+            "Erro nas avaliações:",
+            e
+        );
+
+    }
+
+}
+
+document.getElementById(
+    "sendReview"
+).addEventListener(
+    "click",
+    async () => {
+
+        const message =
+            document.getElementById(
+                "reviewMessage"
+            );
+
+        const name =
+            document.getElementById(
+                "reviewName"
+            ).value.trim();
+
+        const comment =
+            document.getElementById(
+                "reviewComment"
+            ).value.trim();
+
+        if(!selected){
+
+            message.textContent =
+                "Escolha uma nota de 1 a 5 estrelas.";
+
+            return;
+
+        }
+
+        if(comment.length < 3){
+
+            message.textContent =
+                "Escreva sua opinião.";
+
+            return;
+
+        }
+
+        try{
+
+            const r =
+                await fetch(
+                    "/api/reviews",
+                    {
+                        method:"POST",
+                        headers:{
+                            "Content-Type":
+                                "application/json"
+                        },
+                        body:JSON.stringify({
+                            name:
+                                name ||
+                                "Visitante",
+                            rating:selected,
+                            comment
+                        })
+                    }
+                );
+
+            const data =
+                await r.json();
+
+            if(!r.ok || !data.ok){
+
+                throw new Error(
+                    data.message ||
+                    "Erro ao enviar avaliação."
+                );
+
+            }
+
+            message.textContent =
+                "⭐ Avaliação enviada!";
+
+            document.getElementById(
+                "reviewName"
+            ).value = "";
+
+            document.getElementById(
+                "reviewComment"
+            ).value = "";
+
+            selected = 0;
+
+            buttons.forEach(
+                b => b.style.color = "#555"
+            );
+
+            loadReviews();
+
+        }catch(e){
+
+            message.textContent =
+                e.message;
+
+        }
+
+    }
+);
+
+loadReviews();
+
+})();
 </script>
 
 </body>
