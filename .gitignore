@@ -11,3 +11,4 @@ server/data/progress.json
 *.log
 /tmp/
 .DS_Store
+server/data/reviews.json

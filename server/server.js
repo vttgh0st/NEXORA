@@ -210,6 +210,69 @@ function findOrder(id) {
    RESPONSE
 ============================================================ */
 
+
+// ===== NEXORA REVIEWS API =====
+
+const REVIEWS_FILE = path.join(
+    __dirname,
+    "data",
+    "reviews.json"
+);
+
+function readReviews() {
+    try {
+        if (!fs.existsSync(REVIEWS_FILE)) {
+            fs.mkdirSync(
+                path.dirname(REVIEWS_FILE),
+                { recursive: true }
+            );
+
+            fs.writeFileSync(
+                REVIEWS_FILE,
+                "[]",
+                "utf8"
+            );
+
+            return [];
+        }
+
+        const data = fs.readFileSync(
+            REVIEWS_FILE,
+            "utf8"
+        );
+
+        const parsed = JSON.parse(data);
+
+        return Array.isArray(parsed)
+            ? parsed
+            : [];
+    } catch (err) {
+        console.error(
+            "Erro ao ler reviews:",
+            err
+        );
+
+        return [];
+    }
+}
+
+function writeReviews(reviews) {
+    fs.mkdirSync(
+        path.dirname(REVIEWS_FILE),
+        { recursive: true }
+    );
+
+    fs.writeFileSync(
+        REVIEWS_FILE,
+        JSON.stringify(
+            reviews,
+            null,
+            2
+        ),
+        "utf8"
+    );
+}
+
 function sendJSON(
     res,
     status,
@@ -1427,7 +1490,109 @@ const server =
                         `http://${req.headers.host || "localhost"}`
                     );
 
-                const route =
+                
+    // ===== REVIEWS: LISTAR =====
+    if (
+        req.method === "GET" &&
+        url.pathname === "/api/reviews"
+    ) {
+        const reviews = readReviews();
+
+        return sendJSON(
+            res,
+            200,
+            {
+                ok: true,
+                reviews
+            }
+        );
+    }
+
+    // ===== REVIEWS: ENVIAR =====
+    if (
+        req.method === "POST" &&
+        url.pathname === "/api/reviews"
+    ) {
+        try {
+            const body = await readBody(req);
+
+            const name = String(
+                body.name || "Visitante"
+            ).trim().slice(0, 60);
+
+            const rating = Number(body.rating);
+
+            const comment = String(
+                body.comment || ""
+            ).trim().slice(0, 500);
+
+            if (
+                !Number.isInteger(rating) ||
+                rating < 1 ||
+                rating > 5
+            ) {
+                return sendJSON(
+                    res,
+                    400,
+                    {
+                        ok: false,
+                        message: "A avaliação deve ter entre 1 e 5 estrelas."
+                    }
+                );
+            }
+
+            if (!comment) {
+                return sendJSON(
+                    res,
+                    400,
+                    {
+                        ok: false,
+                        message: "Escreva um comentário."
+                    }
+                );
+            }
+
+            const reviews = readReviews();
+
+            const review = {
+                id: crypto.randomUUID(),
+                name,
+                rating,
+                comment,
+                createdAt: new Date().toISOString()
+            };
+
+            reviews.unshift(review);
+
+            writeReviews(reviews);
+
+            return sendJSON(
+                res,
+                201,
+                {
+                    ok: true,
+                    review
+                }
+            );
+
+        } catch (err) {
+            console.error(
+                "Erro ao salvar avaliação:",
+                err
+            );
+
+            return sendJSON(
+                res,
+                500,
+                {
+                    ok: false,
+                    message: "Não foi possível salvar a avaliação."
+                }
+            );
+        }
+    }
+
+const route =
                     url.pathname;
 
                 if (
